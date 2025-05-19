@@ -528,7 +528,7 @@ if __name__ == "__main__":
         responses = benchmark_responses[id]
         for response in responses:
             body = response[0]
-            response[1]['result'] = evaluator.evaluate(id, body)
-    
-    with open(args.responses_path, 'w') as f:
-        json.dump(benchmark_responses, f, indent=4) # overwrite the existing response file
+            if 'result' not in response[1]:
+                response[1]['result'] = evaluator.evaluate(id, body)
+        with open(args.responses_path, 'w') as f:
+            json.dump(benchmark_responses, f, indent=4) # overwrite the existing response file
