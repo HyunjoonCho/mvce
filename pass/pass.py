@@ -3,12 +3,7 @@ import json
 
 def pass_at_k(responses, k=20):
     assert k <= len(responses)
-
-    for response in responses[:k]:
-        if response[1]['result'] == "passed":
-            return True
-
-    return False
+    return len(list(filter(lambda response: response[1]['result'] == "passed", responses[:k]))) / k
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -21,8 +16,8 @@ if __name__ == "__main__":
     
     passed = dict()
     for id in benchmark_responses:
-        is_passed = pass_at_k(benchmark_responses[id], int(args.k))
-        passed[id] = is_passed
+        pass_rate = pass_at_k(benchmark_responses[id], int(args.k))
+        passed[id] = pass_rate
     
     output_path = args.responses_path.replace('../results', f'./pass_at_k/').replace('.json', f'@{args.k}.json')
     with open(output_path, 'w') as f:
@@ -30,4 +25,4 @@ if __name__ == "__main__":
     
     benchmark = args.responses_path.split('/')[-1].split('_')[0] 
     model = args.responses_path[:-5].split('/')[-1].split('_')[1]
-    print(f"{benchmark}\t{model}\tpass@{args.k}\t{len([t for t in passed.values() if t])}")
+    print(f"{benchmark}\t{model}\tpass@{args.k}\t{len([rate for rate in passed.values() if rate > 0])}")

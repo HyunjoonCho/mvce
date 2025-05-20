@@ -7,6 +7,11 @@ run_pass() {
   done
 }
 
+run_pass ../results/HumanEval_llama3.json
+run_pass ../results/HumanEval_llama3.1.json
+run_pass ../results/HumanEval_mistral-nemo.json
+run_pass ../results/HumanEval_qwen2.5-coder.json
+
 run_pass ../results/APPS_llama3.json
 run_pass ../results/APPS_llama3.1.json
 run_pass ../results/APPS_mistral-nemo.json
