@@ -1,0 +1,7 @@
+{
+    "HumanEval/93": {
+        "code": "def skjkasdkd(lst):\n    max_prime = max(filter(lambda x: all((x % i > 0 for i in range(2, 1 + int(x ** 0.5)))), lst))\n    return sum((int(digit) for digit in str(max_prime)))",
+        "result": "passed",
+        "average_distance": 0.0
+    }
+}

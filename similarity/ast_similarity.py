@@ -31,17 +31,10 @@ def get_final_answer_dict(results_path):
     final_answer_dict = {}
 
     print("Generating normalized trees... ")
+    # results = {'HumanEval/93': results['HumanEval/93']}
     for prob, answers in tqdm(results.items()):
+        print(prob)
         final_answer_dict[prob] = {}
-        # normalized_tree_dict[prob] = []
-        # for a in answers:
-        #     try:
-        #         tree = ast.parse(a[0])
-        #         normalized_tree = normalizer.visit(tree)
-        #         ast.fix_missing_locations(normalized_tree)
-        #         normalized_tree_dict[prob].append(normalized_tree)
-        #     except:
-        #         pass
 
         normalized_trees = []
         zsses = []
@@ -119,19 +112,6 @@ def get_zss_node(tree_dict):
             zss_dict[prob].append(ast_to_zss(tree))
     return zss_dict
 
-# def get_tree_avg_distance(zss_dict):
-#     avg_distance_dict = {}
-#     for prob, zsss in zss_dict.items():
-#         for i, zss1 in enumerate(zsss):
-#             distances = []
-#             for j, zss2 in enumerate(zsss):
-#                 if i != j:
-#                     distances.append(simple_distance(zss1, zss2))
-#             av
-
-        
-
-
 def evaluate(final_answer_dict):
     num_passed = 0
     num_total = len(final_answer_dict.keys())
@@ -149,37 +129,15 @@ if __name__ == "__main__":
     args = parser.parse_args()
     assert args.benchmark in['HumanEval', 'APPS']
 
-#     code1 = "a+b"
-#     code2 = """
-# def hi():
-#     '''
-#     banana
-#     '''
-#     b+a
-# """
-    
-
-#     tree1 = ast.parse(code1)
-#     tree2 = ast.parse(code2)
-
-#     print(ast.dump(tree2))
-
-#     norm_tree1 = Normalize().visit(tree1)
-#     norm_tree2 = Normalize().visit(tree2)
-
-#     print(ast.unparse(norm_tree1))
-#     print(ast.unparse(norm_tree2))
-
-
     final_answer_dict = get_final_answer_dict(args.responses_path)
     num_passed, num_total = evaluate(final_answer_dict)
     print(f"num_passed: {num_passed}")
     print(f"num_total: {num_total}")
 
-    # result_file = args.responses_path.split('/')[-1]
-    # result_path = f"./{result_file}"
+    result_file = args.responses_path.split('/')[-1]
+    result_path = f"./ast_edit_dist/{result_file}"
 
-    # with open(result_path, 'w') as f:
-    #     json.dump(final_answer_dict, f, indent = 4)
+    with open(result_path, 'w') as f:
+        json.dump(final_answer_dict, f, indent = 4)
 
     

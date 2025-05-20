@@ -1,0 +1,7 @@
+{
+    "HumanEval/93": {
+        "code": "def skjkasdkd(lst):\n    max_prime = max((i for i in lst if all((i % j for j in range(2, 1 + int(i ** 0.5))))))\n    return sum((int(digit) for digit in str(max_prime)))",
+        "result": "passed",
+        "average_distance": 27.0
+    }
+}

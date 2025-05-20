@@ -1,0 +1,7 @@
+{
+    "HumanEval/93": {
+        "code": "def skjkasdkd(lst):\n    if n <= 1:\n        return False\n    if n <= 3:\n        return True\n    if n % 2 == 0 or n % 3 == 0:\n        return False\n    i = 5\n    while i * i <= n:\n        if n % i == 0 or n % (2 + i) == 0:\n            return False\n        i += 6\n    return True\n    largest_prime = 0\n    for num in lst:\n        if num > largest_prime and is_prime(num):\n            largest_prime = num\n    return sum((int(digit) for digit in str(largest_prime)))",
+        "result": "failed: name 'n' is not defined",
+        "average_distance": 23.0
+    }
+}
