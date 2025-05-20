@@ -1,0 +1,49 @@
+
+[llama3]
+num_passed: 16
+num_total: 300
+===============================================
+[llama3.1]
+num_passed: 20
+num_total: 300
+===============================================
+[mistral-nemo]
+num_passed: 25
+num_total: 300
+===============================================
+[qwen2.5-coder]
+num_passed: 16
+num_total: 300
+===============================================
+[llama3_instruction]
+num_passed: 22
+num_total: 300
+===============================================
+[llama3.1_instruction]
+num_passed: 10
+num_total: 300
+===============================================
+[mistral-nemo_instruction]
+num_passed: 23
+num_total: 300
+===============================================
+[qwen2.5-coder_instruction]
+num_passed: 8
+num_total: 300
+===============================================
+[llama3_rule]
+num_passed: 17
+num_total: 300
+===============================================
+[llama3.1_rule]
+num_passed: 1
+num_total: 300
+===============================================
+[mistral-nemo_rule]
+num_passed: 10
+num_total: 300
+===============================================
+[qwen2.5-coder_rule]
+num_passed: 3
+num_total: 300
+===============================================

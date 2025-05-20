@@ -37,30 +37,31 @@ def generating_embedding(results, benchmark):
     print("Generating embeddings...")
     for prob, answers in tqdm(results.items()):
         embedding_dict[prob] = []
-        if benchmark == 'HumanEval':
-            for a in answers:
-                answer_body = '\n'.join(
-                    [
-                        line for line in a[0].split('\n')
-                        if not line.startswith('```') and not line.strip().startswith('def')
-                    ]
-                )
 
-                tokens = tokenizer(
-                    answer_body,
-                    return_tensors = 'pt',
-                    max_length = 512,
-                    truncation = True,
-                    padding = 'max_length'
-                ).to(device)
+        for a in answers:
+            answer_body = '\n'.join(
+                [
+                    line for line in a[0].split('\n')
+                    if not line.startswith('```') and not line.strip().startswith('def')
+                ]
+            )
 
-                with torch.no_grad():
-                    outputs = model(**tokens)
-                    last_hidden_state = outputs.last_hidden_state
+            tokens = tokenizer(
+                answer_body,
+                return_tensors = 'pt',
+                max_length = 512,
+                truncation = True,
+                padding = 'max_length'
+            ).to(device)
 
-                    cls_embedding =  last_hidden_state[:, 0, :]
-                    cls_embedding =  cls_embedding.squeeze(0).cpu()
-                    embedding_dict[prob].append(cls_embedding)
+            with torch.no_grad():
+                outputs = model(**tokens)
+                last_hidden_state = outputs.last_hidden_state
+
+                cls_embedding =  last_hidden_state[:, 0, :]
+                cls_embedding =  cls_embedding.squeeze(0).cpu()
+                embedding_dict[prob].append(cls_embedding)
+        
     
     return embedding_dict
 
@@ -121,7 +122,7 @@ if __name__ == "__main__":
     print(f"num_total: {num_total}")
 
     result_file = args.responses_path.split('/')[-1]
-    result_path = f"./{result_file}"
+    result_path = f"./codebert/{result_file}"
 
     with open(result_path, 'w') as f:
         json.dump(final_answer_dict, f, indent = 4)
