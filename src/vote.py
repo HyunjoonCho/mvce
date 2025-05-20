@@ -35,7 +35,7 @@ if __name__ == "__main__":
         benchmark_responses = json.load(f)
     
     passed_count = 0
-    for id in tqdm.tqdm(benchmark_responses):
+    for id in benchmark_responses:
         source, votes, is_passed = vote_by_majority(benchmark_responses[id])
         if is_passed:
             passed_count += 1
