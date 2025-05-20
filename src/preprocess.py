@@ -41,6 +41,12 @@ class Augmentor:
         
         return results
 
+class CommentRemover(ast.NodeTransformer):
+    def visit_FunctionDef(self, node):
+        node.body = [e for e in node.body if not (isinstance(e, ast.Expr) and isinstance(e.value, ast.Constant))]
+        self.generic_visit(node)
+        return node
+
 class VariableChecker(ast.NodeTransformer):
     def visit_Name(self, node):
         global var_dict, var_id
@@ -49,14 +55,6 @@ class VariableChecker(ast.NodeTransformer):
             var_dict[node.id] = var_id
             var_id += 1
         return node
-    
-    # def visit_FunctionDef(self, node):
-    #     global var_dict, var_id
-    #     # if node.id not in var_dict:
-    #     #     var_dict[node.id] = var_id
-    #     #     var_id += 1
-    #     for node 
-    #     return node
 
     def visit_arg(self, node):
         global var_dict, var_id
@@ -101,6 +99,8 @@ class Preprocessor:
             for sample in samples:
                 try:
                     root = ast.parse(sample[0])
+                    comment_remover = CommentRemover()
+                    root = comment_remover.visit(root)
                     reduced_sample = ast.unparse(root)
                 except:
                     continue
@@ -162,4 +162,4 @@ if __name__ == "__main__":
                 preprocessor = Preprocessor(bm, model)
                 ast_reduced = preprocessor.ast_preprocess()
                 var_reduced = preprocessor.variable_unify(ast_reduced)
-                preprocessor.record_result("var_unif", ast_reduced)
+                preprocessor.record_result("var_unif", var_reduced)
