@@ -1,5 +1,6 @@
 import json, argparse
 import torch
+import random
 import torch.nn.functional as F
 from tqdm import tqdm
 from transformers import RobertaTokenizer, RobertaModel
@@ -77,9 +78,11 @@ def get_final_answer(results_path, benchmark):
         final_answer_dict[prob] = {}
 
         max_value = max(similarities)
-        max_index = similarities.index(max_value)
+        final_answer_candidates = [i for i, sim in enumerate(similarities) if sim == max_value]
+        print(final_answer_candidates)
+        final_index = random.choice(final_answer_candidates)
 
-        final_answer = results[prob][max_index]
+        final_answer = results[prob][final_index]
         final_answer_body = '\n'.join(
                                 [
                                     line for line in final_answer[0].split('\n')
