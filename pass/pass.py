@@ -28,4 +28,6 @@ if __name__ == "__main__":
     with open(output_path, 'w') as f:
         json.dump(passed, f, indent=4) 
     
-    print(f"For {args.responses_path}, pass@{args.k}: {len([t for t in passed.values() if t])}")
+    benchmark = args.responses_path.split('/')[-1].split('_')[0] 
+    model = args.responses_path[:-5].split('/')[-1].split('_')[1]
+    print(f"{benchmark}\t{model}\tpass@{args.k}\t{len([t for t in passed.values() if t])}")
