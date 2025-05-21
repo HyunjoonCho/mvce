@@ -1,0 +1,658 @@
+{
+    "HumanEval/0": {
+        "body": "    for i in range(len(numbers)):\n        for j in range(i + 1, len(numbers)):\n            if abs(numbers[i] - numbers[j]) < threshold:\n                return True\n    return False",
+        "result": "passed"
+    },
+    "HumanEval/1": {
+        "body": "    stack = []\n    groups = []\n    current_group = ''\n    \n    for char in paren_string.replace(' ', ''):\n        if char == '(':\n            stack.append(char)\n            current_group += char\n        elif char == ')':\n            if stack:\n                stack.pop()\n                current_group += char\n                if not stack:\n                    groups.append(current_group)\n                    current_group = ''\n        else:\n            pass\n    \n    return groups",
+        "result": "passed"
+    },
+    "HumanEval/2": {
+        "body": "    return number - int(number)",
+        "result": "passed"
+    },
+    "HumanEval/3": {
+        "body": "    balance = 0\n    for operation in operations:\n        balance += operation\n        if balance < 0:\n            return True\n    return False",
+        "result": "passed"
+    },
+    "HumanEval/4": {
+        "body": "    mean = sum(numbers) / len(numbers)\n    return sum(abs(num - mean) for num in numbers) / len(numbers)",
+        "result": "passed"
+    },
+    "HumanEval/5": {
+        "body": "    result = []\n    for i, num in enumerate(numbers):\n        if i > 0:\n            result.append(delimeter)\n        result.append(num)\n    return result",
+        "result": "passed"
+    },
+    "HumanEval/6": {
+        "body": "    result = []\n    for group in paren_string.split():\n        stack = [0] * len(group)\n        max_depth = 0\n        for i, char in enumerate(group):\n            if char == '(':\n                stack[i] += 1\n                max_depth = max(max_depth, stack[i])\n            elif char == ')':\n                stack[i] -= 1\n        result.append(max_depth)\n    return result",
+        "result": "failed: "
+    },
+    "HumanEval/7": {
+        "body": "    return [s for s in strings if substring in s]",
+        "result": "passed"
+    },
+    "HumanEval/8": {
+        "body": "    product = 1\n    total = 0\n    for num in numbers:\n        product *= num\n        total += num\n    return total, product",
+        "result": "passed"
+    },
+    "HumanEval/9": {
+        "body": "    result = []\n    max_so_far = float('-inf')\n    for num in numbers:\n        if num > max_so_far:\n            max_so_far = num\n        result.append(max_so_far)\n    return result",
+        "result": "passed"
+    },
+    "HumanEval/10": {
+        "body": "    while True:\n        if is_palindrome(string):\n            return string\n        for i in range(len(string), 0, -1):\n            prefix = string[:i]\n            suffix = string[i:]\n            if is_palindrome(suffix):\n                reversed_prefix = prefix[::-1]\n                string = string + reversed_prefix\n                break",
+        "result": "failed: "
+    },
+    "HumanEval/11": {
+        "body": "    return ''.join(str(int(c1) ^ int(c2)) for c1, c2 in zip(a, b))",
+        "result": "passed"
+    },
+    "HumanEval/12": {
+        "body": "    return max(strings) if strings else None",
+        "result": "failed: "
+    },
+    "HumanEval/13": {
+        "body": "    while b != 0:\n        a, b = b, a % b\n    return abs(a)",
+        "result": "passed"
+    },
+    "HumanEval/14": {
+        "body": "    prefixes = []\n    for i in range(1, len(string) + 1):\n        prefix = string[:i]\n        prefixes.append(prefix)\n    return sorted(prefixes)",
+        "result": "passed"
+    },
+    "HumanEval/15": {
+        "body": "    return ' '.join(map(str, range(n + 1)))",
+        "result": "passed"
+    },
+    "HumanEval/16": {
+        "body": "    return len(set(string.casefold()))",
+        "result": "passed"
+    },
+    "HumanEval/17": {
+        "body": "    note_durations = {'o': 4, 'o|': 2, '.|': 1}\n    return [note_durations[note] for note in music_string.split()]",
+        "result": "passed"
+    },
+    "HumanEval/18": {
+        "body": "    return sum(1 for i in range(len(string)) if string[i:i + len(substring)] == substring)",
+        "result": "passed"
+    },
+    "HumanEval/19": {
+        "body": "    num_dict = {'zero': 0, 'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5,\n                'six': 6, 'seven': 7, 'eight': 8, 'nine': 9}\n    sorted_nums = sorted([num_dict[num] for num in numbers.split()])\n    return ' '.join([list(num_dict.keys())[i] for i in sorted_nums])",
+        "result": "passed"
+    },
+    "HumanEval/20": {
+        "body": "    numbers.sort()\n    min_diff = float('inf')\n    closest_pair = (numbers[0], numbers[1])\n    \n    for i in range(len(numbers) - 1):\n        diff = numbers[i+1] - numbers[i]\n        if diff < min_diff:\n            min_diff = diff\n            closest_pair = (numbers[i], numbers[i+1])\n    \n    return closest_pair",
+        "result": "passed"
+    },
+    "HumanEval/21": {
+        "body": "    min_val = min(numbers)\n    max_val = max(numbers)\n    return [(x - min_val) / (max_val - min_val) for x in numbers]",
+        "result": "passed"
+    },
+    "HumanEval/22": {
+        "body": "    return [value for value in values if isinstance(value, int)]",
+        "result": "passed"
+    },
+    "HumanEval/23": {
+        "body": "    return len(string)",
+        "result": "passed"
+    },
+    "HumanEval/24": {
+        "body": "    for i in range(n - 1, 0, -1):\n        if n % i == 0:\n            return i",
+        "result": "passed"
+    },
+    "HumanEval/25": {
+        "body": "    i = 2\n    factors = []\n    while i * i <= n:\n        if n % i:\n            i += 1\n        else:\n            n //= i\n            factors.append(i)\n    if n > 1:\n        factors.append(n)\n    return factors",
+        "result": "passed"
+    },
+    "HumanEval/26": {
+        "body": "    seen = set()\n    result = []\n    for num in numbers:\n        if num not in seen:\n            seen.add(num)\n            result.append(num)\n    return result",
+        "result": "failed: "
+    },
+    "HumanEval/27": {
+        "body": "    return ''.join(c.swapcase() for c in string)",
+        "result": "passed"
+    },
+    "HumanEval/28": {
+        "body": "    return ''.join(strings)",
+        "result": "passed"
+    },
+    "HumanEval/29": {
+        "body": "    return [s for s in strings if s.startswith(prefix)]",
+        "result": "passed"
+    },
+    "HumanEval/30": {
+        "body": "    return [i for i in l if i > 0]",
+        "result": "passed"
+    },
+    "HumanEval/31": {
+        "body": "    if n <= 1:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True",
+        "result": "passed"
+    },
+    "HumanEval/32": {
+        "body": "    if len(xs) == 0 or xs[0] == 0:\n        raise ValueError(\"Largest non-zero coefficient not found\")\n    c = -xs[1]/xs[0]\n    return c",
+        "result": "failed: "
+    },
+    "HumanEval/33": {
+        "body": "    return [x if i % 3 != 0 else sorted([y for j, y in enumerate(l) if j % 3 == 0])[i // 3] for i, x in enumerate(l)]",
+        "result": "passed"
+    },
+    "HumanEval/34": {
+        "body": "    return sorted(set(l))",
+        "result": "passed"
+    },
+    "HumanEval/35": {
+        "body": "    return max(l)",
+        "result": "passed"
+    },
+    "HumanEval/36": {
+        "body": "    count = 0\n    for i in range(1, n):\n        if i % 11 == 0 or i % 13 == 0:\n            str_i = str(i)\n            count += str_i.count('7')",
+        "result": "failed: "
+    },
+    "HumanEval/37": {
+        "body": "    return [x if i % 2 != 0 else y for i, x in enumerate(l) for y in sorted([y for j, y in enumerate(l) if j % 2 == 0])]",
+        "result": "failed: "
+    },
+    "HumanEval/38": {
+        "body": "    groups = [s[(3 * i):min((3 * i + 3), len(s))] for i in range((len(s) + 2) // 3)]\n    groups = [(group[-1] + group[:-1]) if len(group) == 3 else group for group in groups]\n    return \"\".join(groups)",
+        "result": "passed"
+    },
+    "HumanEval/39": {
+        "body": "    a, b = 0, 1\n    i = 1\n    while True:\n        if is_prime(b) and i == n:\n            return b\n        a, b = b, a + b\n        i += 1\n\n    if num < 2:\n        return False\n    for i in range(2, int(num ** 0.5) + 1):\n        if num % i == 0:\n            return False\n    return True",
+        "result": "failed: name 'is_prime' is not defined"
+    },
+    "HumanEval/40": {
+        "body": "    l.sort()\n    for i in range(len(l)-2):\n        left = i + 1\n        right = len(l) - 1\n        while left < right:\n            current_sum = l[i] + l[left] + l[right]\n            if current_sum == 0:\n                return True\n            elif current_sum < 0:\n                left += 1\n            else:\n                right -= 1\n    return False",
+        "result": "passed"
+    },
+    "HumanEval/41": {
+        "body": "    l1 = [i for i in range(1, n+1)]\n    r1 = [n-i+1 for i in range(1, n+1)]\n    collision_pairs = set()\n    \n    for a in l1:\n        for b in r1:\n            if abs(a - b) % 2 == 0 and a != b:\n                collision_pairs.add((a, b))\n                \n    return len(collision_pairs)",
+        "result": "failed: "
+    },
+    "HumanEval/42": {
+        "body": "    return [x + 1 for x in l]",
+        "result": "passed"
+    },
+    "HumanEval/43": {
+        "body": "    seen = set()\n    for num in l:\n        if -num in seen:\n            return True\n        seen.add(num)\n    return False",
+        "result": "passed"
+    },
+    "HumanEval/44": {
+        "body": "    if x == 0:\n        return '0'\n    digits = []\n    while x > 0:\n        digits.append(str(x % base))\n        x //= base\n    return ''.join(reversed(digits))",
+        "result": "passed"
+    },
+    "HumanEval/45": {
+        "body": "    return (a * h) / 2",
+        "result": "passed"
+    },
+    "HumanEval/46": {
+        "body": "    if n < 0:\n        raise ValueError(\"n must be a non-negative integer\")\n    elif n == 0 or n == 1:\n        return 0\n    elif n == 2:\n        return 2\n    else:\n        a, b, c, d = 0, 0, 2, 0\n        for _ in range(3, n + 1):\n            a, b, c, d = b, c, d, a + b + c + d\n        return d",
+        "result": "failed: "
+    },
+    "HumanEval/47": {
+        "body": "sorted_l = sorted(l)\nn = len(sorted_l)\nif n % 2 == 1:\n    return sorted_l[n // 2]\nelse:\n    return (sorted_l[n // 2 - 1] + sorted_l[n // 2]) / 2",
+        "result": "failed: 'return' outside function (<string>, line 13)"
+    },
+    "HumanEval/48": {
+        "body": "    return text == text[::-1]",
+        "result": "passed"
+    },
+    "HumanEval/49": {
+        "body": "    return pow(n, 1, p)",
+        "result": "failed: "
+    },
+    "HumanEval/50": {
+        "body": "    return \"\".join([chr(((ord(ch) - 5 - ord(\"a\")) % 26) + ord(\"a\")) for ch in s])",
+        "result": "passed"
+    },
+    "HumanEval/51": {
+        "body": "    vowels = 'aeiouAEIOU'\n    return ''.join([char for char in text if char not in vowels])",
+        "result": "passed"
+    },
+    "HumanEval/52": {
+        "body": "    return all(i < t for i in l)",
+        "result": "passed"
+    },
+    "HumanEval/53": {
+        "body": "    return x + y",
+        "result": "passed"
+    },
+    "HumanEval/54": {
+        "body": "    return sorted(s0) == sorted(s1)",
+        "result": "failed: "
+    },
+    "HumanEval/55": {
+        "body": "    if n <= 1:\n        return n\n    else:\n        a, b = 0, 1\n        for _ in range(2, n + 1):\n            a, b = b, a + b\n        return b",
+        "result": "passed"
+    },
+    "HumanEval/56": {
+        "body": "    stack = []\n    for bracket in brackets:\n        if bracket == \"<\":\n            stack.append(bracket)\n        elif bracket == \">\":\n            if not stack:\n                return False\n            stack.pop()\n    return not stack",
+        "result": "passed"
+    },
+    "HumanEval/57": {
+        "body": "    return all(x <= y for x, y in zip(l, l[1:])) or all(x >= y for x, y in zip(l, l[1:]))",
+        "result": "passed"
+    },
+    "HumanEval/58": {
+        "body": "    return sorted(set(l1) & set(l2))",
+        "result": "passed"
+    },
+    "HumanEval/59": {
+        "body": "    i = 2\n    while i * i <= n:\n        if n % i:\n            i += 1\n        else:\n            n //= i\n    return n",
+        "result": "passed"
+    },
+    "HumanEval/60": {
+        "body": "    result = 0\n    for i in range(1, n + 1):\n        result += i",
+        "result": "failed: "
+    },
+    "HumanEval/61": {
+        "body": "    stack = []\n    for bracket in brackets:\n        if bracket == \"(\":\n            stack.append(bracket)\n        elif bracket == \")\":\n            if not stack:\n                return False\n            stack.pop()\n    return not stack",
+        "result": "passed"
+    },
+    "HumanEval/62": {
+        "body": "    return [i * x for i, x in enumerate(xs[1:], start=1)]",
+        "result": "passed"
+    },
+    "HumanEval/63": {
+        "body": "    if n < 2:\n        return 0\n    elif n == 2:\n        return 1\n    else:\n        a, b, c = 0, 0, 1\n        for _ in range(3, n + 1):\n            a, b, c = b, c, a + b + c\n        return c",
+        "result": "passed"
+    },
+    "HumanEval/64": {
+        "body": "    return sum(1 for c in s if c.lower() in 'aeiouy' and (c == c.lower() or s[-1] == 'y'))",
+        "result": "failed: Test 2"
+    },
+    "HumanEval/65": {
+        "body": "    x = str(x)\n    shift %= len(x)\n    return x[-shift:] + x[:-shift]",
+        "result": "failed: "
+    },
+    "HumanEval/66": {
+        "body": "    return sum(ord(c) for c in s if c.isupper())",
+        "result": "passed"
+    },
+    "HumanEval/67": {
+        "body": "    words = s.split()\n    count = {'apples': 0, 'oranges': 0}\n    for i in range(len(words)):\n        if words[i] == 'apples' or words[i] == 'oranges':\n            if words[i-1].isdigit():\n                count[words[i]] += int(words[i-1])\n    return n - count['apples'] - count['oranges']",
+        "result": "passed"
+    },
+    "HumanEval/68": {
+        "body": "    even_nodes = [(v, i) for i, v in enumerate(arr) if v % 2 == 0]\n    return (min(even_nodes, key=lambda x: (x[0], x[1]))) if even_nodes else []",
+        "result": "failed: Error"
+    },
+    "HumanEval/69": {
+        "body": "    freq = {}\n    for num in lst:\n        if num not in freq:\n            freq[num] = 1\n        else:\n            freq[num] += 1\n    max_num = -1\n    for num, count in freq.items():\n        if num > 0 and count >= num and num > max_num:\n            max_num = num\n    return max_num",
+        "result": "passed"
+    },
+    "HumanEval/70": {
+        "body": "    result = []\n    while lst:\n        result.append(min(lst))\n        lst.remove(min(lst))\n        if lst:\n            result.append(max(lst))\n            lst.remove(max(lst))",
+        "result": "failed: "
+    },
+    "HumanEval/71": {
+        "body": "    if a + b > c and a + c > b and b + c > a:\n        s = (a + b + c) / 2\n        return round((s * (s - a) * (s - b) * (s - c)) ** 0.5, 2)\n    else:\n        return -1",
+        "result": "passed"
+    },
+    "HumanEval/72": {
+        "body": "    return q == q[::-1] and sum(q) <= w",
+        "result": "passed"
+    },
+    "HumanEval/73": {
+        "body": "    n = len(arr)\n    freq = {}\n    for num in arr:\n        if num not in freq:\n            freq[num] = 1\n        else:\n            freq[num] += 1\n    odd_count = sum(val % 2 == 1 for val in freq.values())\n    return (n - max(freq.values())) // 2 + odd_count",
+        "result": "failed: "
+    },
+    "HumanEval/74": {
+        "body": "    return lst1 if sum(len(s) for s in lst1) <= sum(len(s) for s in lst2) else lst2",
+        "result": "passed"
+    },
+    "HumanEval/75": {
+        "body": "    for p1 in range(2, a // 2 + 1):\n        if not is_prime(p1):\n            continue\n        for p2 in range(p1, (a // p1) // 2 + 1):\n            if not is_prime(p2):\n                continue\n            p3 = a / (p1 * p2)\n            if p3.is_integer() and p3 > 2 and is_prime(int(p3)):\n                return True\n    return False\n\n    for i in range(2, int(n ** 0.5) + 1):\n        if n % i == 0:\n            return False\n    return True",
+        "result": "failed: name 'is_prime' is not defined"
+    },
+    "HumanEval/76": {
+        "body": "    return x == (n ** round(x ** (1 / len(str(n)))))",
+        "result": "failed: This prints if this assert fails 1 (good for debugging!)"
+    },
+    "HumanEval/77": {
+        "body": "    return a ** (1./3.) % 1 == 0",
+        "result": "failed: can't mod complex numbers."
+    },
+    "HumanEval/78": {
+        "body": "    prime_digits = '23B5D'\n    return sum(1 for digit in num if digit in prime_digits)",
+        "result": "failed: Second test error: 0"
+    },
+    "HumanEval/79": {
+        "body": "    return 'db' + bin(decimal)[2:] + 'db'",
+        "result": "passed"
+    },
+    "HumanEval/80": {
+        "body": "    return len(set([s[i:i+3] for i in range(len(s)-2)])) == 1 and len(s) >= 3",
+        "result": "failed: abcd"
+    },
+    "HumanEval/81": {
+        "body": "    letter_grades = []\n    for grade in grades:\n        if grade >= 4.0:\n            letter_grades.append('A+')\n        elif grade > 3.7:\n            letter_grades.append('A')\n        elif grade > 3.3:\n            letter_grades.append('A-')\n        elif grade > 3.0:\n            letter_grades.append('B+')\n        elif grade > 2.7:\n            letter_grades.append('B')\n        elif grade > 2.3:\n            letter_grades.append('B-')\n        elif grade > 2.0:\n            letter_grades.append('C+')\n        elif grade > 1.7:\n            letter_grades.append('C')\n        elif grade > 1.3:\n            letter_grades.append('C-')\n        elif grade > 1.0:\n            letter_grades.append('D+')\n        elif grade > 0.7:\n            letter_grades.append('D')\n        else:\n            letter_grades.append('D-')\n    return letter_grades",
+        "result": "failed: "
+    },
+    "HumanEval/82": {
+        "body": "        if n <= 1:\n            return False\n        for i in range(2, int(n**0.5) + 1):\n            if n % i == 0:\n                return False\n        return True\n    return is_prime(len(string))",
+        "result": "failed: unexpected indent (<string>, line 11)"
+    },
+    "HumanEval/83": {
+        "body": "    if n == 1:\n        return 10\n    elif n > 1:\n        return (9 * (10 ** (n - 2))) + (10 ** (n - 1))",
+        "result": "failed: "
+    },
+    "HumanEval/84": {
+        "body": "    return bin(sum(int(digit) for digit in str(bin(N))[2:]))[2:]",
+        "result": "failed: Error"
+    },
+    "HumanEval/85": {
+        "body": "    return sum(x for i, x in enumerate(lst) if i % 2 == 0 and x % 2 == 0)",
+        "result": "failed: "
+    },
+    "HumanEval/86": {
+        "body": "    words = s.split()\n    return ''.join(''.join(sorted(word)) for word in words)",
+        "result": "failed: "
+    },
+    "HumanEval/87": {
+        "body": "    return sorted([(i, j) for i, row in enumerate(lst) for j, v in enumerate(row) if v == x], key=lambda z: (z[0], -z[1]))",
+        "result": "passed"
+    },
+    "HumanEval/88": {
+        "body": "    if len(array) < 2:\n        return array\n    odd_sum = array[0] + array[-1]\n    sorted_array = sorted(array)\n    return sorted_array[::-1] if odd_sum % 2 == 0 else sorted_array",
+        "result": "passed"
+    },
+    "HumanEval/89": {
+        "body": "    alphabet = \"abcdefghijklmnopqrstuvwxyz\"\n    encrypted = \"\"\n    for char in s:\n        if char.isalpha():\n            shift = 2 * 2\n            position = (alphabet.index(char.lower()) + shift) % 26\n            if char.isupper():\n                encrypted += alphabet[position].upper()\n            else:\n                encrypted += alphabet[position]\n        else:\n            encrypted += char\n    return encrypted",
+        "result": "passed"
+    },
+    "HumanEval/90": {
+        "body": "    if len(lst) < 2 or len(set(lst)) < 2:\n        return None\n    lst = sorted(set(lst))\n    return lst[1]",
+        "result": "passed"
+    },
+    "HumanEval/91": {
+        "body": "    return S.count('I')",
+        "result": "failed: Test 2"
+    },
+    "HumanEval/92": {
+        "body": "    return (x == y + z or x == z + y or y == x + z or y == z + x or z == x + y or z == y + x) and all(isinstance(i, int) for i in [x, y, z])",
+        "result": "passed"
+    },
+    "HumanEval/93": {
+        "body": "    vowels = 'aeiouAEIOU'\n    result = ''\n    for char in message:\n        if char in vowels:\n            idx = ord(char) - ord('a')\n            result += chr(ord('a') + (idx + 2) % 26)\n        elif char.isalpha():\n            result += char.swapcase()\n        else:\n            result += char\n    return result",
+        "result": "failed: This prints if this assert fails 1 (good for debugging!)"
+    },
+    "HumanEval/94": {
+        "body": "        if n <= 1:\n            return False\n        for i in range(2, int(n**0.5) + 1):\n            if n % i == 0:\n                return False\n        return True\n    max_prime = max([x for x in lst if is_prime(x)])\n    return sum(int(digit) for digit in str(max_prime))",
+        "result": "failed: unexpected indent (<string>, line 15)"
+    },
+    "HumanEval/95": {
+        "body": "    all_lower = all(isinstance(key, str) and key.islower() for key in dict.keys())\n    all_upper = all(isinstance(key, str) and key.isupper() for key in dict.keys())\n    return (all_lower or all_upper) and bool(dict)",
+        "result": "passed"
+    },
+    "HumanEval/96": {
+        "body": "    primes = []\n    for i in range(2, n):\n        is_prime = True\n        for j in range(2, int(i ** 0.5) + 1):\n            if i % j == 0:\n                is_prime = False\n                break\n        if is_prime:\n            primes.append(i)\n    return primes",
+        "result": "passed"
+    },
+    "HumanEval/97": {
+        "body": "    a_unit_digit = a % 10\n    b_unit_digit = b % 10\n    result = a_unit_digit * b_unit_digit\n    return result",
+        "result": "passed"
+    },
+    "HumanEval/98": {
+        "body": "    vowels = 'AEIOU'\n    return sum(1 for i, c in enumerate(s) if i % 2 == 0 and c.isupper() and c in vowels)",
+        "result": "passed"
+    },
+    "HumanEval/99": {
+        "body": "    integer_part = int(float(value))\n    decimal_part = abs(float(value) - integer_part)\n    if decimal_part >= 0.5 or (decimal_part == 0.5 and value[0] != '-'):\n        return integer_part + 1\n    else:\n        return integer_part",
+        "result": "failed: Test 3"
+    },
+    "HumanEval/100": {
+        "body": "    result = []\n    current_odd = n\n    for i in range(1, n+1):\n        if n % 2 == 0:\n            current_odd += 2\n        else:\n            current_odd += 2\n        result.append(current_odd)\n    return result",
+        "result": "failed: Test 3"
+    },
+    "HumanEval/101": {
+        "body": "    return s.replace(\",\", \" \").split()",
+        "result": "passed"
+    },
+    "HumanEval/102": {
+        "body": "if x % 2 == 0 and y % 2 == 0:\n    return max(x, y)\nelif (x + 1) % 2 == 0:\n    return (x + 1)\nelse:\n    return -1",
+        "result": "failed: 'return' outside function (<string>, line 12)"
+    },
+    "HumanEval/103": {
+        "body": "    if n > m:\n        return -1\n    avg = round((n + m) / 2)\n    return bin(avg)[2:]",
+        "result": "failed: "
+    },
+    "HumanEval/104": {
+        "body": "    return sorted([i for i in x if all(j % 2 != 0 for j in str(i))])",
+        "result": "failed: not all arguments converted during string formatting"
+    },
+    "HumanEval/105": {
+        "body": "sorted_arr = sorted([x for x in arr if 1 <= x <= 9])\nreturn [[\"One\", \"Two\", \"Three\", \"Four\", \"Five\", \"Six\", \"Seven\", \"Eight\", \"Nine\"][y - 1] for y in reversed(sorted_arr)]",
+        "result": "failed: 'return' outside function (<string>, line 25)"
+    },
+    "HumanEval/106": {
+        "body": "    return [i * (i - 1) if i % 2 == 0 else sum(range(1, i + 1)) for i in range(1, n)]",
+        "result": "failed: "
+    },
+    "HumanEval/107": {
+        "body": "    count_even = 0\n    count_odd = 0\n    for i in range(1, n + 1):\n        if str(i) == str(i)[::-1]:\n            if int(str(i)[-1]) % 2 == 0:\n                count_even += 1\n            else:\n                count_odd += 1\n    return (count_even, count_odd)",
+        "result": "passed"
+    },
+    "HumanEval/108": {
+        "body": "    return sum(1 for num in arr if any(int(d) > 0 for d in str(abs(num))))",
+        "result": "failed: "
+    },
+    "HumanEval/109": {
+        "body": "    return len(set(arr)) == 1 or sorted(arr) == list(reversed(arr))",
+        "result": "failed: This prints if this assert fails 1 (good for debugging!)"
+    },
+    "HumanEval/110": {
+        "body": "    even = [x for x in lst1 if x % 2 == 0]\n    odd = [x for x in lst1 if x % 2 != 0]\n    return \"YES\" if len(even) >= len(odd) else \"NO\"",
+        "result": "failed: "
+    },
+    "HumanEval/111": {
+        "body": "    words = test.split()\n    letter_counts = {}\n    for word in words:\n        if word not in letter_counts:\n            letter_counts[word] = 1\n        else:\n            letter_counts[word] += 1\n    max_count = max(letter_counts.values())\n    result = {word: count for word, count in letter_counts.items() if count == max_count}\n    return result",
+        "result": "failed: max() arg is an empty sequence"
+    },
+    "HumanEval/112": {
+        "body": "s = ''.join([x for x in s if x not in c])\nreturn (s, s == s[::-1])",
+        "result": "failed: 'return' outside function (<string>, line 14)"
+    },
+    "HumanEval/113": {
+        "body": "    return [f\"the number of odd elements {sum(int(digit) % 2 == 1 for digit in s)}n the str{len(s)}ng {len(s)} of the {len(lst)}nput.\" for s in lst]",
+        "result": "failed: Test 1"
+    },
+    "HumanEval/114": {
+        "body": "    min_sum = float('inf')\n    current_sum = 0\n    for num in nums:\n        current_sum += num\n        min_sum = min(min_sum, current_sum)\n        if current_sum > 0:\n            current_sum = 0\n    return min_sum",
+        "result": "passed"
+    },
+    "HumanEval/115": {
+        "body": "    n = len(grid)\n    m = len(grid[0])\n    total_water = sum(row.count(1) for row in grid)\n    times_needed = -(-total_water // (capacity * n))  # ceiling division\n    return times_needed",
+        "result": "failed: Error"
+    },
+    "HumanEval/116": {
+        "body": "    return sorted(arr, key=lambda x: (bin(x).count('1'), x))",
+        "result": "passed"
+    },
+    "HumanEval/117": {
+        "body": "    vowels = 'aeiou'\n    words = s.split()\n    result = []\n    for word in words:\n        consonants = sum(1 for char in word if char.isalpha() and char.lower() not in vowels)\n        if consonants == n:\n            result.append(word)\n    return result",
+        "result": "passed"
+    },
+    "HumanEval/118": {
+        "body": "    vowels = 'AEIOUaeiou'\n    for i in range(len(word) - 2, 0, -1):\n        if word[i] not in vowels:\n            if word[i + 1] in vowels:\n                return word[i + 1]\n            elif word[i - 1] in vowels:\n                return word[i - 1]\n    return ''",
+        "result": "failed: "
+    },
+    "HumanEval/119": {
+        "body": "    s = lst[0] + lst[1]\n    c = 0\n    for x in s:\n        if x == '(':\n            c += 1\n        elif x == ')':\n            c -= 1\n        if c < 0:\n            return 'No'\n    return 'Yes'",
+        "result": "failed: "
+    },
+    "HumanEval/120": {
+        "body": "    return sorted(set(arr))[-k:]",
+        "result": "failed: "
+    },
+    "HumanEval/121": {
+        "body": "    result = 0\n    for i in range(len(lst)):\n        if lst[i] % 2 != 0 and (i + 1) % 2 == 0:\n            result += lst[i]\n    return result",
+        "result": "failed: "
+    },
+    "HumanEval/122": {
+        "body": "    return sum(x for x in arr[:k] if 10 <= abs(x) < 100)",
+        "result": "failed: "
+    },
+    "HumanEval/123": {
+        "body": "    result = [n]\n    while n != 1:\n        if n % 2 == 0:\n            n = n // 2\n        else:\n            n = 3 * n + 1\n        if n not in result and n % 2 != 0:\n            result.append(n)\n    return sorted(result)",
+        "result": "failed: "
+    },
+    "HumanEval/124": {
+        "body": "    parts = date.split('-')\n    if len(parts) != 3 or '' in parts:\n        return False\n    month, day, year = map(int, parts)\n    if not (1 <= month <= 12):\n        return False\n    if (month in [1, 3, 5, 7, 8, 10, 12] and not 1 <= day <= 31) or \\\n       (month == 2 and not (1 <= day <= 29)) or \\\n       (month in [4, 6, 9, 11] and not 1 <= day <= 30):\n        return False\n    return True",
+        "result": "passed"
+    },
+    "HumanEval/125": {
+        "body": "    words = txt.split()\n    if not words and ',' in txt:\n        return txt.split(',')\n    elif not words and ',' not in txt:\n        return sum(1 for i in range(ord('a'), ord('z')+1) if (i-ord('a')) % 2 != 0)\n    else:\n        return words",
+        "result": "failed: "
+    },
+    "HumanEval/126": {
+        "body": "    return lst == sorted(lst) and len(set(lst)) == len(lst)",
+        "result": "failed: This prints if this assert fails 7 (good for debugging!)"
+    },
+    "HumanEval/127": {
+        "body": "    start = max(interval1[0], interval2[0])\n    end = min(interval1[1], interval2[1])\n    length = end - start\n    if length <= 0:\n        return \"NO\"\n        if n < 2:\n            return False\n        for i in range(2, int(n ** 0.5) + 1):\n            if n % i == 0:\n                return False\n        return True\n    return \"YES\" if is_prime(length) else \"NO\"",
+        "result": "failed: name 'is_prime' is not defined"
+    },
+    "HumanEval/128": {
+        "body": "    if not arr:\n        return None\n    signs = 1\n    for num in arr:\n        if num > 0:\n            signs *= 1\n        elif num < 0:\n            signs *= -1\n    total_sum = sum(abs(num) * signs for num in arr)\n    return total_sum",
+        "result": "failed: "
+    },
+    "HumanEval/129": {
+        "body": "    rows, cols = len(grid), len(grid[0])\n    seen = set()\n        if (r, c) in seen: return []\n        if depth == k:\n            seen.add((r, c))\n            return [path]\n        res = []\n        for nr, nc in [(r-1,c), (r+1,c), (r,c-1), (r,c+1)]:\n            if 0 <= nr < rows and 0 <= nc < cols:\n                res += dfs(nr, nc, path + [grid[nr][nc]], depth + 1)\n        seen.add((r, c))\n        return res\n    res = []\n    for r in range(rows):\n        for c in range(cols):\n            res += sorted(dfs(r, c, [grid[r][c]]))[:1]\n    return res[0]",
+        "result": "failed: unexpected indent (<string>, line 34)"
+    },
+    "HumanEval/130": {
+        "body": "    if n == 0:\n        return []\n    elif n == 1:\n        return [3]\n    elif n == 2:\n        return [3, 2]\n    else:\n        sequence = [3, 2, 8]\n        for i in range(3, n + 1):\n            next_number = 1 + sequence[i - 1] if (i - 1) % 2 == 0 else sum(sequence[-3:])\n            sequence.append(next_number)\n        return sequence",
+        "result": "failed: "
+    },
+    "HumanEval/131": {
+        "body": "    product = 1\n    for digit in str(n):\n        if int(digit) % 2 != 0:\n            product *= int(digit)\n    return product",
+        "result": "failed: "
+    },
+    "HumanEval/132": {
+        "body": "    stack = []\n    for bracket in string:\n        if bracket == '[':\n            stack.append(bracket)\n        elif bracket == ']':\n            if not stack:\n                return False\n            stack.pop()\n    return len(stack) > 0",
+        "result": "failed: This prints if this assert fails 1 (good for debugging!)"
+    },
+    "HumanEval/133": {
+        "body": "import math\n\n    return sum(math.ceil(x)**2 for x in lst)",
+        "result": "failed: unexpected indent (<string>, line 18)"
+    },
+    "HumanEval/134": {
+        "body": "    return len(txt) > 0 and txt[-1].isalpha() and (txt[-2] == ' ')",
+        "result": "failed: string index out of range"
+    },
+    "HumanEval/135": {
+        "body": "    for i in range(1, len(arr)):\n        if arr[i] <= arr[i-1]:\n            return i-1\n    return -1",
+        "result": "failed: "
+    },
+    "HumanEval/136": {
+        "body": "    negatives = [x for x in lst if x < 0]\n    positives = [x for x in lst if x > 0]\n\n    a = max(negatives) if negatives else None\n    b = min(positives) if positives else None\n\n    return (a, b)",
+        "result": "passed"
+    },
+    "HumanEval/137": {
+        "body": "    if type(a) != type(b):\n        return max(a, b)\n    elif isinstance(a, str):\n        a = float(a.replace('.', ',').replace(',', '.'))\n        b = float(b.replace('.', ',').replace(',', '.'))\n    else:\n        pass\n    return None if a == b else (a if a > b else b)",
+        "result": "failed: '>' not supported between instances of 'str' and 'int'"
+    },
+    "HumanEval/138": {
+        "body": "    return n % 4 == 0 and (n - 4) % 2 != 0",
+        "result": "failed: "
+    },
+    "HumanEval/139": {
+        "body": "    result = 1\n    for i in range(1, n + 1):\n        result *= math.factorial(i)\n    return result",
+        "result": "failed: name 'math' is not defined"
+    },
+    "HumanEval/140": {
+        "body": "    text = ''.join(['_' if c == ' ' else c for c in text])\n    while '__' in text:\n        text = text.replace('__', '-')\n    return text",
+        "result": "failed: This prints if this assert fails 3 (good for debugging!)"
+    },
+    "HumanEval/141": {
+        "body": "    if len([char for char in file_name if char.isdigit()]) > 3 or not '.' in file_name:\n        return 'No'\n    name_parts = file_name.split('.')\n    if not name_parts[0] or not name_parts[0][0].isalpha():\n        return 'No'\n    if name_parts[1] not in ['txt', 'exe', 'dll']:\n        return 'No'\n    return 'Yes'",
+        "result": "failed: "
+    },
+    "HumanEval/142": {
+        "body": "    return sum(\n        (x ** 3 if i % 4 == 0 and i % 3 != 0 else x ** 2 if i % 3 == 0 else x) \n        for i, x in enumerate(lst)\n    )",
+        "result": "passed"
+    },
+    "HumanEval/143": {
+        "body": "        if n < 2:\n            return False\n        for i in range(2, int(n**0.5) + 1):\n            if n % i == 0:\n                return False\n        return True\n\n    words = sentence.split()\n    result = []\n    for word in words:\n        if is_prime(len(word)):\n            result.append(word)\n    return ' '.join(result)",
+        "result": "failed: unexpected indent (<string>, line 22)"
+    },
+    "HumanEval/144": {
+        "body": "    x_num, x_denom = map(int, x.split('/'))\n    n_num, n_denom = map(int, n.split('/'))\n\n    return (x_num * n_denom == x_denom * n_num)",
+        "result": "failed: test1"
+    },
+    "HumanEval/145": {
+        "body": "    return sorted(nums, key=lambda x: (sum(int(digit) for digit in str(abs(x))), nums.index(x)))",
+        "result": "failed: "
+    },
+    "HumanEval/146": {
+        "body": "    return sum(1 for num in nums if num > 10 and str(num)[0] in '13579' and str(num)[-1] in '13579')",
+        "result": "passed"
+    },
+    "HumanEval/147": {
+        "body": "    a = [i*i - i + 1 for i in range(1, n+1)]\n    count = 0\n    for i in range(n-2):\n        for j in range(i+1, n-1):\n            for k in range(j+1, n):\n                if (a[i] + a[j] + a[k]) % 3 == 0:\n                    count += 1\n    return count",
+        "result": "passed"
+    },
+    "HumanEval/148": {
+        "body": "    planets = [\"Mercury\", \"Venus\", \"Earth\", \"Mars\", \"Jupiter\", \"Saturn\", \"Uranus\", \"Neptune\"]\n    if planet1 not in planets or planet2 not in planets:\n        return ()\n    index1 = planets.index(planet1)\n    index2 = planets.index(planet2)\n    result = [p for p in planets[index1+1:index2] if p not in (planet1, planet2)]\n    return tuple(sorted(result))",
+        "result": "failed: Second test error: ()"
+    },
+    "HumanEval/149": {
+        "body": "    return sorted([s for s in lst if len(s) % 2 == 0])",
+        "result": "failed: "
+    },
+    "HumanEval/150": {
+        "body": "        if num < 2:\n            return False\n        for i in range(2, int(num ** 0.5) + 1):\n            if num % i == 0:\n                return False\n        return True\n    return x if is_prime(n) else y",
+        "result": "failed: unexpected indent (<string>, line 11)"
+    },
+    "HumanEval/151": {
+        "body": "    result = sum(i**2 for i in lst if isinstance(i, int) and i % 2 != 0)\n    return result",
+        "result": "failed: This prints if this assert fails 5 (also good for debugging!)"
+    },
+    "HumanEval/152": {
+        "body": "    return [abs(g - g_) if g != g_ else 0 for g, g_ in zip(game, guess)]",
+        "result": "passed"
+    },
+    "HumanEval/153": {
+        "body": "    max_strength = -float('inf')\n    strongest_extension = ''\n    for extension in extensions:\n        CAP = sum(1 for c in extension if c.isupper())\n        SM = sum(1 for c in extension if c.islower())\n        strength = CAP - SM\n        if strength > max_strength:\n            max_strength = strength\n            strongest_extension = extension\n    return f\"{class_name}.{strongest_extension}\"",
+        "result": "passed"
+    },
+    "HumanEval/154": {
+        "body": "    for i in range(len(b)):\n        if b[i:] + b[:i] in a:\n            return True\n    return False",
+        "result": "passed"
+    },
+    "HumanEval/155": {
+        "body": "    even = 0\n    odd = 0\n    for digit in str(abs(num)):\n        if int(digit) % 2 == 0:\n            even += 1\n        else:\n            odd += 1\n    return (even, odd)",
+        "result": "passed"
+    },
+    "HumanEval/156": {
+        "body": "    roman_numerals = {\n        1000: 'm', 900: 'cm', 500: 'd', 400: 'cd',\n        100: 'c', 90: 'xc', 50: 'l', 40: 'xl',\n        10: 'x', 9: 'ix', 5: 'v', 4: 'iv', 1: 'i'\n    }\n    result = ''\n    for value, numeral in roman_numerals.items():\n        while number >= value:\n            result += numeral\n            number -= value\n    return result",
+        "result": "passed"
+    },
+    "HumanEval/157": {
+        "body": "    return a**2 + b**2 == c**2 or a**2 + c**2 == b**2 or b**2 + c**2 == a**2",
+        "result": "passed"
+    },
+    "HumanEval/158": {
+        "body": "    max_word = words[0]\n    for word in words[1:]:\n        if len(set(word)) > len(set(max_word)):\n            max_word = word\n        elif len(set(word)) == len(set(max_word)) and word < max_word:\n            max_word = word\n    return max_word",
+        "result": "passed"
+    },
+    "HumanEval/159": {
+        "body": "    return [number + min(need, remaining), max(remaining - need, 0)]",
+        "result": "passed"
+    },
+    "HumanEval/160": {
+        "body": "    result = operand[0]\n    for i in range(len(operand) - 1):\n        if operator[i] == '+':\n            result += operand[i + 1]\n        elif operator[i] == '-':\n            result -= operand[i + 1]\n        elif operator[i] == '*':\n            result *= operand[i + 1]\n        elif operator[i] == '//':\n            result //= operand[i + 1]\n        elif operator[i] == '**':\n            result **= operand[i + 1]\n    return result",
+        "result": "failed: "
+    },
+    "HumanEval/161": {
+        "body": "    result = ''\n    for char in s:\n        if char.isalpha():\n            result += char.swapcase()\n        else:\n            result += char\n    return result[::-1] if any(c.isalpha() for c in s) else s[::-1]",
+        "result": "failed: "
+    },
+    "HumanEval/162": {
+        "body": "import hashlib\n    if not text:\n        return None\n    md5_hash = hashlib.md5()\n    md5_hash.update(text.encode('utf-8'))\n    return md5_hash.hexdigest()",
+        "result": "failed: unexpected indent (<string>, line 10)"
+    },
+    "HumanEval/163": {
+        "body": "    even_digits = set()\n    for i in range(min(a, b), max(a, b)+1):\n        if int(str(i)[0]) % 2 == 0 or int(str(i)[-1]) % 2 == 0:\n            even_digits.add(i)\n    return sorted(list(even_digits))",
+        "result": "failed: Test 1"
+    }
+}

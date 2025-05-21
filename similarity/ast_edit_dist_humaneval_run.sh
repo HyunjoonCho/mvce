@@ -3,14 +3,14 @@
 output_file="./ast_edit_dist_humaneval_results.txt"
 echo "" > "$output_file"
 
-echo "Running with llama3..."
-output=$(python ast_similarity.py -b HumanEval -r ../preprocessed_results/ast_only/HumanEval_llama3.json)
-num_passed=$(echo "$output" | grep -oP 'num_passed:\s*\K\d+')
-num_total=$(echo "$output" | grep -oP 'num_total:\s*\K\d+')
-echo "[llama3]" >> "$output_file"
-echo "num_passed: $num_passed" >> "$output_file"
-echo "num_total: $num_total" >> "$output_file"
-echo "===============================================" >> "$output_file"
+# echo "Running with llama3..."
+# output=$(python ast_similarity.py -b HumanEval -r ../preprocessed_results/ast_only/HumanEval_llama3.json)
+# num_passed=$(echo "$output" | grep -oP 'num_passed:\s*\K\d+')
+# num_total=$(echo "$output" | grep -oP 'num_total:\s*\K\d+')
+# echo "[llama3]" >> "$output_file"
+# echo "num_passed: $num_passed" >> "$output_file"
+# echo "num_total: $num_total" >> "$output_file"
+# echo "===============================================" >> "$output_file"
 
 
 echo "Running with llama3.1..."
