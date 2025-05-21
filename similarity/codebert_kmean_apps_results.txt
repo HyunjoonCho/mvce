@@ -1,0 +1,61 @@
+
+../results/APPS_llama3.json
+[Num_cluster = 10]
+num_passed: 24
+num_total: 300
+===============================================
+../results/APPS_llama3.1.json
+[Num_cluster = 10]
+num_passed: 19
+num_total: 300
+===============================================
+../results/APPS_mistral-nemo.json
+[Num_cluster = 10]
+num_passed: 27
+num_total: 300
+===============================================
+../results/APPS_qwen2.5-coder.json
+[Num_cluster = 10]
+num_passed: 16
+num_total: 300
+===============================================
+../results/APPS_llama3_rule.json
+[Num_cluster = 10]
+num_passed: 20
+num_total: 300
+===============================================
+../results/APPS_llama3.1_rule.json
+[Num_cluster = 10]
+num_passed: 2
+num_total: 300
+===============================================
+../results/APPS_mistral-nemo_rule.json
+[Num_cluster = 10]
+num_passed: 14
+num_total: 300
+===============================================
+../results/APPS_qwen2.5-coder_rule.json
+[Num_cluster = 10]
+num_passed: 4
+num_total: 300
+===============================================
+../results/APPS_llama3_instruction.json
+[Num_cluster = 5]
+num_passed: 23
+num_total: 300
+===============================================
+../results/APPS_llama3.1_instruction.json
+[Num_cluster = 5]
+num_passed: 10
+num_total: 300
+===============================================
+../results/APPS_mistral-nemo_instruction.json
+[Num_cluster = 5]
+num_passed: 23
+num_total: 300
+===============================================
+../results/APPS_qwen2.5-coder_instruction.json
+[Num_cluster = 5]
+num_passed: 13
+num_total: 300
+===============================================
