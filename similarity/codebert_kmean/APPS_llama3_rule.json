@@ -1,0 +1,1202 @@
+{
+    "4693": {
+        "body": "    a = int(input())\n    b = int(input())\n    total = a + b\n    if total <= 10:\n        print(total)\n    else:\n        print(\"error\")",
+        "result": "failed: testcase 0"
+    },
+    "4077": {
+        "body": "    n, m = map(int, input().split())\n    a = list(map(int, input().split()))\n    \n    count = 0\n    for l in range(n):\n        for r in range(l, n):\n            arr = sorted(a[l:r+1])\n            if arr[len(arr)//2] == m:\n                count += 1\n\n    print(count)",
+        "result": "failed: testcase 0"
+    },
+    "4006": {
+        "body": "    reachable = {n}\n    while True:\n        temp = set()\n        for x in reachable:\n            if str(x).endswith('0'):\n                y = int(str(x)[:-1]) + 1\n                temp.add(y)\n            else:\n                temp.add(x)\n        if temp == reachable:\n            break\n        reachable = temp\n    return len(reachable)",
+        "result": "failed: testcase 0"
+    },
+    "4556": {
+        "body": "    s = input()\n    x = s[0].upper()\n    print(x + \"C\")",
+        "result": "failed: testcase 0"
+    },
+    "4571": {
+        "body": "n, m = map(int, input().split())\n\nx = 0\nfor i in range(1, m+1):\n    x += i * 1900 / (2**i)\n\nprint(int(x))",
+        "result": "failed: testcase 0"
+    },
+    "4019": {
+        "body": "    n, m, D = map(int, input().split())\n    edges = []\n    for _ in range(m):\n        v, u = map(int, input().split())\n        if (v == 1 or u == 1) and v != u:\n            return \"NO\"\n        edges.append((min(v, u), max(v, u)))\n    visited = [False] * (n + 1)\n    parent = [0] * (n + 1)\n    for edge in edges:\n        for v in range(1, n + 1):\n            if not visited[v]:\n                break\n        for u in range(v + 1, n + 1):\n            if not visited[u]:\n                break\n        parent[u] = v\n        visited[u] = True\n    if visited[1] != True:\n        return \"NO\"\n    result = []\n    for i in range(2, n + 1):\n        v = i\n        while v != 1:\n            u = parent[v]\n            result.append((u, v))\n            v = u\n    print(\"YES\")\n    for edge in result:\n        print(*edge)",
+        "result": "failed: testcase 0"
+    },
+    "4265": {
+        "body": "    S = input().strip()\n    T = input().strip()\n    operations = 0\n    for i in range(len(S)):\n        if S[i] != T[i]:\n            operations += 1\n    print(operations)",
+        "result": "passed"
+    },
+    "4657": {
+        "body": "    for r in range(k-1, -1, -1):\n        s = sum(a[:r+1])\n        if s % 2 == 0:\n            return \"NO\"\n    return \"YES {}\\n{}\".format(\"YES\" if k > 0 else \"\", \" \".join(map(str, [i + 1 for i in range(1, n)])))",
+        "result": "failed: testcase 0"
+    },
+    "4599": {
+        "body": "    N, *a_i = map(int, input().split())\n    alice_score = 0\n    bob_score = 0\n    for i in range(N):\n        if i % 2 == 0:\n            alice_score += a_i[i]\n        else:\n            bob_score += a_i[i]\n    print(alice_score - bob_score)",
+        "result": "failed: testcase 0"
+    },
+    "4774": {
+        "body": "    a, b, c, d = map(int, input().split())\n    for op1 in ['+', '-', '*', '/']:\n        for op2 in ['+', '-', '*', '/']:\n            if op1 == '/' and b == 0:\n                continue\n            if op2 == '/' and d == 0:\n                continue\n            result = eval(f'{a} {op1} {b} {op2} {c} {op3} {d}')\n            if result == True:\n                print(f'{a} {op1} {b} {op2} {c} = {d}')",
+        "result": "failed: testcase 0"
+    },
+    "4851": {
+        "body": "import math\n\n    n = int(input())\n    i = n + 1\n    while True:\n        digit_sum = sum(int(digit) for digit in str(i))\n        if i % digit_sum == 0:\n            break\n        i += 1\n    print(i)",
+        "result": "failed: testcase 0"
+    },
+    "4655": {
+        "body": "    q = int(input())\n    for _ in range(q):\n        a, b, c = map(int, input().split())\n        total = sum((a, b, c))\n        if a >= b:\n            a, b = b, a\n        d = min(a, (total - 2*b) // 2)\n        print(max(0, (total + d - 2*d)//2))",
+        "result": "failed: testcase 0"
+    },
+    "4132": {
+        "body": "import random\n    n = int(input())\n    healths = list(map(int, input().split()))\n    for _ in range(n - 1):\n        for i in range(n):\n            if healths[i] > 0:\n                j = random.randint(0, n-1)\n                while healths[j] <= 0:\n                    j = random.randint(0, n-1)\n                healths[j] -= healths[i]\n                break\n    return min(healths)",
+        "result": "timed out"
+    },
+    "4085": {
+        "body": "import sys\n\n    t = int(input())\n    for _ in range(t):\n        n = int(input())\n        divisors = list(map(int, input().split()))\n        min_x = -1\n        for x in range(2, 10**6 + 1):\n            if all(x // d in divisors for d in divisors) and (x not in divisors or x == min(divisors)):\n                if min_x == -1:\n                    min_x = x\n                elif x < min_x:\n                    min_x = x\n        print(min_x)",
+        "result": "timed out"
+    },
+    "4399": {
+        "body": "my_function = lambda s: 'Yes' if any(s[i] != s[0] for i in range(1, 3)) else 'No'",
+        "result": "failed: testcase 0"
+    },
+    "4999": {
+        "body": "import math\n\n    diff = abs(b - a)\n    operations = 0\n\n    for i in range(diff + 1):\n        if a <= b:\n            break\n        a += 1\n        operations += 1\n        while a % 2 == 0:\n            a //= 2\n            operations += 1\n\n    return operations",
+        "result": "failed: testcase 0"
+    },
+    "4727": {
+        "body": "import sys\n\n    grid = [[int(cell) for cell in line.split()] for line in [sys.stdin.readline()[:-1] for _ in range(4)]]\n    new_grid = [[0 for _ in range(4)] for _ in range(4)]\n    \n    if direction == 0:  # left\n        for j in range(4):\n            i, val = next(((i, val) for i, val in enumerate(grid[j]) if val > 0), (None, None))\n            while i < 4 and grid[i][j] > 0:\n                new_grid[i][j] = grid[i][j]\n                i += 1\n        for j in range(4):\n            for i in range(3, -1, -1):\n                if grid[i][j] == 0:\n                    i -= 1\n            while i > 0 and grid[i][j] > 0:\n                new_grid[i][j] = grid[i-1][j]\n                i -= 1\n    \n    elif direction == 1:  # up\n        for j in range(4):\n            for i in range(3, -1, -1):\n                if grid[i][j] > 0:\n                    new_grid[i][j] = grid[i][j]\n                    while i > 0 and grid[i-1][j] == 0:\n                        i -= 1\n        for j in range(4):\n            for i in range(3, -1, -1):\n                if grid[i][j] == 0:\n                    i -= 1\n            while i > 0 and grid[i][j] > 0:\n                new_grid[i][j] = grid[i-1][j]\n                i -= 1\n    \n    elif direction == 2:  # right\n        for j in range(3, -1, -1):\n            i, val = next(((i, val) for i, val in enumerate(grid[j]) if val > 0), (None, None))\n            while j < 4 and grid[i][j] > 0:\n                new_grid[i][j] = grid[i][j]\n                j += 1\n        for j in range(3, -1, -1):\n            for i in range(4):\n                if grid[i][j] == 0:\n                    j -= 1\n            while j > 0 and grid[i][j] > 0:\n                new_grid[i][j] = grid[i][j-1]\n                j -= 1\n    \n    elif direction == 3:  # down\n        for i in range(4):\n            for j in range(3, -1, -1):\n                if grid[i][j] > 0:\n                    new_grid[i][j] = grid[i][j]\n                    while j > 0 and grid[i][j-1] == 0:\n                        j -= 1\n        for i in range(4):\n            for j in range(3, -1, -1):\n                if grid[i][j] == 0:\n                    j -= 1\n            while j > 0 and grid[i][j] > 0:\n                new_grid[i][j] = grid[i][j-1]\n                j -= 1\n    \n    for i in range(4):\n        for j in range(4):\n            if grid[i][j] == grid[i+1][j]:\n                grid[i][j] += grid[i+1][j]\n                grid[i+1][j] = 0\n            elif grid[i][j] > 0 and sum(grid[i]) < 2048:\n                new_grid[i][j] = grid[i][j]\n    \n    for i in range(4):\n        for j in range(4):\n            if new_grid[i][j] > 0:\n                print(f\"{new_grid[i][j]:d} \", end='')\n            else:\n                print(\"0 \", end='')\n        print()",
+        "result": "failed: testcase 0"
+    },
+    "4906": {
+        "body": "    mode = input().strip()[0]\n    \n    if mode == 'E':\n        message = input().strip()\n        encoded_message = ''\n        i = 0\n        while i < len(message):\n            count = 1\n            while i + 1 < len(message) and message[i] == message[i+1]:\n                i += 1\n                count += 1\n            encoded_message += str(count) + message[i]\n            i += 1\n        print(encoded_message)\n    elif mode == 'D':\n        message = input().strip()\n        decoded_message = ''\n        i = 0\n        while i < len(message):\n            count = int(message[i])\n            for _ in range(count):\n                decoded_message += message[i+1]\n            i += 2\n        print(decoded_message)",
+        "result": "failed: testcase 0"
+    },
+    "4011": {
+        "body": "    n = int(input())\n    a = str(input()).ljust(n, '0')\n    f = [int(i) for i in input().split()]\n    \n    max_val = 0\n    for i in range(1 << n):\n        t = ''\n        for j in range(n):\n            if (i >> j) & 1:\n                t += str(f[int(a[j])])\n            else:\n                t += a[j]\n        max_val = max(max_val, int(t))\n    \n    print(max_val)",
+        "result": "timed out"
+    },
+    "4099": {
+        "body": "    N, K, M = map(int, input().split())\n    total_score = sum(map(int, input().split()))\n    needed_avg = M * (N)\n    remaining_score = needed_avg - total_score\n    if remaining_score > 0:\n        print(remaining_score)\n    else:\n        print(-1)",
+        "result": "failed: testcase 1"
+    },
+    "4465": {
+        "body": "    a = int(input())\n    b = int(input())\n    total_area = a * b\n    road_area = 2 * (a + b)\n    area_excluding_roads = total_area - road_area\n    print(area_excluding_roads)",
+        "result": "failed: testcase 0"
+    },
+    "4315": {
+        "body": "import math\n\n    R = int(input())\n    circumference = 2 * math.pi * R\n    print(circumference)",
+        "result": "passed"
+    },
+    "4633": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        n, s = map(int, input().split())\n        moves = 0\n        while True:\n            sum_digits = sum(int(digit) for digit in str(n))\n            if sum_digits <= s:\n                break\n            n += 1\n            moves += 1\n        print(moves)",
+        "result": "timed out"
+    },
+    "4734": {
+        "body": "    if y.endswith('e'):\n        return y + 'x' + p\n    elif y[-1] in 'aiou':\n        return y[:-1] + 'ex' + p\n    else:\n        return y + 'ex' + p",
+        "result": "failed: testcase 0"
+    },
+    "4229": {
+        "body": "    n = int(input())\n    total = 0\n    for i in range(1, n + 1):\n        if i % 3 == 0 and i % 5 == 0:\n            total += 0\n        elif i % 3 == 0:\n            total += 0\n        elif i % 5 == 0:\n            total += 0\n        else:\n            total += i",
+        "result": "failed: testcase 0"
+    },
+    "4321": {
+        "body": "    for _ in range(k):\n        if n % 10 != 0:\n            n -= 1\n        else:\n            n //= 10\n    return n",
+        "result": "failed: testcase 0"
+    },
+    "4503": {
+        "body": "    H, N = map(int, input().split())\n    used_moves = set()\n    for i in range(N):\n        A_i = int(input())\n        while H > 0:\n            if A_i not in used_moves:\n                H -= A_i\n                used_moves.add(A_i)\n                if H <= 0:\n                    print('Yes')\n                    return\n    print('No')",
+        "result": "failed: testcase 0"
+    },
+    "4855": {
+        "body": "    A, I = map(int, input().split())\n    needed_citations = round(I * A)\n    return 10000 - needed_citations if needed_citations > 10000 else 0",
+        "result": "failed: testcase 0"
+    },
+    "4704": {
+        "body": "    n = int(input())\n    a = list(map(int, input().split()))\n    a.sort()\n    x = sum(a[:n//2+1])\n    y = sum(a[n//2+1:])\n    return abs(x-y)",
+        "result": "failed: testcase 0"
+    },
+    "4829": {
+        "body": "    left, right = map(int, input().split())\n    if left == 0 and right == 0:\n        print(\"Not a moose\")\n    elif left == right:\n        print(f\"Even {2*left}\")\n    else:\n        print(f\"Odd {2*max(left, right)}\")",
+        "result": "passed"
+    },
+    "4730": {
+        "body": "    length = int(input())\n    line = input().strip()\n    stack = []\n    for i, char in enumerate(line):\n        if char in ['(', '[', '{']:\n            stack.append((char, i))\n        elif char in [')', ']', '}']:\n            if not stack or (stack[-1][0] != '(' and stack[-1][0] != '[' and stack[-1][0] != '{'):\n                print(f\"{char} {i}\")\n            else:\n                stack.pop()\n    if stack:\n        print(f\"({stack[0][0]} {stack[0][1]})\"",
+        "result": "failed: testcase 0"
+    },
+    "4729": {
+        "body": "    password = input().upper()\n    message = input().upper()\n    for i in range(len(message)):\n        found = False\n        for char in password:\n            while True:\n                if message[i:].startswith(char):\n                    i += len(char) - 1\n                    found = True\n                    break\n                if message[i].notinalowercase(char) and message[i] < char:\n                    break\n        if not found:\n            return 'FAIL'\n    return 'PASS'",
+        "result": "failed: testcase 0"
+    },
+    "4582": {
+        "body": "    a = input().strip()\n    b = input().strip()\n    \n    if a == 'H':\n        if b == 'H':\n            print('H')\n        else:\n            print('D')\n    elif a == 'D':\n        if b == 'H':\n            print('D')\n        else:\n            print('H')",
+        "result": "failed: testcase 0"
+    },
+    "4910": {
+        "body": "import sys\n\n    N = int(input())\n    categories = set()\n    for _ in range(N):\n        category = input().strip().lower()\n        categories.add(category)\n    \n    winners = list(categories)\n    winners.sort()\n    \n    print(*winners, sep='\\n')",
+        "result": "failed: testcase 0"
+    },
+    "4323": {
+        "body": "    n, m = map(int, input().split())\n    total_size = sum(a_i for a_i in (int(input()) for _ in range(n)))\n    if total_size > m:\n        return -1\n    compressed_size = 0\n    count = 0\n    for i in range(n):\n        a_i, b_i = map(int, input().split())\n        compressed_size += a_i - b_i\n        if compressed_size <= m:\n            break\n        count += 1\n    return count",
+        "result": "failed: testcase 0"
+    },
+    "4626": {
+        "body": "    q = int(input())\n    for _ in range(q):\n        a, b, c = map(int, input().split())\n        if a == b == c:\n            print(0)\n        elif a == min(b, c) and b != c:\n            print(abs(a - c))\n        else:\n            print(max(abs(a - b), abs(a - c), abs(b - c)))",
+        "result": "failed: testcase 0"
+    },
+    "4400": {
+        "body": "rainy_days = 0\nmax_rainy_days = 0\nfor day in input():\n    if day == 'R':\n        rainy_days += 1\n        max_rainy_days = max(max_rainy_days, rainy_days)\n    else:\n        rainy_days = 0\nprint(max_rainy_days)",
+        "result": "passed"
+    },
+    "4794": {
+        "body": "    R, C = map(int, input().split())\n    parking_map = [list(input()) for _ in range(R)]\n    \n    total_spaces = 0\n    spaces_zero = 0\n    spaces_one = 0\n    spaces_two = 0\n    spaces_three = 0\n    spaces_four = 0\n\n    for i in range(R):\n        for j in range(C):\n            if parking_map[i][j] == '.':\n                total_spaces += 1\n                for k in range(i+2, min(R, i+3)):\n                    for col in range(j+2, min(C, j+3)):\n                        if parking_map[k][col] != '#':\n                            if (i+2 > k or i+2 < k-2) and (j+2 > col or j+2 < col-2):\n                                if k-i == 1 and col-j == 1:\n                                    spaces_zero += 1\n                                elif k-i == 1 and col-j <= 1:\n                                    spaces_one += 1\n                                elif k-i <= 1 and col-j == 1:\n                                    spaces_two += 1\n                                elif k-i <= 1 and col-j <= 1:\n                                    if k-i == 2 and col-j == 2:\n                                        spaces_three += 1\n                                    else:\n                                        spaces_four += 1\n\n    print(spaces_zero)\n    print(spaces_one)\n    print(spaces_two)\n    print(spaces_three)\n    print(spaces_four)",
+        "result": "failed: testcase 0"
+    },
+    "4096": {
+        "body": "    n, m = map(int, input().split())\n    a = list(map(int, input().split()))\n    days = 0\n    pages_written = 0\n    for i in range(n):\n        pages_written += min(a[i], m - pages_written)\n        if pages_written >= m:\n            break\n        days += 1\n    if pages_written < m:\n        print(-1)\n    else:\n        print(days)",
+        "result": "failed: testcase 1"
+    },
+    "4530": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        n = int(input())\n        skills = list(set(map(int, input().split())))\n        skills.sort()\n        max_team_size = 0\n        for team_size in range(n // 2 + 1):\n            if len(skills[:team_size]) == team_size and (n - team_size) % team_size == 0:\n                max_team_size = team_size\n                break\n        print(max_team_size)",
+        "result": "failed: testcase 0"
+    },
+    "4724": {
+        "body": "R_avg = int(input())\nG_avg = int(input())\n\nP = ((4 * R_avg) + G_avg) / 3\n\nprint(int(P))",
+        "result": "failed: testcase 0"
+    },
+    "4276": {
+        "body": "min_cost = float('inf')\n\nfor _ in range(int(input())):\n    time_taken, cost = map(int, input().split())\n    if time_taken <= int(input()):\n        min_cost = min(min_cost, cost)\n\nprint(min_cost) if min_cost != float('inf') else print('TLE')",
+        "result": "failed: testcase 0"
+    },
+    "4708": {
+        "body": "    N = int(input())\n    K = int(input())\n    X = int(input())\n    Y = int(input())\n    fee = 0\n    for i in range(N):\n        if i < K:\n            fee += X\n        else:\n            fee += Y\n    print(fee)",
+        "result": "passed"
+    },
+    "4396": {
+        "body": "    N = int(input())\n    total_yen = 0\n    for _ in range(N):\n        x, unit = map(str.split, [input().split()])\n        x = float(x[0])\n        if unit[0] == 'BTC':\n            x *= 380000.0\n        total_yen += x\n    print(total_yen)",
+        "result": "failed: testcase 0"
+    },
+    "4155": {
+        "body": "    n = int(input())\n    heights = list(map(int, input().split()))\n    operations = 0\n    prev_height = -1\n    for i in range(n):\n        if heights[i] > prev_height:\n            operations += (heights[i] - prev_height) - 1\n        prev_height = heights[i]\n    print(operations)",
+        "result": "failed: testcase 0"
+    },
+    "4557": {
+        "body": "    a, b, x = map(int, input().split())\n    if a <= x <= a + b:\n        print('YES')\n    else:\n        print('NO')",
+        "result": "passed"
+    },
+    "4930": {
+        "body": "    sentence = input()\n    decoded_sentence = \"\"\n    for char in sentence:\n        if char in 'aeiou':\n            decoded_sentence += char + 'p' + char\n        else:\n            decoded_sentence += char\n    print(decoded_sentence)",
+        "result": "failed: testcase 0"
+    },
+    "4715": {
+        "body": "colors = set()\nfor _ in range(3):\n    a, b, c = map(int, input().split())\n    colors.add(a)\n    colors.add(b)\n    colors.add(c)\n\nprint(len(colors))",
+        "result": "failed: testcase 0"
+    },
+    "4008": {
+        "body": "    n, k = map(int, input().split())\n    a = list(map(int, input().split()))\n    colors = [0] * k\n    coloring = []\n    \n    for i in range(n):\n        for j in range(k):\n            if colors[j] < 1 and a[i] <= j + 1:\n                colors[j] += 1\n                coloring.append(j + 1)\n                break\n    \n    if len(set(coloring)) != k:\n        print(\"NO\")\n    else:\n        print(\"YES\")\n        print(*coloring, sep=' ')",
+        "result": "failed: testcase 2"
+    },
+    "4257": {
+        "body": "    a = int(input())\n    b = int(input())\n    product = 1\n    for _ in range(abs(a)):\n        if a > 0:\n            product *= b\n        else:\n            product //= b\n    print(product)",
+        "result": "failed: testcase 0"
+    },
+    "4584": {
+        "body": "    N = int(input())\n    A = [int(x) for x in input().split()]\n    sub_count = [0] * (N + 1)\n    \n    for i in range(2, N + 1):\n        sub_count[A[i]] += 1\n    \n    for i in range(1, N + 1):\n        print(sub_count[i])",
+        "result": "failed: testcase 0"
+    },
+    "4195": {
+        "body": "    d, n = map(int, input().split())\n    for i in range(1, 101):\n        count = 0\n        for j in range(i, 10000, i):\n            if j % i != 0:\n                break\n            count += 1\n        if count == d and n <= i:\n            print(i)\n            return",
+        "result": "failed: testcase 0"
+    },
+    "4176": {
+        "body": "    min_pieces = 0\n    for i in range(1, A + 1):\n        if (A * i) % (B * i) == 0:\n            min_pieces = i\n            break\n    return min_pieces * (A + B)",
+        "result": "failed: testcase 0"
+    },
+    "4166": {
+        "body": "    n, m = map(int, input().split())\n    num = [int(input()) for _ in range(m)]\n    ans = -1\n    for i in range(10**n):\n        s = str(i)\n        ok = True\n        for j, (si, ci) in enumerate(num):\n            if int(s[si-1]) != ci:\n                ok = False\n                break\n        if ok and i >= 0:\n            ans = i\n            break\n    print(ans)",
+        "result": "failed: testcase 0"
+    },
+    "4827": {
+        "body": "import re\n\n    num_words = int(input())\n    words = []\n    for _ in range(num_words):\n        word = input()\n        if word == '$':\n            break\n        words.append(word)\n    total_letters = sum(len(word) for word in words[:-1])\n    if total_letters < 10:\n        return 'one' + (total_letters if total_letters > 0 else '')\n    elif total_letters < 20:\n        return f'seventeen' if total_letters == 17 else f'twelve' if total_letters == 12 else f'thirteen' if total_letters == 13 else f'fourteen' if total_letters == 14 else f\"fifteen\" if total_letters == 15 else f\"sixteen\" if total_letters == 16 else 'nineteen'\n    elif total_letters < 100:\n        tens, ones = divmod(total_letters, 10)\n        if tens == 2:\n            return 'twenty' + ('one' + str(ones) if ones > 0 else '')\n        elif tens == 3:\n            return 'thirty' + ('one' + str(ones) if ones > 0 else '')\n        elif tens == 4:\n            return 'forty' + ('one' + str(ones) if ones > 0 else '')\n        elif tens == 5:\n            return 'fifty' + ('one' + str(ones) if ones > 0 else '')\n        elif tens == 6:\n            return 'sixty' + ('one' + str(ones) if ones > 0 else '')\n        elif tens == 7:\n            return 'seventy' + ('one' + str(ones) if ones > 0 else '')\n        elif tens == 8:\n            return 'eighty' + ('one' + str(ones) if ones > 0 else '')\n        elif tens == 9:\n            return 'ninety' + ('one' + str(ones) if ones > 0 else '')\n    else:\n        hundreds, rest = divmod(total_letters, 100)\n        if hundreds == 1:\n            return 'onehundred' + ('twenty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 20 else 'thirty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 30 else 'forty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 40 else 'fifty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 50 else 'sixty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 60 else 'seventy' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 70 else 'eighty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 80 else 'ninety' + ('one' + str(rest // 10) if rest % 10 > 0 else '')\n        elif hundreds == 2:\n            return 'twohundred' + ('twenty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 20 else 'thirty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 30 else 'forty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 40 else 'fifty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 50 else 'sixty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 60 else 'seventy' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 70 else 'eighty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 80 else 'ninety' + ('one' + str(rest // 10) if rest % 10 > 0 else '')\n        elif hundreds == 3:\n            return 'threehundred' + ('twenty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 20 else 'thirty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 30 else 'forty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 40 else 'fifty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 50 else 'sixty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 60 else 'seventy' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 70 else 'eighty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 80 else 'ninety' + ('one' + str(rest // 10) if rest % 10 > 0 else '')\n        elif hundreds == 4:\n            return 'fourhundred' + ('twenty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 20 else 'thirty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 30 else 'forty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 40 else 'fifty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 50 else 'sixty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 60 else 'seventy' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 70 else 'eighty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 80 else 'ninety' + ('one' + str(rest // 10) if rest % 10 > 0 else '')\n        elif hundreds == 5:\n            return 'fivehundred' + ('twenty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 20 else 'thirty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 30 else 'forty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 40 else 'fifty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 50 else 'sixty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 60 else 'seventy' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 70 else 'eighty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 80 else 'ninety' + ('one' + str(rest // 10) if rest % 10 > 0 else '')\n        elif hundreds == 6:\n            return 'sixhundred' + ('twenty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 20 else 'thirty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 30 else 'forty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 40 else 'fifty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 50 else 'sixty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 60 else 'seventy' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 70 else 'eighty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 80 else 'ninety' + ('one' + str(rest // 10) if rest % 10 > 0 else '')\n        elif hundreds == 7:\n            return 'sevenhundred' + ('twenty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 20 else 'thirty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 30 else 'forty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 40 else 'fifty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 50 else 'sixty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 60 else 'seventy' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 70 else 'eighty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 80 else 'ninety' + ('one' + str(rest // 10) if rest % 10 > 0 else '')\n        elif hundreds == 8:\n            return 'eighthundred' + ('twenty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 20 else 'thirty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 30 else 'forty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 40 else 'fifty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 50 else 'sixty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 60 else 'seventy' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 70 else 'eighty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 80 else 'ninety' + ('one' + str(rest // 10) if rest % 10 > 0 else '')\n        elif hundreds == 9:\n            return 'ninthundred' + ('twenty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 20 else 'thirty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 30 else 'forty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 40 else 'fifty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 50 else 'sixty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 60 else 'seventy' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 70 else 'eighty' + ('one' + str(rest // 10) if rest % 10 > 0 else '') if rest >= 80 else 'ninety' + ('one' + str(rest // 10) if rest % 10 > 0 else '')\n    print(words[-1] + ' ' + my_function.__name__ + words[:-1].count(' ') * 'thirty' + ('one' if total_letters == 1 else ''))",
+        "result": "failed: testcase 0"
+    },
+    "4871": {
+        "body": "    n = int(input())\n    scores = []\n    for _ in range(n):\n        score = float(input())\n        scores.append(score)\n    scores.sort(reverse=True)\n    group_score = 0.2 * sum(i * (4/5)**i for i in range(n))\n    average_g_i = sum(g_i(scores, i) for i in range(n)) / n\n    print(group_score)\n    print(average_g_i)\n\n    new_scores = scores[:i] + scores[i+1:]\n    return 0.2 * sum(j * (4/5)**j for j in range(len(new_scores)))",
+        "result": "failed: testcase 0"
+    },
+    "4148": {
+        "body": "    n = int(input())\n    s = input()\n    result = ''\n    for char in s:\n        if 'A' <= char <= 'Z':\n            if ord(char) - 65 + n > 26:\n                result += chr((ord(char) - 65 + n) % 26 + 65)\n            else:\n                result += chr(ord(char) - 65 + n + 65)\n        else:\n            result += char\n    print(result)",
+        "result": "failed: testcase 0"
+    },
+    "4316": {
+        "body": "    s = input()\n    char1 = ''\n    count1 = 0\n    for c in s:\n        if c != char1:\n            char2 = c\n            count1 = 1\n        elif count1 == 1:\n            count1 += 1\n        else:\n            count1 -= 1\n        if count1 == 0 and len(set(s)) > 2:\n            print('No')\n            return\n    print('Yes')",
+        "result": "failed: testcase 1"
+    },
+    "4397": {
+        "body": "    n, i = map(int, input().split())\n    j = n - i + 1\n    print(j)",
+        "result": "passed"
+    },
+    "4180": {
+        "body": "    n = int(input())\n    bills = 0\n    while n >= 1000:\n        n -= 1000\n        bills += 1\n    print(bills)",
+        "result": "failed: testcase 0"
+    },
+    "4907": {
+        "body": "    n = int(input())\n    if n % 2 == 0:\n        print(\"Alice\")\n        print(1)\n    else:\n        print(\"Bob\")",
+        "result": "passed"
+    },
+    "4839": {
+        "body": "    canisters = sorted([x for x in range(n+1) if x <= sum(c)])\n    canister_amounts = [c[i] for i in range(n)]\n    balloons = []\n    total = 0\n    for i in range(1, n+1):\n        balloon_size = i\n        balloons.append(balloon_size)\n        total += balloon_size\n    fraction = float('inf')\n    for canister in canisters:\n        for i, amount in enumerate(canister_amounts):\n            if canister <= i + 1 and amount > 0:\n                balloons[i] -= canister\n                canister_amounts[i] -= canister\n                total -= canister\n                fraction = min(fraction, float(total) / total)\n    if any(x > 0 for x in balloons):\n        return 'impossible'\n    return str(fraction)",
+        "result": "failed: testcase 0"
+    },
+    "4665": {
+        "body": "import collections\n\nNamedStudent = collections.namedtuple('NamedStudent', 'ID MARKS CLASS NAME')\n\n    N = int(input())\n    columns = [input().strip() for _ in range(1)]\n    students = []\n    for _ in range(N):\n        student = NamedStudent(*map(str.strip, input().split()))\n        students.append(student)\n    total_marks = sum(int(s.MARKS) for s in students)\n    average_marks = total_marks / N\n    print(format(average_marks, '.2f'))",
+        "result": "failed: testcase 0"
+    },
+    "4785": {
+        "body": "    s = input()\n    for char in s:\n        if char == 's' and s.index(char) < len(s) - 1 and s[s.index(char) + 1] == 's':\n            print('hiss')\n            return\n    print('no hiss')",
+        "result": "passed"
+    },
+    "4272": {
+        "body": "    n = int(input())\n    s = input().upper()\n    count = 0\n    for i in range(n-2):\n        if s[i:i+3] == 'ABC':\n            count += 1\n    print(count)",
+        "result": "passed"
+    },
+    "4092": {
+        "body": "    n = len(a)\n    res = 0\n    cur_sum = 0\n    prev_sign = None\n    \n    for i, ai in enumerate(a):\n        if ai < 0:\n            sign = -1\n        else:\n            sign = 1\n        \n        if (prev_sign is not None and sign != prev_sign) or (i == n - 1):\n            res += abs(cur_sum)\n            cur_sum = 0\n        cur_sum += ai * sign\n        prev_sign = sign\n    \n    return res",
+        "result": "failed: testcase 0"
+    },
+    "4023": {
+        "body": "    n = int(input())\n    heights = list(map(int, input().split()))\n    max_height = max(heights)\n    for i in range(n):\n        if heights[i] < max_height:\n            return \"NO\"\n    return \"YES\"",
+        "result": "failed: testcase 0"
+    },
+    "4160": {
+        "body": "    x = int(input())\n    year = 1\n    balance = 100\n    while True:\n        if balance >= x:\n            break\n        balance += balance // 100\n        year += 1\n    print(year)",
+        "result": "failed: testcase 0"
+    },
+    "4815": {
+        "body": "    n, p, m = map(int, input().split())\n    participants = {}\n    for _ in range(n):\n        name = input()\n        participants[name] = 0\n    for _ in range(m):\n        name, points = input().split()\n        participants[name] += int(points)\n    winners = []\n    for participant, score in participants.items():\n        if score >= p:\n            print(f\"{participant} wins!\")\n            winners.append(participant)\n    if not winners:\n        print(\"No winner!\")",
+        "result": "passed"
+    },
+    "4514": {
+        "body": "    n, q = map(int, input().split())\n    parent = [0] + list(map(int, input().split()))\n    for _ in range(q):\n        u, k = map(int, input().split())\n        visited = [False] * (n + 1)\n        stack = [u]\n        res = []\n        while stack:\n            a = stack[-1]\n            if not visited[a]:\n                visited[a] = True\n                for b in range(2, n + 1):\n                    if parent[b] == a and not visited[b]:\n                        stack.append(b)\n                        break\n                if stack:\n                    res.append(a)\n        print(res[k - 1] if k <= len(res) else -1)",
+        "result": "failed: testcase 0"
+    },
+    "4585": {
+        "body": "    X = int(input())\n    t = 0\n    for i in range(1, X+1):\n        if X % i == 0:\n            t = i\n            break\n    print(t)",
+        "result": "failed: testcase 0"
+    },
+    "4781": {
+        "body": "    players = [i for i in range(1, 9)]\n    current_player_index = k - 1\n    box_holding_players = [k]\n    \n    for _ in range(n):\n        t, z = int(input()), input()\n        if z == \"T\":\n            next_player_index = (current_player_index + 1) % len(players)\n            box_holding_players.append(next_player_index + 1)\n            current_player_index = next_player_index\n        elif z == \"P\" or z == \"N\":\n            pass\n    \n    return box_holding_players[-1]",
+        "result": "failed: testcase 0"
+    },
+    "4551": {
+        "body": "    a, b, c, d = map(int, input().split())\n    if a + b > c + d:\n        print(\"Left\")\n    elif a + b == c + d:\n        print(\"Balanced\")\n    else:\n        print(\"Right\")",
+        "result": "passed"
+    },
+    "4345": {
+        "body": "    n = int(input())\n    a = list(map(int, input().split()))\n    increasing = []\n    decreasing = []\n    for i in range(n):\n        if not increasing or a[i] > increasing[-1]:\n            increasing.append(a[i])\n        elif not decreasing or a[i] < decreasing[-1]:\n            decreasing.append(a[i])\n        else:\n            print(\"NO\")\n            return\n    print(\"YES\")\n    res = [0]*n\n    for i in range(n):\n        if a[i] in increasing:\n            res[i] = 0\n        elif a[i] in decreasing:\n            res[i] = 1",
+        "result": "failed: testcase 0"
+    },
+    "4075": {
+        "body": "    n, m = map(int, input().split())\n    switch_states = []\n    for _ in range(m):\n        k, *switches = map(int, input().split())\n        switch_states.append((k, switches))\n    on_count = [0] * (n + 1)\n    result = 0\n    for _, switches in switch_states:\n        for switch in switches:\n            on_count[switch] += 1\n    for bulb in range(m):\n        p = int(input())\n        if (on_count[sum(switches)] % 2 == p) and all(on_count[s] <= p or on_count[s] % 2 != p for s in switches):\n            result += 1\n    print(result)",
+        "result": "failed: testcase 0"
+    },
+    "4408": {
+        "body": "    n, k = map(int, input().split())\n    cards = list(map(int, input().split()))\n    favorite_numbers = list(map(int, input().split()))\n    joy_levels = list(map(int, input().split()))\n    card_count = [0] * (k + 1)\n    for i in range(k * n):\n        for j in range(n):\n            if cards[i] == favorite_numbers[j]:\n                card_count[card_count[-1]] += 1\n    total_joy = 0\n    for t in range(1, k + 1):\n        total_joy += min(card_count[:t], default=0) * joy_levels[t - 1]\n    print(total_joy)",
+        "result": "failed: testcase 0"
+    },
+    "4282": {
+        "body": "    p = [i for i in range(1, n + 1)]\n    for _ in range(n):\n        for kid in range(n):\n            if a[kid][0] == p[kid]:\n                next_kid = p.index(a[kid][1])\n                p.pop(kid)\n                p.insert(next_kid, a[kid][0])",
+        "result": "failed: testcase 0"
+    },
+    "4331": {
+        "body": "    N = int(input())\n    for digit in str(N):\n        if digit == '7':\n            print('Yes')\n            return\n    print('No')",
+        "result": "passed"
+    },
+    "4550": {
+        "body": "    a, b, c = map(int, input().split())\n    if a <= b <= c or a <= c <= b or c <= a <= b:\n        print('Yes')\n    else:\n        print('No')",
+        "result": "failed: testcase 1"
+    },
+    "4271": {
+        "body": "    n = int(input())\n    a = [int(x) for x in input().split()]\n    b = [int(x) for x in input().split()]\n    c = [0] + [int(x) for x in input().split()]\n    total = 0\n    for i in range(1, n):\n        total += b[a[i-1]] + c[i]\n    print(total)",
+        "result": "failed: testcase 0"
+    },
+    "4848": {
+        "body": "    m = 2\n    while True:\n        if n % m != 0:\n            break\n        m += 1\n    return m - 1",
+        "result": "failed: testcase 0"
+    },
+    "4694": {
+        "body": "import sys\n    n = int(sys.stdin.readline())\n    coords = list(map(int, sys.stdin.readline().split()))\n    min_dist = float('inf')\n    for i in range(n):\n        for j in range(i+1, n):\n            dist = 0\n            for k in range(i, j+1):\n                dist += abs(coords[k] - coords[i])\n            min_dist = min(min_dist, dist)\n    print(min_dist)",
+        "result": "failed: testcase 0"
+    },
+    "4213": {
+        "body": "import sys\n\n    n = int(input())\n    a = list(map(int, input().split()))\n    max_diff = 0\n    for i in range(n):\n        for j in range(i+1, n):\n            diff = abs(a[i] - a[j])\n            if diff > max_diff:\n                max_diff = diff\n    print(max_diff)",
+        "result": "passed"
+    },
+    "4471": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        n = int(input())\n        heights = list(map(int, input().split()))\n        cleared = False\n        while all(h > 0 for h in heights):\n            for i in range(n):\n                if heights[i] >= 2:\n                    heights[i] -= 2\n                    break\n            else:\n                cleared = True\n                break\n        print(\"YES\" if cleared else \"NO\")",
+        "result": "passed"
+    },
+    "4802": {
+        "body": "hours, minutes = map(int, input().split())\nminutes -= 45\nif minutes < 0:\n    hours -= 1\n    minutes += 60\nprint(f\"{hours} {minutes:02d}\")",
+        "result": "failed: testcase 1"
+    },
+    "4890": {
+        "body": "import sys\n\nn, m, s, d = map(int, input().split())\nc = list(map(int, input().split()))\n\nnew_bottles_per_slot = []\nfor i in range(s):\n    new_bottles_per_slot.append(max(0, d - c[i]))\n\nnew_bottles_left = n\nfor i in range(s-1, -1, -1):\n    if new_bottles_left > 0 and c[i] < d:\n        new_bottles_left -= min(new_bottles_left, d-c[i])\n        new_bottles_per_slot[i] += min(new_bottles_left, d-c[i])\n\nprint(*new_bottles_per_slot)",
+        "result": "failed: testcase 0"
+    },
+    "4286": {
+        "body": "    n, m = map(int, input().split())\n    a = list(map(int, input().split()))\n    offers = []\n    for _ in range(m):\n        x, y, w = map(int, input().split())\n        offers.append((x, y, w))\n    \n    connected_components = 0\n    total_cost = 0\n    visited = [False] * (n + 1)\n    for i in range(1, n + 1):\n        if not visited[i]:\n            connected_components += 1\n            component_size = 0\n            current_component = []\n            for j in range(i, n + 1):\n                if a[j - 1] < a[i - 1]:\n                    break\n                if not visited[j]:\n                    component_size += 1\n                    current_component.append(j)\n                    visited[j] = True\n            cost_to_join = sum(a[i - 1] for i in current_component) + component_size * (component_size - 1) // 2\n            total_cost += cost_to_join\n    \n    return total_cost",
+        "result": "failed: testcase 0"
+    },
+    "4713": {
+        "body": "max_x = 0\nx = 0\nfor _ in range(int(input(\"\"))):\n    for char in input(\"\"):\n        if char == 'I':\n            x += 1\n        else:\n            x -= 1\n    max_x = max(max_x, abs(x))",
+        "result": "failed: testcase 0"
+    },
+    "4698": {
+        "body": "    n = int(input())\n    times = list(map(int, input().split()))\n    m = int(input())\n    problems = []\n    stimulated_times = []\n    for _ in range(m):\n        problem, time = map(int, input().split())\n        problems.append(problem - 1)\n        stimulated_times.append(time)\n    for i in range(m):\n        total_time = 0\n        for j in range(n):\n            if j + 1 in problems:\n                total_time += stimulated_times[i]\n            else:\n                total_time += times[j]\n        print(total_time)",
+        "result": "failed: testcase 0"
+    },
+    "4841": {
+        "body": "    n = int(input())\n    counts = [int(i) for i in input().split()]\n    prev_count = 0\n    for count in counts:\n        if str(count) != \"mumble\":\n            if count <= prev_count:\n                return \"something is fishy\"\n            prev_count = count\n    return \"makes sense\"",
+        "result": "failed: testcase 0"
+    },
+    "4865": {
+        "body": "    test_cases = int(input())\n    for _ in range(test_cases):\n        direction, minutes_diff, hours, minutes = map(int, input().split())\n        if direction == 1:\n            new_minutes = (minutes + minutes_diff) % 60\n            new_hours = (hours + ((minutes + minutes_diff) // 60)) % 24\n        else:\n            new_minutes = (minutes - minutes_diff) % 60\n            new_hours = (hours + ((minutes - minutes_diff) // 60)) % 24\n        print(f\"{new_hours} {new_minutes}\")",
+        "result": "failed: testcase 0"
+    },
+    "4957": {
+        "body": "    n, m = map(int, input().split())\n    grid = [list(input()) for _ in range(n)]\n    \n    for i in range(n):\n        for j in range(m):\n            if grid[i][j] == '.':\n                placed = False\n                directions = [(0, 1), (1, 0), (0, -1), (-1, 0)] # right, down, left, up\n                for dx, dy in directions:\n                    nx, ny = i + dx, j + dy\n                    if 0 <= nx < n and 0 <= ny < m and grid[nx][ny] == '.':\n                        placed = True\n                        grid[i][j] = 'E'\n                        break\n                if not placed:\n                    for dx, dy in directions:\n                        nx, ny = i + dx, j + dy\n                        if 0 <= nx < n and 0 <= ny < m:\n                            if grid[nx][ny] == '.':\n                                grid[i][j] = 'E'\n                                break\n    \n    for row in grid:\n        print(''.join(row))",
+        "result": "failed: testcase 0"
+    },
+    "4382": {
+        "body": "    n = int(input())\n    total_passwords = 1\n    for i in range(3):\n        total_passwords *= (n + 1)\n    print(total_passwords)",
+        "result": "failed: testcase 0"
+    },
+    "4456": {
+        "body": "    n, k = map(int, input().split())\n    p = list(map(int, input().split()))\n    q = list(map(int, input().split()))\n\n    for c in range(26):\n        if ord('a' + c) <= 26:\n            break\n    chars = [chr(i) for i in range(ord('a'), ord('a') + c)]\n\n    s = [''] * n\n\n    for i in range(n):\n        if p[i] < q[i]:\n            s[p[i] - 1], s[q[i] - 1] = s[q[i] - 1], s[p[i] - 1]\n        elif p[i] <= q[i]:\n            s[p[i] - 1] = chars[c // (q[i] + 1)]\n            c %= (q[i] + 1)\n\n    print('YES' if all(s[j] <= s[j + 1] for j in range(n - 1)) else 'NO')\n    print(''.join(s))",
+        "result": "failed: testcase 0"
+    },
+    "4594": {
+        "body": "    n = int(input())\n    diameters = []\n    for _ in range(n):\n        diameter = int(input())\n        diameters.append(diameter)\n    layers = 1\n    prev_diameter = diameters[0]\n    for diameter in diameters[1:]:\n        if diameter <= prev_diameter:\n            break\n        layers += 1\n        prev_diameter = diameter\n    print(layers)",
+        "result": "failed: testcase 0"
+    },
+    "4560": {
+        "body": "    n = int(input())\n    a = int(input())\n    \n    for i in range(n // 500 + 1):\n        remainder = n - i * 500\n        if remainder <= a:\n            print(\"Yes\")\n            return\n    print(\"No\")",
+        "result": "passed"
+    },
+    "4320": {
+        "body": "    for _ in range(t):\n        n = int(input())\n        x = 1\n        k = 2\n        total = 0\n        while True:\n            total += x * (2 ** k - 1)\n            if total >= n:\n                break\n            k += 1\n        print(x)",
+        "result": "failed: testcase 0"
+    },
+    "4500": {
+        "body": "can_buy_toy = False\na_yen, b_yen, cost = map(int, input().split())\ntotal_yen = a_yen + b_yen\nif total_yen <= cost:\n    can_buy_toy = True\n\nprint('Yes' if can_buy_toy else 'No')",
+        "result": "failed: testcase 0"
+    },
+    "4739": {
+        "body": "    M, N = map(int, input().split())\n    times = list(map(int, input().split()))\n    distances = list(map(int, input().split()))\n    speed_count = 0\n    speeds = set()\n    for i in range(M - 1):\n        speed = (distances[i + 1] - distances[i]) / (times[i + 1] - times[0])\n        if speed not in speeds:\n            speeds.add(speed)\n            speed_count += 1\n    print(len(speeds))\n    for i in range(1, M):\n        print((distances[i] - distances[0]).//speed, end=' ')",
+        "result": "failed: testcase 0"
+    },
+    "4410": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        n, k = map(int, input().split())\n        s = input()\n        res = 0\n        for i in range(n):\n            if s[i] == '1':\n                res += 1\n            else:\n                count = 0\n                for j in range(1, min(k+1, n-i)):\n                    if s[i-j] == '1' or s[i+j] == '1':\n                        break\n                    count += 1\n                res += count\n        print(res)",
+        "result": "failed: testcase 0"
+    },
+    "2441": {
+        "body": "    n = int(input())\n    costs = list(map(int, input().split()))\n    m = int(input())\n    roads = []\n    for _ in range(m):\n        u, v = map(int, input().split())\n        roads.append((u, v))\n    \n    dp = [[0] * (n + 1) for _ in range(n + 1)]\n    for i in range(1, n + 1):\n        dp[i][i] = costs[i - 1]\n    for u, v in roads:\n        dp[u][v] = min(dp[u][v], costs[v - 1])\n        for k in range(v + 1, n + 1):\n            dp[u][k] = min(dp[u][k], dp[u][v] + costs[k - 1])\n    cost = float('inf')\n    ways = 0\n    for i in range(1, n + 1):\n        if dp[0][i] < cost:\n            cost = dp[0][i]\n            ways = 1\n        elif dp[0][i] == cost:\n            ways += 1\n    print(cost % 1000000007, ways % 1000000007)",
+        "result": "failed: testcase 0"
+    },
+    "276": {
+        "body": "    n = int(input())\n    colors = [line.strip().lower() for line in [input()]*n]\n    absent_names = []\n    for color in colors:\n        if color == 'purple':\n            absent_names.append('Time')\n        elif color == 'green':\n            absent_names.append('Power')\n        elif color == 'blue':\n            absent_names.append('Reality')\n        elif color == 'orange':\n            absent_names.append('Mind')\n        elif color == 'red':\n            absent_names.append('Soul')\n        else:\n            absent_names.append('Space')\n    m = len(absent_names)\n    print(m)\n    for name in absent_names:\n        print(name)",
+        "result": "failed: testcase 0"
+    },
+    "2635": {
+        "body": "    if not matrix or not matrix[0]:\n        return []\n    m, n = len(matrix), len(matrix[0])\n    left, right, top, bottom = 0, n, m, 0\n    output = []\n    while True:\n        for i in range(left, right):\n            output.append(matrix[top][i])\n        top -= 1\n        if top < bottom:\n            break\n        for i in range(top, bottom):\n            output.append(matrix[i][right - 1])\n        right -= 1\n        if left > right:\n            break\n        for i in range(right - 1, left - 1, -1):\n            output.append(matrix[bottom - 1][i])\n        bottom -= 1\n        if top > bottom:\n            break\n        for i in range(bottom - 1, top, -1):\n            output.append(matrix[i][left])\n        left += 1",
+        "result": "failed: testcase 0"
+    },
+    "281": {
+        "body": "    factorial = 1\n    for i in range(a + 1):\n        factorial *= i + 1\n    answer = 0\n    for i in range(1, (b // a) + 1):\n        answer += (b - (i * a)) // factorial\n    print(answer % 10)",
+        "result": "failed: testcase 0"
+    },
+    "2300": {
+        "body": "    n, m = map(int, input().split())\n    a = list(map(int, input().split()))\n    for _ in range(m):\n        t = int(input())\n        if t == 1:\n            x, v = map(int, input().split())\n            a[x-1] = v\n        elif t == 2:\n            l, r = map(int, input().split())\n            total = sum(a[i] for i in range(l-1, r))\n            print(total % 1000000000)",
+        "result": "failed: testcase 0"
+    },
+    "2104": {
+        "body": "    l, r = map(int, input().split())\n    if (r - l) % 2 == 1:\n        return \"NO\"\n    pairs = []\n    for i in range(l, r + 1):\n        is_first = True\n        for j in range(i - 1, l - 1, -1):\n            if (i - j) % 2 == 0 and (j - l) % 4 == 0:\n                pairs.append((i, j))\n                is_first = False\n                break\n        if is_first:\n            pairs.append((i, i + 1))\n    print(\"YES\")\n    for pair in pairs:\n        print(*pair)",
+        "result": "failed: testcase 0"
+    },
+    "1995": {
+        "body": "    s = input()\n    m = int(input())\n    for _ in range(m):\n        l, r, k = map(int, input().split())\n        temp = s[l-1:r]\n        s = s[:l-1] + temp[-k:] + temp[:-k]\n    print(s)",
+        "result": "failed: testcase 0"
+    },
+    "2064": {
+        "body": "    max_display = 0\n    for i in range(10**n, -1, -1):\n        display_str = ''\n        for digit in str(i):\n            if int(digit) <= n:\n                display_str += '1' * int(digit) + '0' * (7 - int(digit))\n            else:\n                break\n        if len(display_str) == 7:\n            max_display = i\n            break\n    print(max_display)",
+        "result": "failed: testcase 0"
+    },
+    "1715": {
+        "body": "    A, B, Q = map(int, input().split())\n    shrines = sorted(map(int, input().split()))\n    temples = sorted(map(int, input().split()))\n    for _ in range(Q):\n        x = int(input())\n        left = 0\n        right = len(shrines) - 1\n        min_shrine = shrines[0]\n        while left <= right:\n            mid = (left + right) // 2\n            if shrines[mid] > x:\n                right = mid - 1\n            else:\n                left = mid + 1\n                min_shrine = shrines[mid]\n        left = 0\n        right = len(temples) - 1\n        min_temple = temples[0]\n        while left <= right:\n            mid = (left + right) // 2\n            if temples[mid] > x:\n                right = mid - 1\n            else:\n                left = mid + 1\n                min_temple = temples[mid]\n        print(min(abs(x - min_shrine), abs(x - min_temple)) * 2)",
+        "result": "timed out"
+    },
+    "2074": {
+        "body": "    n, m = map(int, input().split())\n    costs = []\n    for _ in range(n):\n        row = list(map(int, input().split()))\n        costs.append(row)\n    \n    best_cost = 0\n    for i in range(n):\n        min_av_cost = float('inf')\n        for j in range(m):\n            av_cost = costs[i][j]\n            if av_cost < min_av_cost:\n                min_av_cost = av_cost\n        best_cost = max(best_cost, min_av_cost)\n    \n    print(best_cost)",
+        "result": "passed"
+    },
+    "2921": {
+        "body": "    total_cost = 0.0\n    units_drunk = 0.0\n    purchased_drinks = {}\n    \n    for i in range(d):\n        name, strength, size, cost = input().split()\n        strength = float(strength) / 100.0\n        size_value = {'1/1': 1.0, '1/2': 0.5, '1/3': 0.333}[size]\n        price = float(cost)\n        \n        total_cost += price * int(size_value != size_value)\n        units_drunk += strength * int(size_value != size_value)\n        \n        if (total_cost <= m) and (units_drunk <= u):\n            purchased_drinks[name] = purchased_drinks.get(name, 0) + int(size_value != size_value)\n        elif total_cost > m:\n            break\n    \n    if units_drunk >= u:\n        for name, count in sorted(purchased_drinks.items()):\n            print(f\"{name} {count}\")\n    else:\n        print(\"IMPOSSIBLE\")",
+        "result": "failed: testcase 0"
+    },
+    "1642": {
+        "body": "import math\n    n = int(input())\n    points = []\n    for _ in range(n):\n        x, y = map(int, input().split())\n        points.append((x, y))\n    max_d = 0\n    for i in range(1, n):\n        x1, y1 = points[0]\n        x2, y2 = points[i]\n        for j in range(i+1, n):\n            x3, y3 = points[j]\n            d = ((x2-x1)*(y3-y1) - (x3-x1)*(y2-y1)) / (max(abs(x2-x1), abs(x3-x1)))\n            if d > max_d:\n                max_d = d\n    return min(max_d, 1)",
+        "result": "failed: testcase 0"
+    },
+    "947": {
+        "body": "import sys\n\n    while b != 0:\n        temp = b\n        b = a % b\n        a = temp\n    return abs(a)\n\n    t = int(input())\n    for _ in range(t):\n        n = int(input())\n        for a in range(1, n // 2 + 1):\n            b = n - a\n            if a <= b:\n                if lcm(a, b) == min(a, b):\n                    print(f\"{a} {b}\")\n                    break\n\nsolve()",
+        "result": "failed: testcase 0"
+    },
+    "743": {
+        "body": "    n = int(input())\n    numbers = [int(num) for num in input().split()]\n    numbers.sort()\n    total_sum = sum(numbers)\n    for i in range(n - 1):\n        total_sum -= numbers[i] - numbers[n - i - 1]\n    return total_sum",
+        "result": "failed: testcase 0"
+    },
+    "1397": {
+        "body": "import sys\n    n, m = map(int, input().split())\n    graph = {}\n    for _ in range(m):\n        a, b = map(int, input().split())\n        if a not in graph:\n            graph[a] = []\n        if b not in graph:\n            graph[b] = []\n        graph[a].append(b)\n        graph[b].append(a)\n    roads = 0\n    for city in range(1, n+1):\n        visited = set()\n        queue = [city]\n        while queue:\n            current = queue.pop(0)\n            if current not in visited:\n                visited.add(current)\n                if len(visited) > n//2:\n                    return str(n-1)\n                for neighbor in graph.get(current, []):\n                    if neighbor not in visited:\n                        queue.append(neighbor)\n        roads += len(visited)-1\n    for city in range(1, n+1):\n        neighbors = set()\n        for neighbor in graph.get(city, []):\n            if neighbor != city and (len(graph[neighbor]) == 0 or neighbor in graph[neighbor]):\n                neighbors.add(neighbor)\n        print(*sorted(list(neighbors)), file=sys.stdout)",
+        "result": "failed: testcase 0"
+    },
+    "1144": {
+        "body": "    n = int(input())\n    s = input()\n    m = int(input())\n    \n    replacements = 0\n    for i in range(n - m + 1):\n        if '?' not in s[i:i+m]:\n            continue\n        for j in range(m):\n            if (j % 2 == 0 and s[i+j] != 'b') or (j % 2 == 1 and s[i+j] != 'a'):\n                replacements += 1\n                break\n    \n    print(replacements)",
+        "result": "failed: testcase 1"
+    },
+    "890": {
+        "body": "    n, l, r, x = map(int, input().split())\n    difficulties = list(map(int, input().split()))\n    count = 0\n    for i in range(n):\n        for j in range(i+1, n):\n            total_difficulty = sum(difficulties[i:j+1])\n            difficulty_range = max(difficulties[i:j+1]) - min(difficulties[i:j+1])\n            if l <= total_difficulty <= r and x <= difficulty_range:\n                count += 1\n    print(count)",
+        "result": "failed: testcase 1"
+    },
+    "2410": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        n = int(input())\n        a = list(map(int, input().split()))\n        sum_yasser = sum(a)\n        sum_adel = 0\n        for i in range(1, n+1):\n            sum_adel += a[i-1]\n            if sum_yasser <= sum_adel:\n                print(\"NO\")\n                break\n        else:\n            print(\"YES\")",
+        "result": "failed: testcase 0"
+    },
+    "1004": {
+        "body": "    n = int(input())\n    events = [int(x) for x in input().split()]\n    days = []\n    day = []\n    for event in events:\n        if not day or event < 0 and -event <= len(day):\n            day.append(event)\n        else:\n            if day:\n                days.append(len(day))\n            day = [event]\n    if day:\n        days.append(len(day))\n    if len(days) == 1:\n        print(-1)\n    else:\n        print(len(days), end='\\n')\n        print(*days, sep=' ')",
+        "result": "failed: testcase 0"
+    },
+    "531": {
+        "body": "    n = int(input())\n    x_values = [int(i) for i in input().split()]\n    \n    max_x = max(x_values)\n    min_x = min(x_values)\n    average_x = sum(x_values) // n\n    \n    equal_count = 0\n    y_values = []\n    \n    for x in x_values:\n        if abs(x - average_x) <= 1 and len([y for y in y_values + [x] if y == x]) < equal_count or not y_values:\n            y_values.append(x)\n            equal_count += 1\n        else:\n            y_values.append(min(max_x, max_x - (max_x - min_x)) // 2)\n\n    print(equal_count)\n    print(' '.join(map(str, y_values)))",
+        "result": "failed: testcase 0"
+    },
+    "510": {
+        "body": "    a, b, c, d = map(int, input().split())\n    duration = 0\n    while True:\n        if abs(a-b) >= d or abs(b-c) >= d or abs(c-a) >= d:\n            break\n        duration += 1\n        if a < b:\n            a += 1\n        elif a > b:\n            a -= 1\n        if b < c:\n            b += 1\n        elif b > c:\n            b -= 1\n        if c < a:\n            c += 1\n        elif c > a:\n            c -= 1\n    return duration",
+        "result": "timed out"
+    },
+    "2555": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        n, q = map(int, input().split())\n        a = sorted(map(int, input().split()))\n        b = [0] * (n + 1)\n        for i in range(n):\n            b[a[i]] = i\n        ans = [0]\n        for _ in range(q):\n            l, r = map(int, input().split())\n            a[l], a[r] = a[r], a[l]\n            b[a[l]], b[a[r]] = b[a[r]], b[a[l]]\n            total = 0\n            k = 1\n            for i in range(1, n):\n                if b[i] > b[i-1]:\n                    total += (-1) ** (k % 2) * a[i]\n                    k += 1\n            ans.append(total)\n        print(*ans)",
+        "result": "failed: testcase 0"
+    },
+    "324": {
+        "body": "import math\n\n    a = 2\n    while True:\n        for i in range(2, int(math.sqrt(a)) + 1):\n            if a % i == 0:\n                break\n        else:\n            b = a - n\n            for j in range(2, int(math.sqrt(b)) + 1):\n                if b % j == 0:\n                    break\n            else:\n                print(a, b)\n                return",
+        "result": "failed: testcase 0"
+    },
+    "2912": {
+        "body": "    n = int(input())\n    strings = [input() for _ in range(n)]\n    operations = []\n    for _ in range(n - 1):\n        a, b = map(int, input().split())\n        strings[a-1] += strings[b-1]\n        strings[b-1] = \"\"\n    return \"\".join(strings)",
+        "result": "failed: testcase 0"
+    },
+    "9": {
+        "body": "n, m = map(int, input().split())\nsofas = []\nfor _ in range(int(input())):\n    x1, y1, x2, y2 = map(int, input().split())\n    sofas.append((x1, y1, x2, y2))\n\ncnt_l, cnt_r, cnt_t, cnt_b = map(int, input().split())\n\nfor i, sofa in enumerate(sofas):\n    left_sofas = sum(1 for s in sofas[:i] if min(s[0], s[2]) > min(sofa[0], sofa[2]))\n    right_sofas = sum(1 for s in sofas[i+1:] if max(s[0], s[2]) < max(sofa[0], sofa[2]))\n    top_sofas = sum(1 for s in sofas[:i] if min(s[1], s[3]) > min(sofa[1], sofa[3]))\n    bottom_sofas = sum(1 for s in sofas[i+1:] if max(s[1], s[3]) < max(sofa[1], sofa[3]))\n\n    if left_sofas == cnt_l and right_sofas == cnt_r and top_sofas == cnt_t and bottom_sofas == cnt_b:\n        print(i + 1)\n        break\nelse:\n    print(-1)",
+        "result": "failed: testcase 0"
+    },
+    "249": {
+        "body": "    n, l, x, y = map(int, input().split())\n    a = list(map(int, input().split()))\n    for p in range(x):\n        for q in range(y):\n            if abs(a[q] - a[p]) == x:\n                return 1\n    for i in range(2, min(l, y - x) + 1):\n        if (y - x) % i == 0 and l % i == 0 and all((a[j] - a[i-1]) % i == 0 for j in range(i, n)):\n            return len(range(i))\n    return 2",
+        "result": "failed: testcase 0"
+    },
+    "2999": {
+        "body": "    n, s = map(int, input().split())\n    participants = {}\n    for _ in range(n):\n        t, b = input().split()\n        b = int(b)\n        if t not in participants:\n            participants[t] = 0\n        participants[t] += b\n\n    winners = []\n    total = 0\n    for participant, bet in participants.items():\n        total += bet\n        if total > s:\n            break\n        elif total == s:\n            winners.append(participant)\n\n    print(len(winners))\n    for winner in winners:\n        print(winner)",
+        "result": "failed: testcase 0"
+    },
+    "2239": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        x = int(input())\n        total_points = 0\n        rolls = 0\n        for i in range(2, 8):\n            while True:\n                if total_points + i <= x:\n                    total_points += i\n                    rolls += 1\n                    break\n        print(rolls)",
+        "result": "timed out"
+    },
+    "2615": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        n = int(input())\n        count = 0\n        k1 = 0\n        k2 = 0\n        k3 = 0\n        i = 2\n        while i <= n:\n            if n % i == 0 and n // i > 1:\n                if i == 2:\n                    k1 += n // i\n                elif i == 3:\n                    k2 += n // i\n                else:\n                    k3 += n // i\n            i += 1\n        for k in range(1, min(k1 + 1, k2 + 1, k3 + 1)):\n            if k % (k1 // k) == 0 and k % (k2 // k) == 0 and k % (k3 // k) == 0:\n                count += 1\n        print(count)",
+        "result": "timed out"
+    },
+    "2542": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        s = str(input())\n        left_shift = s[1:]\n        right_shift = s[-1] + s[:-1]\n        erase_count = 0\n        for i in range(len(s)):\n            if s[i] != right_shift[i % len(right_shift)]:\n                erase_count += 1\n        print(erase_count)",
+        "result": "failed: testcase 0"
+    },
+    "511": {
+        "body": "import math\n\n    while b > 0:\n        a, b = b, a % b\n    return a\n\n    for _ in range(y + 1):\n        if y == 0:\n            return 0\n        y -= 1\n        x //= math.gcd(x, y)\n    return 1",
+        "result": "failed: testcase 0"
+    },
+    "1409": {
+        "body": "    participants = [int(input()) for _ in range(n)]\n    count = 0\n    used_participants = []\n    for _ in range(3):\n        team_count = 0\n        for participant in participants:\n            if participant >= k and participant not in used_participants:\n                used_participants.append(participant)\n                team_count += 1\n                if team_count == 3:\n                    break\n        count += (team_count // 3) + (team_count % 3 > 0)\n    return count",
+        "result": "failed: testcase 0"
+    },
+    "2274": {
+        "body": "    for _ in range(t):\n        n, m = map(int, input().split())\n        directions = [input()[:m] for _ in range(n)]\n        changed = 0\n        for i in range(n-1):\n            for j in range(m):\n                if directions[i][j] == 'D' and j < m - 1:\n                    changed += (directions[i+1][j] == 'R') - 1\n        print(changed)",
+        "result": "failed: testcase 0"
+    },
+    "2420": {
+        "body": "    n, r = map(int, input().split())\n    points = []\n    for _ in range(n):\n        x, y = map(int, input().split())\n        points.append((x, y))\n    max_covered = 0\n    for x0 in range(-r*2, r*2+1):\n        for y0 in range(-r*2, r*2+1):\n            covered = 0\n            for x, y in points:\n                if abs(x-x0) + abs(y-y0) <= r:\n                    covered += 1\n            max_covered = max(max_covered, covered)\n    print(max_covered)",
+        "result": "timed out"
+    },
+    "1267": {
+        "body": "    n = int(input())\n    scores = list(map(int, input().split()))\n    count = 0\n    max_score = 0\n    for i in range(n):\n        if scores[i] > 0:\n            max_score = scores[i]\n            break\n    for score in set(scores):\n        if score > 0:\n            count += n - (n - sum(1 for s in scores if s <= score))\n    return count",
+        "result": "failed: testcase 0"
+    },
+    "2356": {
+        "body": "    for i in range(len(a)):\n        for j in range(i + 1, len(a)):\n            if j - a[j] == i - a[i]:\n                return False\n    return True\n\nn = int(input())\nfor _ in range(n):\n    n = int(input())\n    a = [int(x) for x in input().split()]\n    while not is_good_array(a):\n        a = sorted(a)\n        if a[0] == 1:\n            a.reverse()\n        else:\n            break\n    print(' '.join(map(str, a)))",
+        "result": "failed: testcase 0"
+    },
+    "108": {
+        "body": "    alphabet = 'abcdefghijklmnopqrstuvwxyz'\n    moves = 0\n    new_s = ''\n    for c in s:\n        while c < alphabet[0]:\n            moves += 1\n            if c == 'z':\n                return '-1'\n            c = chr(ord(c) + 1)\n        new_s += c\n    print(new_s or -1)",
+        "result": "failed: testcase 0"
+    },
+    "1833": {
+        "body": "    n = int(input())\n    a = list(map(int, input().split()))\n    good_subsequences = 0\n    for i in range(1, n+1):\n        is_good = True\n        for num in a:\n            if num < i or (num % i) > 0:\n                is_good = False\n                break\n        if is_good:\n            good_subsequences += 1\n    print(good_subsequences % (10**9 + 7))",
+        "result": "failed: testcase 0"
+    },
+    "2324": {
+        "body": "    s = input()\n    n = len(s)\n    res = [0] * (n + 1)\n    for i in range(n):\n        left_half = s[:i // 2]\n        right_half = s[i // 2:]\n        if left_half == left_half[::-1] and right_half == right_half[::-1]:\n            k = min(len(left_half), len(right_half))\n            res[k + 1] += 1\n    for i in range(n, -1, -1):\n        print(res[i])",
+        "result": "failed: testcase 0"
+    },
+    "2372": {
+        "body": "    h, w = map(int, input().split())\n    ch, cw, dh, dw = map(int, input().split())\n    maze = [list(input()) for _ in range(h)]\n    \n    visited = [[False] * w for _ in range(h)]\n    queue = [(ch, cw, 0)]\n    visited[ch][cw] = True\n    \n    while queue:\n        i, j, magic_moves = queue.pop(0)\n        if (i, j) == (dh, dw):\n            return magic_moves\n        \n        for di, dj in [(-1, 0), (1, 0), (0, -1), (0, 1)]:\n            ni, nj = i + di, j + dj\n            if 1 <= ni < h and 1 <= nj < w and maze[ni][nj] == '.' and not visited[ni][nj]:\n                queue.append((ni, nj, magic_moves))\n                visited[ni][nj] = True\n    \n    return -1",
+        "result": "failed: testcase 0"
+    },
+    "1984": {
+        "body": "    levels = [list(input().strip()) for _ in range(k)]\n    traffic = 0\n    previous_level = None\n    level_order = []\n    \n    for i in range(k):\n        current_level = tuple(''.join(level) for level in zip(*levels[i]))\n        if previous_level is not None:\n            diff_size = sum(cell1 != cell2 for cell1, cell2 in zip(current_level, previous_level))\n            traffic += len(str(len(current_level))) + w * (diff_size + 1)\n        else:\n            traffic += n * m\n        level_order.append(i if previous_level is not None else 0)\n        previous_level = current_level\n    \n    print(traffic)\n    \n    for i in range(k):\n        print(f'{i+1} {level_order[i]}')",
+        "result": "failed: testcase 0"
+    },
+    "1253": {
+        "body": "    n, k = map(int, input().split())\n    incomes = list(map(int, input().split()))\n    total_income = sum(incomes)\n    for _ in range(k):\n        max_val = 0\n        for i in range(1, n):\n            if incomes[i-1] > 0 and incomes[i] < 0:\n                max_val = max(max_val, incomes[i])\n                break\n        if max_val:\n            total_income -= 2 * max_val\n    return total_income",
+        "result": "failed: testcase 0"
+    },
+    "523": {
+        "body": "    n, m = map(int, input().split())\n    strings = [input().strip() for _ in range(n)]\n    \n    max_length = 0\n    longest_palindrome = ''\n    \n    for i in range(1 << n):\n        palindrome = ''.join([s for j, s in enumerate(strings) if (i & (1 << j)) > 0])\n        reversed_palindrome = palindrome[::-1]\n        \n        if palindrome == reversed_palindrome:\n            length = len(palindrome)\n            if length > max_length:\n                max_length = length\n                longest_palindrome = palindrome\n    \n    print(max_length)\n    print(longest_palindrome)",
+        "result": "timed out"
+    },
+    "2934": {
+        "body": "    N, M = map(int, [input() for _ in range(2)])\n    count = 0\n    for m in range(M // N + 1):\n        for n in range(N):\n            if (N - n) * m == M:\n                count += 1\n    print(count % (10**9))",
+        "result": "failed: testcase 0"
+    },
+    "1745": {
+        "body": "    n, m = map(int, input().split())\n    city_map = [list(input()) for _ in range(n)]\n    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]\n    pipes = set()\n    \n        if x < 0 or x >= n or y < 0 or y >= m:\n            return\n        if city_map[x][y] == '#':\n            return\n        for dx, dy in directions:\n            nx, ny = x + dx, y + dy\n            if (nx, ny) not in pipes and city_map[nx][ny] == '.':\n                city_map[x][y] = '*'\n                dfs(nx, ny)\n    \n        for i in range(n):\n            for j in range(m):\n                if city_map[i][j] == '*':\n                    has_two_sides = False\n                    for dx, dy in directions:\n                        nx, ny = i + dx, j + dy\n                        if (0 <= nx < n and 0 <= ny < m) and city_map[nx][ny] == '*':\n                            has_two_sides = True\n                            break\n                    if not has_two_sides:\n                        return False\n        return True\n    \n    for x in range(n):\n        for y in range(m):\n            if city_map[x][y] == '.':\n                dfs(x, y)\n    \n    valid_pipes = set()\n    for _ in range(2**((n-1)*(m-1))):\n        pipe = []\n        for i in range(n):\n            for j in range(m):\n                if (i < 1 or j < 1) and city_map[i][j] == '*':\n                    pipe.append((i, j))\n        \n        if is_valid_pipe():\n            valid_pipes.add(tuple(sorted(pipe)))\n    \n    print(len(valid_pipes))",
+        "result": "failed: testcase 0"
+    },
+    "1422": {
+        "body": "    for weights_type in ['0' for _ in range(11)] + [str(i) for i in range(1, 11)]:\n        weight_order = []\n        left_weight_sum = 0\n        right_weight_sum = 0\n        for i in range(m):\n            if (i % 2 == 0 and weights_type[10 - i] == '1') or (i % 2 != 0 and weights_type[i] == '1'):\n                if left_weight_sum < right_weight_sum:\n                    weight_order.append(int(weights_type[10 - i]))\n                    left_weight_sum += int(weights_type[10 - i])\n                else:\n                    weight_order.append(int(weights_type[i]))\n                    right_weight_sum += int(weights_type[i])\n        if len(weight_order) == m:\n            return 'YES', weight_order\n    return 'NO', []",
+        "result": "failed: testcase 0"
+    },
+    "1763": {
+        "body": "    n, a, r, m = map(int, input().split())\n    heights = list(map(int, input().split()))\n    \n    total_cost = 0\n    max_height = max(heights)\n    \n    for _ in range(max_height):\n        for i in range(n):\n            if heights[i] < max_height:\n                total_cost += m\n                heights[i] += 1\n                break\n        else:\n            for i in range(n-1, -1, -1):\n                if heights[i] > 0:\n                    total_cost += r\n                    heights[i] -= 1\n                    break",
+        "result": "timed out"
+    },
+    "974": {
+        "body": "    n = int(input())\n    added_boxes = []\n    for _ in range(n):\n        command = input().split()\n        if command[0] == \"add\":\n            x = int(command[1])\n            added_boxes.append(x)\n        else:\n            if not added_boxes:\n                return -1\n            removed_box = added_boxes.pop()\n            while removed_box > len(added_boxes):\n                for _ in range(len(added_boxes) - 1, -1, -1):\n                    added_boxes[_] += 1\n                break\n    return -1\n\nmin_reorder_commands()",
+        "result": "failed: testcase 0"
+    },
+    "2343": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        n, k = map(int, input().split())\n        if 2**n <= 1:\n            print(\"NO\")\n        elif k % (2**(n+1) - 2) == 0:\n            print(\"YES\", n-1)\n        else:\n            print(\"NO\")\n\nif __name__ == \"__main__\":\n    solve()",
+        "result": "failed: testcase 0"
+    },
+    "627": {
+        "body": "    n = len(s)\n    for i in range(n-1, -1, -1):\n        t = s[:i] + s[i+1:]\n        if t <= s:\n            return t\n    return s",
+        "result": "failed: testcase 0"
+    },
+    "1655": {
+        "body": "    n = int(input())\n    lengths = list(map(int, input().split()))\n    alive_people = n\n    for i in range(1, n):\n        alive_people -= max(0, min(i-1, i-lengths[i-1]))\n    return alive_people",
+        "result": "failed: testcase 0"
+    },
+    "2124": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        n = int(input())\n        users = set(input().split())\n        m = int(input())\n        messages = []\n        sender = None\n        for _ in range(m):\n            line = input()\n            if line.startswith('?'):\n                sender = None\n            else:\n                user, text = line.split(': ', 1)\n                if user != sender and not text.lower().endswith(user.lower()):\n                    messages.append((user, text))\n                    sender = user\n        if len(messages) < m - 1 or sender is None:\n            print('Impossible')\n        else:\n            for message in messages:\n                print(f\"{message[0]}: {message[1]}\")",
+        "result": "failed: testcase 0"
+    },
+    "1093": {
+        "body": "    n, m = map(int, input().split())\n    height_map = []\n    for _ in range(n):\n        row = list(input())\n        height_map.append(row)\n\n    max_ascent = 0\n    max_descent = 0\n    last_peak_height = 0\n\n    for i in range(m):\n        current_height = sum(1 for y in height_map if y[i] == '*')\n        ascent = current_height - last_peak_height\n        descent = last_peak_height - current_height\n        if ascent > max_ascent:\n            max_ascent = ascent\n        if descent > max_descent:\n            max_descent = descent\n        last_peak_height = current_height\n\n    print(max_ascent, max_descent)",
+        "result": "failed: testcase 3"
+    },
+    "899": {
+        "body": "    n, m = map(int, input().split())\n    graph = []\n    for _ in range(m):\n        a, b, c = map(int, input().split())\n        if a > b:\n            a, b = b, a\n        graph.append((a, b, c))\n    shortest_paths = {}\n    for i in range(n):\n        for j in range(i+1, n):\n            visited = [False] * (n + 1)\n            queue = [(i, 0)]\n            while queue:\n                node, dist = queue.pop(0)\n                if node == j:\n                    shortest_paths[(min(i, j), max(i, j))] = dist\n                    break\n                for edge in graph:\n                    if not visited[edge[0]] and edge[1] == node and edge[2] <= dist + 1:\n                        visited[edge[0]] = True\n                        queue.append((edge[0], dist + 1))\n            else:\n                shortest_paths[(min(i, j), max(i, j))] = float('inf')\n    not_in_shortest = set()\n    for i in range(m):\n        a, b, c = graph[i]\n        flag = False\n        for path in shortest_paths.values():\n            if c <= path:\n                flag = True\n                break\n        if not flag:\n            not_in_shortest.add(i)\n    print(len(not_in_shortest))",
+        "result": "failed: testcase 0"
+    },
+    "551": {
+        "body": "    n = int(input())\n    y_coords = list(map(int, input().split()))\n    \n    for i in range(n):\n        for j in range(i+1, n):\n            if abs(y_coords[i] - y_coords[j]) <= 1:\n                return \"Yes\"\n    return \"No\"",
+        "result": "failed: testcase 0"
+    },
+    "1772": {
+        "body": "    n = int(input())\n    a = list(map(int, input().split()))\n    total_flowers = 0\n    large_bouquet_count = 0\n    for i in range(n):\n        total_flowers += a[i]\n        if total_flowers % 2 == 1:\n            large_bouquet_count += 1\n            total_flowers = 0\n    print(large_bouquet_count)",
+        "result": "failed: testcase 3"
+    },
+    "1339": {
+        "body": "    n = int(input())\n    segments = []\n    for _ in range(n):\n        l, r = map(int, input().split())\n        segments.append((l, r))\n    \n    covering_segment = -1\n    for i in range(n):\n        is_covered = True\n        for j in range(n):\n            if i != j and not (segments[i][0] <= segments[j][0] <= segments[j][1] <= segments[i][1]):\n                is_covered = False\n                break\n        if is_covered:\n            covering_segment = i + 1\n            break\n    \n    print(covering_segment)",
+        "result": "passed"
+    },
+    "440": {
+        "body": "    n = int(input())\n    s = input()\n    vowels = 'aeiouy'\n    for i in range(n-1):\n        if s[i] in vowels and s[i+1] in vowels:\n            j = i\n            while j > 0 and s[j-1] not in vowels:\n                j -= 1\n            s = s[:j] + s[i+1:]\n    print(s)",
+        "result": "failed: testcase 0"
+    },
+    "2801": {
+        "body": "    n, m = map(int, input().split())\n    satisfaction = list(map(int, input().split()))\n    connections = []\n    for _ in range(m):\n        s, t = map(int, input().split())\n        connections.append((s, t))\n    \n    max_satisfaction = 0\n    visited = [False] * n\n    \n    for start in range(n):\n        if not visited[start]:\n            stack = [(start, 1)]\n            while stack:\n                node, part = stack.pop()\n                visited[node] = True\n                satisfaction_value = satisfaction[node] * part / (2 ** (part - 1))\n                max_satisfaction = max(max_satisfaction, satisfaction_value)\n                for neighbor in connections:\n                    if neighbor[0] == node and not visited[neighbor[1]]:\n                        stack.append((neighbor[1], part + 1))\n            visited = [False] * n\n    print(max_satisfaction)",
+        "result": "failed: testcase 1"
+    },
+    "2749": {
+        "body": "    h, w = map(int, input().split())\n    n = int(input())\n    a = list(map(int, input().split()))\n    colors = [i % 2 for _ in range(h*w)]\n    for i in range(n):\n        for j in range(a[i]):\n            if sum(colors[:i*h+j]) % 2 == 0:\n                for k in range(i*h+j, h*w, w):\n                    colors[k] = (colors[k] + 1) % 2\n    for i in range(h):\n        print(' '.join(str(c) for c in colors[i*w:(i+1)*w]))",
+        "result": "failed: testcase 0"
+    },
+    "2319": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        n = int(input())\n        s = input().strip()\n        t = input().strip()\n        operations = 0\n        for i in range(n):\n            if s[i:] != t[i:]:\n                break\n            for j in range(i, n - 1):\n                if s[j + 1:] == t[i:]:\n                    operations += 2\n                    break\n            else:\n                continue\n        print(operations if operations < n else -1)",
+        "result": "failed: testcase 0"
+    },
+    "2121": {
+        "body": "    n, k = map(int, input().split())\n    times = list(map(int, input().split()))\n    edges = []\n    for _ in range(n - 1):\n        u, v = map(int, input().split())\n        edges.append((u, v))\n\n    max_grade = 0\n    for root in range(1, n + 1):\n        visited = [False] * (n + 1)\n        min_time = float('inf')\n        stack = [root]\n        while stack:\n            node = stack.pop()\n            if not visited[node]:\n                visited[node] = True\n                min_time = min(min_time, times[node - 1])\n                for neighbor in edges:\n                    if neighbor[0] == node:\n                        stack.append(neighbor[1])\n                    elif neighbor[1] == node:\n                        stack.append(neighbor[0])\n        max_grade = max(max_grade, min_time)\n\n    print(max_grade)",
+        "result": "failed: testcase 0"
+    },
+    "2617": {
+        "body": "import sys\n    for _ in range(t):\n        n = int(input())\n        day_masses = [1]\n        days = 0\n        while sum(day_masses) < n:\n            new_masses = []\n            for m in day_masses:\n                if m > 2.5:\n                    half_mass = round(m / 2, 10)\n                    new_masses.append(half_mass)\n                    new_masses.append(half_mass)\n                else:\n                    new_masses.append(m + 1)\n            day_masses = new_masses\n            days += 1\n        if sum(day_masses) != n:\n            print(-1)\n        else:\n            print(days)\n            print(' '.join(map(str, day_masses)))\nsolve(int(input()))",
+        "result": "failed: testcase 0"
+    },
+    "175": {
+        "body": "    a, b = map(int, input().split())\n    while a > 0 and b > 0:\n        if a >= 2 * b:\n            a -= 2 * b\n        elif b >= 2 * a:\n            b -= 2 * a\n    print(a, b)",
+        "result": "timed out"
+    },
+    "995": {
+        "body": "import math\n\n    A = [int(x) for x in input().split()]\n    count = [0]*n\n    for k in range(1, n+1):\n        groups = 0\n        for i in range(len(A)):\n            found = False\n            temp = []\n            for j in range(i, len(A)):\n                if math.sqrt(A[j]) % int(math.sqrt(A[i])) == 0:\n                    temp.append(A[j])\n                else:\n                    found = True\n                    break\n            if not found:\n                groups += 1\n        count[k-1] = groups\n    print(' '.join(str(x) for x in count))",
+        "result": "failed: testcase 0"
+    },
+    "582": {
+        "body": "    n = int(input())\n    a = [int(x) for x in input().split()]\n    t = [int(x) for x in input().split()]\n\n    max_a = max(a)\n    max_t = 0\n    for i in range(n):\n        while a[i] > 1:\n            a[i] -= 1\n            max_t += min(t[i], 1)\n\n    return max_t",
+        "result": "timed out"
+    },
+    "1402": {
+        "body": "    count = 0\n    for i in range(10):\n        s = ''\n        w = ''\n        for j in range(n):\n            if template1[j] == '?':\n                s += str(i)\n            else:\n                s += template1[j]\n            if template2[j] == '?':\n                w += str(i)\n            else:\n                w += template2[j]\n        diff1 = 0\n        diff2 = 0\n        for j in range(n):\n            if int(s[j]) > int(w[j]):\n                diff1 = j\n            elif int(s[j]) < int(w[j]):\n                diff2 = j\n        if diff1 != 0 and diff2 != 0:\n            count += 1\n    return count % 1000000007",
+        "result": "failed: testcase 0"
+    },
+    "1141": {
+        "body": "    n, m = map(int, input().split())\n    s = input()\n    for _ in range(m):\n        l, r, c1, c2 = input().split()\n        for i in range(l-1, r):\n            if s[i] == c1:\n                s = s[:i] + c2 + s[i+1:]\n    print(s)",
+        "result": "failed: testcase 0"
+    },
+    "2836": {
+        "body": "    n = int(input())\n    boy_names = list(map(int, input().split()))\n    a, b = map(int, input().split())\n\n    max_distance = 0\n    best_name = 0\n\n    for i in range(a, b+1):\n        if i % 2 != 0:\n            min_distance = float('inf')\n            for boy in boy_names:\n                distance = abs(i - boy)\n                if distance < min_distance:\n                    min_distance = distance\n            if min_distance > max_distance:\n                max_distance = min_distance\n                best_name = i\n\n    print(best_name)",
+        "result": "failed: testcase 2"
+    },
+    "1109": {
+        "body": "    n, k = map(int, input().split())\n    arr = list(map(int, input().split()))\n    changes = 0\n    for i in range(k - 1):\n        if arr[i] != arr[(i + k) % n]:\n            changes += 1\n    print(changes)",
+        "result": "failed: testcase 0"
+    },
+    "2125": {
+        "body": "    n, m = map(int, input().split())\n    flag_count = 0\n    for _ in range(n):\n        row = list(input())\n        top_colors = set()\n        middle_colors = set()\n        bottom_colors = set()\n        for i in range(m):\n            if i < (m-1)//2:\n                top_colors.add(row[i])\n            elif i >= m//2:\n                bottom_colors.add(row[i])\n            else:\n                middle_colors.add(row[i])\n        flag_count += sum(1 for _ in range(n) if len(top_colors) == 1 and len(middle_colors) == 1 and len(bottom_colors) == 1)\n    print(flag_count)",
+        "result": "failed: testcase 0"
+    },
+    "1746": {
+        "body": "    n = int(input())\n    parent = [0] * (n + 1)\n    leaf_count = [0] * (n + 1)\n    \n    for i in range(n - 1):\n        p, c = map(int, input().split())\n        parent[c] = p\n        if c == 1:\n            leaf_count[p] += 1\n    \n    for v in range(2, n + 1):\n        if leaf_count[v] < 3:\n            return \"No\"\n    \n    return \"Yes\"",
+        "result": "failed: testcase 0"
+    },
+    "1294": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        s = input()\n        res = ''\n        for c in set(s):\n            if len([i for i, x in enumerate(s) if x == c]) % 2 == 0:\n                res += c\n        print(res)",
+        "result": "failed: testcase 0"
+    },
+    "1159": {
+        "body": "import sys\n    n = int(input())\n    edges = 0\n    for i in range(2, n):\n        if is_prime(i):\n            edges += i\n            break\n    if not is_prime(edges):\n        print(-1)\n        return\n    degrees = [0] * (n + 1)\n    for i in range(2, n):\n        for j in range(i, n + 1):\n            if is_prime(j) and j != i:\n                edges += 1\n                degrees[i] += 1\n                break\n    while edges < n * (n - 1) // 2 and any(deg % 2 == 0 for deg in degrees[2:]):\n        for i in range(2, n):\n            if is_prime(i) and i != n:\n                for j in range(i + 1, n + 1):\n                    if is_prime(j) and j != i:\n                        edges += 1\n                        degrees[i] += 1\n                        break\n    print(edges)\n    for edge in range(0, edges):\n        u = (edge // ((n * (n - 1)) // 2 - edges)) + 1\n        v = (edge % ((n * (n - 1)) // 2 - edges)) + 1\n        if v > u:\n            print(f\"{u} {v}\")\n    for i in range(2, n):\n        while degrees[i] % 2 == 0:\n            for j in range(i + 1, n + 1):\n                if is_prime(j) and j != i:\n                    edges += 1\n                    degrees[i] += 1\n                    break\n\n    if num < 2:\n        return False\n    for i in range(2, int(num ** 0.5) + 1):\n        if num % i == 0:\n            return False\n    return True",
+        "result": "failed: testcase 0"
+    },
+    "2025": {
+        "body": "    q = int(input())\n    for _ in range(q):\n        n = int(input())\n        if n < 2:\n            print(-1)\n        else:\n            count = 0\n            i = 2\n            while i * i <= n:\n                while n % i == 0:\n                    n //= i\n                    count += 1\n                i += 1\n            if n > 1:\n                count += 1\n            print(count)",
+        "result": "failed: testcase 1"
+    },
+    "1429": {
+        "body": "    N = int(input())\n    S = input()\n    count = 0\n    for i in range(N):\n        for j in range(i+1, N+1):\n            T = S[i:j]\n            complementary = True\n            for k in range(len(T)):\n                if (T[k] == 'A' and T[k].upper() not in ['T', 'G'] or \n                    T[k] == 'T' and T[k].upper() not in ['A', 'C'] or \n                    T[k] == 'C' and T[k].upper() not in ['G', 'P'] or \n                    T[k] == 'G' and T[k].upper() not in ['C']):\n                    complementary = False\n                    break\n            if complementary:\n                count += 1\n    print(count)",
+        "result": "failed: testcase 0"
+    },
+    "1950": {
+        "body": "    n = int(input())\n    balls = [int(x) for x in input().split()]\n    total_penalty = 0\n    k = 3\n    \n    while len(balls) > 0:\n        max_ball = max(balls)\n        total_penalty += max_ball\n        balls = [ball - 1 for ball in balls if ball > 0]\n        \n        empty_boxes = min(n, len(balls))\n        n -= empty_boxes\n        \n        for _ in range(empty_boxes):\n            balls.append(k)\n            k = (k % 3) + 1\n    \n    return total_penalty",
+        "result": "timed out"
+    },
+    "631": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        n, m = map(int, input().split())\n        a = list(map(int, input().split()))\n        total = 0\n        for i in range(n):\n            for j in range(i+1, n+1):\n                total += a[j-1] / j\n        if total == m:\n            print(\"YES\")\n        else:\n            print(\"NO\")",
+        "result": "failed: testcase 0"
+    },
+    "2480": {
+        "body": "    n, k = map(int, input().split())\n    a = list(map(int, input().strip().split()))\n    count = 0\n    for i in range(n):\n        for j in range(i+1, n+1):\n            subseq_sum = sum(a[i:j])\n            if subseq_sum % k == len(range(i,j)):\n                count += 1\n    print(count)",
+        "result": "passed"
+    },
+    "2363": {
+        "body": "    n = int(input())\n    for _ in range(n):\n        a, b = map(int, input().split())\n        operations = 0\n        while a > 0 and b > 0:\n            if a <= b:\n                b -= a\n            else:\n                a -= b\n            operations += 1\n        print(operations)",
+        "result": "timed out"
+    },
+    "909": {
+        "body": "    a = int(input())\n    b = int(input())\n    c = int(input())\n\n    for op1 in ['+', '*']:\n        for op2 in ['+', '*']:\n            if op1 == '+':\n                expression = str(a) + op1 + str(b) + op2 + str(c)\n            else:\n                expression = str(a) + op1 + str(b * c)\n\n            try:\n                max_value = eval(expression)\n            except Exception as e:\n                continue\n\n            print(max_value)",
+        "result": "failed: testcase 0"
+    },
+    "154": {
+        "body": "    MOD = 998244353\n    dp = [[0] * (n + 1) for _ in range(2)]\n    dp[0][0] = 1\n    for i in range(1, n + 1):\n        for j in range(i + 1):\n            if i % 2 == 1:\n                dp[i % 2][j] += dp[(i - 1) % 2][j]\n            else:\n                dp[i % 2][j] = dp[(i - 1) % 2][j - 1] + dp[(i - 1) % 2][j]\n        for j in range(i, n):\n            if i % 2 == 0:\n                dp[i % 2][j] += dp[(i - 1) % 2][j - 1]\n            else:\n                dp[i % 2][j] = dp[(i - 1) % 2][j - 1]\n    return (dp[n % 2][n] + MOD - 1) % MOD",
+        "result": "failed: testcase 0"
+    },
+    "39": {
+        "body": "    max_length = 0\n    for l in range(len(s)):\n        for r in range(l + 1, len(s) + 1):\n            substring = s[l:r]\n            if not is_palindrome(substring):\n                max_length = max(max_length, r - l)\n    print(max_length)\n\n    for i in range(len(s) // 2):\n        if s[i] != s[-i - 1]:\n            return False\n    return True",
+        "result": "failed: testcase 0"
+    },
+    "1885": {
+        "body": "    n = int(input())\n    total = 0\n    for i in range(5, min(n + 1, 8)):\n        total += 1\n        for j in range(i + 1, min(n + 1, i + 7) + 1):\n            total += 1\n    print(total)",
+        "result": "failed: testcase 0"
+    },
+    "1180": {
+        "body": "    n, k = map(int, input().split())\n    nums = list(map(int, input()))\n    total = 0\n    for i in range(k):\n        for j in range(i + 1, n - k + i + 1):\n            if str(nums[j]).startswith('0') or j == 0:\n                continue\n            new_num = int(str(nums[:j]) + '+' + str(nums[j:]))\n            total += new_num\n    print(total % (10**9 + 7))",
+        "result": "failed: testcase 0"
+    },
+    "1856": {
+        "body": "    n = int(input())\n    password_set = set()\n    \n    for _ in range(n):\n        s = input()\n        password_set.add(s)\n        \n    count_dict = {}\n    \n    for s in password_set:\n        for other_s in password_set:\n            if other_s != s and all(c in other_s for c in s):\n                count_dict[s] = count_dict.get(s, 0) + 1\n    \n    return len(count_dict)",
+        "result": "failed: testcase 0"
+    },
+    "522": {
+        "body": "    n, f1, f2, f3, c = map(int, input().split())\n    fn = 1\n    for i in range(4, n + 1):\n        fn = (fn * f3) % (10**9 + 7)\n        if i == 4:\n            fn *= pow(c, 2 * i - 12, 10**9 + 7) * f1 * f2\n        else:\n            fn *= pow(c, 2 * i - 6, 10**9 + 7) * f1\n    print(fn)",
+        "result": "timed out"
+    },
+    "1719": {
+        "body": "    MOD = 10**9 + 7\n    ans = 1\n    for _ in range(3, n+1):\n        ans *= 4\n        ans %= MOD\n    return (ans * (ans - 3)) % MOD",
+        "result": "failed: testcase 0"
+    },
+    "1842": {
+        "body": "import math\n\n    a, b, c = map(int, input().split())\n    d = b**2 - 4*a*c\n    x1 = (-b + math.sqrt(d)) / (2*a)\n    x2 = (-b - math.sqrt(d)) / (2*a)\n    print(max(x1, x2))\n    print(min(x1, x2))",
+        "result": "passed"
+    },
+    "806": {
+        "body": "    n, l, r = map(int, input().split())\n    res = 0\n    for i in range(l, r+1):\n        if sum(range(i, i+n)) % 3 == 0:\n            res += 1\n    print(res % (10**9 + 7))",
+        "result": "timed out"
+    },
+    "365": {
+        "body": "    n, x = map(int, input().split())\n    a = list(map(int, input().split()))\n    if len(a) != n:\n        return \"NO\"\n    count = 1\n    prev = a[0]\n    for i in range(1, n):\n        curr = a[i]\n        if curr < prev or curr == 0:\n            count += 1\n            prev = curr\n        elif curr > prev:\n            return \"NO\"\n    if x != sum(a) + 1:\n        return \"NO\"\n    print(\"YES\" if count == 1 else \"NO\")",
+        "result": "failed: testcase 0"
+    },
+    "1158": {
+        "body": "    n, k = map(int, input().split())\n    utensils = list(map(int, input().split()))\n    utensils.sort()\n    max_ones = 0\n    for i in range(n):\n        ones = 1\n        while i + ones <= n and utensils[i] == utensils[i+ones-1]:\n            ones += 1\n        max_ones = max(max_ones, ones)\n    return k * (max_ones - 1) + len(set(utensils))",
+        "result": "failed: testcase 0"
+    },
+    "33": {
+        "body": "    a1, b1, a2, b2, L, R = map(int, input().split())\n    count = 0\n    for k in range((R - b1) // a1 + 1):\n        for l in range((L - b2) // a2 + 1):\n            if (a1 * k + b1 == a2 * l + b2) and L <= a1 * k + b1 <= R:\n                count += 1\n    print(count)",
+        "result": "timed out"
+    },
+    "2498": {
+        "body": "    n, m = map(int, input().split())\n    a = [int(x) for x in input().split()]\n    \n    count = 0\n    for i in range(1, m+1):\n        is_semi_common = False\n        for j in range(n):\n            if i % (a[j] * 0.5) == 0:\n                is_semi_common = True\n                break\n        if is_semi_common:\n            count += 1\n    \n    print(count)",
+        "result": "timed out"
+    },
+    "2309": {
+        "body": "    n = int(input())\n    words = [input().lower() for _ in range(n)]\n    vowels = 'aeiou'\n    beautiful_count = 0\n    for i in range(n):\n        for j in range(i+1, n):\n            lyric1 = ' '.join([words[i], words[j]])\n            vowel_count1 = sum(1 for char in lyric1 if char in vowels)\n            first_word_vowels = sum(1 for char in words[i] if char in vowels)\n            second_word_vowels = sum(1 for char in words[j] if char in vowels)\n            last_vowel_index1 = len(lyric1) - 1\n            while lyric1[last_vowel_index1].lower() not in vowels:\n                last_vowel_index1 -= 1\n            last_vowel_index2 = len(lyric1.rsplit(' ', 1)[0]) - 1\n            while lyric1.rsplit(' ', 1)[0][last_vowel_index2].lower() not in vowels:\n                last_vowel_index2 -= 1\n            if first_word_vowels == second_word_vowels and last_vowel_index1 == last_vowel_index2:\n                beautiful_count += 1\n    print(beautiful_count)\n    for i in range(min(n, beautiful_count)):\n        lyric = ' '.join([words[i*2], words[i*2+1]])\n        print(lyric)",
+        "result": "failed: testcase 0"
+    },
+    "1326": {
+        "body": "    N = int(input())\n    total = 0\n    for k in range(1, N+1):\n        divisor_sum = 1\n        for i in range(2, int(k**0.5) + 1):\n            if k % i == 0:\n                j = k // i\n                while j >= i and j * i == k:\n                    j //= i\n                    i -= 1\n                divisor_sum += 2 * (i <= j)\n        total += k * divisor_sum\n    print(total)",
+        "result": "timed out"
+    },
+    "2950": {
+        "body": "import sys\n\n    n = int(input())\n    heights = list(map(int, input().split()))\n    count = 0\n    x = 1\n    while True:\n        for i in range(n):\n            if heights[i] > x:\n                count += 1\n                heights[i] -= x\n            elif heights[i] == x:\n                heights[i] = 0\n        non_zero = sum(1 for height in heights if height)\n        if not non_zero:\n            break\n        x += 1\n\n    return count",
+        "result": "timed out"
+    },
+    "1983": {
+        "body": "    n = int(input())\n    a = list(map(int, input().split()))\n    dp = [1] * n\n    for i in range(1, n):\n        for j in range(i):\n            if a[i] > a[j]:\n                dp[i] = max(dp[i], dp[j] + 1)\n    return max(dp)",
+        "result": "failed: testcase 0"
+    },
+    "1767": {
+        "body": "    n = int(input())\n    a = [int(x) for x in input().split()]\n    b = [int(x) for x in input().split()]\n    max_sum = 0\n    for l in range(1, n + 1):\n        for r in range(l, n + 1):\n            cur_sum = 0\n            for i in range(l - 1, r):\n                cur_sum += a[i] | b[i]\n            if cur_sum > max_sum:\n                max_sum = cur_sum\n    print(max_sum)",
+        "result": "failed: testcase 0"
+    },
+    "2382": {
+        "body": "    n = int(input())\n    s = list(map(int, input().split()))\n    slime_healths = [1]\n    \n    for _ in range(n):\n        slime_healths.append(slime_healths[-1] - 1)\n        \n    if sorted(slime_healths) == s:\n        print(\"Yes\")\n    else:\n        print(\"No\")",
+        "result": "failed: testcase 0"
+    },
+    "3907": {
+        "body": "    q_w = []\n    for _ in range(m):\n        q, w = map(int, input().split())\n        q_w.append((q, w))\n    q_set = set([i[0] for i in q_w])\n    max_payment = 0\n    for i in range(1, n+1):\n        for j in range(i-1, -1, -1):\n            if j not in q_set:\n                break\n            max_payment += min(i-j, j)\n    return max_payment",
+        "result": "failed: testcase 0"
+    },
+    "3676": {
+        "body": "    R, C = map(int, input().split())\n    ways = 0\n    \n    for i in range(R):\n        for j in range(C):\n            if (i == 0 or i == R - 1) and (j == 0 or j == C - 1):\n                continue\n            elif i == 0:\n                ways += C - 2\n            elif i == R - 1:\n                ways += C - 2\n            else:\n                ways += 2\n    \n    print(ways + 1)",
+        "result": "failed: testcase 0"
+    },
+    "3293": {
+        "body": "    n = int(input())\n    max_profit = 0\n    \n    for _ in range(n):\n        f, p, m, s = map(int, input().split())\n        \n        for _ in range(s):\n            if m > p:\n                max_profit += m - p",
+        "result": "failed: testcase 0"
+    },
+    "3587": {
+        "body": "    N = int(input())\n    taboo_strings = []\n    for _ in range(N):\n        taboo_strings.append(input())\n\n    max_length = 0\n    max_clue = \"\"\n    for length in range(1, 200000):\n        clue = \"1\" * (length - 1) + \"0\"\n        is_valid = True\n        for taboo_string in taboo_strings:\n            if taboo_string in clue:\n                is_valid = False\n                break\n        if is_valid and len(clue) > max_length:\n            max_length = len(clue)\n            max_clue = clue\n\n    print(max_clue if max_clue else -1)",
+        "result": "timed out"
+    },
+    "3530": {
+        "body": "    N = int(input())\n    fun_coefficients = []\n    for _ in range(N):\n        a, b, t = map(int, input().split())\n        fun_coefficients.append((a - (t-1)**2 * b, a, b, t))\n    \n    Q = int(input())\n    max_funs = []\n    for _ in range(Q):\n        T = int(input())\n        total_fun = 0\n        for i in range(N):\n            a, b, t = fun_coefficients[i]\n            k = (T - 1) // t + 1\n            if k <= 1:\n                total_fun += a\n            else:\n                total_fun += a - (k-1)**2 * b\n                break\n        max_funs.append(total_fun)\n    \n    for fun in max_funs:\n        print(fun)",
+        "result": "failed: testcase 0"
+    },
+    "3900": {
+        "body": "    n, p = map(int, input().split())\n    suspects = set()\n    for _ in range(n):\n        x, y = map(int, input().split())\n        suspects.add(x)\n        suspects.add(y)\n    return sum((1 << len(suspects)) - 2**i for i in range(p+1) if len(set(x.union({i})) for x in combinations(suspects, i)))",
+        "result": "failed: testcase 0"
+    },
+    "3996": {
+        "body": "    p = 1\n    q = 1\n    for i in range(1, k + 1):\n        if i == 1:\n            continue\n        p *= (a[i - 1] * 2 - 1)\n        q *= a[i - 1]\n    g = lambda x: 1 if x % (10**9 + 7) == 0 else x % (10**9 + 7)\n    print(f\"{g(p)}/{g(q)}\")",
+        "result": "failed: testcase 0"
+    },
+    "3276": {
+        "body": "import sys\n\n    board = [['W' for _ in range(m)] for _ in range(n)]\n    for i in range(n):\n        for j in range(m):\n            if board[i][j] != 'W':\n                return 'NO'\n    stamp = [['R', 'R', 'R'],\n             ['R', 'G', 'B'],\n             ['R', 'B', 'G']]\n    for i in range(0, n-2, 1):\n        for j in range(0, m-2, 1):\n            if ''.join(board[i][j:j+3]) == ''.join([stamp[k][l] for k in range(3) for l in range(3)]):\n                return 'YES'\n    return 'NO'\n\nn, m = [int(x) for x in sys.stdin.readline().split()]\nfor _ in range(n):\n    sys.stdin.readline()\nprint(can_reproduce(n, m))",
+        "result": "failed: testcase 0"
+    },
+    "3834": {
+        "body": "    a = [list(map(int, input().split())) for _ in range(n)]\n    count = 0\n    for i in range(n):\n        for j in range(m):\n            seen = set()\n            for x in range(max(0, i-1), min(n, i+2)):\n                for y in range(max(0, j-1), min(m, j+2)):\n                    if (x, y) not in seen:\n                        seen.add((x, y))\n                        if a[x][y] != a[i][j]:\n                            count += 1\n    return -1 if count > k else count",
+        "result": "failed: testcase 0"
+    },
+    "3012": {
+        "body": "    MOD = 1000000007\n    total = 1\n    for i in range(N):\n        if i % 3 == 0:\n            total *= (a11 + a12) * (a21 + a22)\n        elif i % 3 == 1:\n            total *= min(a11, a21) * min(a12, a22)\n        else:\n            total *= max(a11, a21) * max(a12, a22)\n        total %= MOD\n    return total",
+        "result": "failed: testcase 0"
+    },
+    "3745": {
+        "body": "    n, m = map(int, input().split())\n    graph = {}\n    for _ in range(m):\n        u, v = map(int, input().split())\n        if u not in graph:\n            graph[u] = set()\n        if v not in graph:\n            graph[v] = set()\n        graph[u].add(v)\n        graph[v].add(u)\n\n    for i in range(1, n+1):\n        adjacent = {'a': 'b', 'b': 'c'}\n        result = [chr(ord('a') + (i-1) % 3)]\n        for j in range(1, n):\n            if {i-1, i} & graph[j]:\n                if result[-1] == 'a' and adjacent['a'] != chr(ord('b')):\n                    result.append(chr(ord('c')))\n                elif result[-1] == 'b' and adjacent['b'] != chr(ord('c')):\n                    result.append(chr(ord('a')))\n                else:\n                    result.append(adjacent[result[-1]])\n            else:\n                if result[-1] == 'a':\n                    result.append('b')\n                elif result[-1] == 'b':\n                    result.append('c')\n        print(\"Yes\" if len(result) == n and ''.join(result) not in {'aa', 'bb', 'cc'} else \"No\")\n        print(''.join(result))",
+        "result": "failed: testcase 0"
+    },
+    "3028": {
+        "body": "    n, m, p = map(int, input().split())\n    board = [list(map(int, input().split())) for _ in range(n)]\n    moves = []\n    for _ in range(p * m * n):\n        changed = False\n        for i in range(n):\n            for j in range(m):\n                if board[i][j] < p:\n                    board[i][j] += 1\n                    changed = True\n        if not changed:\n            break\n    if any(all(x == p for x in row) for row in board):\n        print(len(moves) + 1)\n        current_move = 0\n        for i in range(n):\n            for j in range(m):\n                while board[i][j] < p:\n                    moves.append(current_move)\n                    board[i][j] = (board[i][j] - 1) % p + 1\n                    current_move += 1\n    else:\n        print(-1)",
+        "result": "failed: testcase 0"
+    },
+    "3196": {
+        "body": "    n, m = map(int, input().split())\n    roads = set()\n    for _ in range(m):\n        a, b = map(int, input().split())\n        roads.add(frozenset([a, b]))\n    visited = [False] * (n + 1)\n    paths = set()\n    for road in roads:\n        if road.issubset({1, 2}):\n            continue\n        a, b = min(road), max(road)\n        if not visited[a]:\n            my_stack = [a]\n            while my_stack:\n                node = my_stack.pop()\n                if node == b:\n                    paths.add(frozenset(my_stack + [node]))\n                    break\n                for neighbor in road - {node}:\n                    if not visited[neighbor]:\n                        my_stack.append(neighbor)\n                        visited[neighbor] = True\n    print(len(paths))",
+        "result": "failed: testcase 1"
+    },
+    "3405": {
+        "body": "    X_int = int(1000*X)\n    if X_int == 0:\n        return \"No solution\"\n    result = []\n    for i in range(10**7+1):\n        num_str = str(i)\n        digit = num_str[0]\n        new_num_str = digit + num_str[1:]\n        new_num = int(new_num_str)\n        if round(float(num_str)*X) == new_num:\n            result.append(int(i))\n    return [str(x) for x in sorted(result)]",
+        "result": "failed: testcase 0"
+    },
+    "3126": {
+        "body": "    jump_len = [0] * n\n    for i in range(1, n):\n        jump_len[i] = i\n\n    jumps = 0\n    pos = list(map(int, input().split()))\n    for _ in range(c):\n        cmd = input().strip()\n        if cmd.startswith('t'):\n            t = int(cmd[2:])\n            break\n        elif cmd.startswith('+'):\n            new_frog = len(pos)\n            pos.insert(0, 0)\n            jumps += sum(range(len(jump_len), -1, -1))\n            for i in range(n):\n                jump_len[i] += 1\n        else:\n            to_remove = int(cmd[2:])\n            if to_remove < n:\n                pos.pop(to_remove)\n                jumps += len(pos) - to_remove\n\n    jumps += sum(range(len(jump_len), t, -1))\n    print(sum(jump_len[:n-1]) + (t - 1))",
+        "result": "failed: testcase 0"
+    },
+    "3279": {
+        "body": "import sys\n\n    vertical = [list(input().split()) for _ in range(n)]\n    horizontal = [list(input().split()) for _ in range(n)]\n\n    solution = [['0' for _ in range(n+1)] for _ in range(n)]\n    for i, row in enumerate(vertical):\n        for j, group in enumerate(map(int, row)):\n            if group > 0:\n                for k in range(1, group+1):\n                    if k < len(row) and (k == 0 or row[k-1] == '0') and (k == len(row)-1 or row[k] == '0'):\n                        solution[i][j] = '1'\n                        break\n\n    for i, col in enumerate(map(int, input().split())):\n        if col > 0:\n            for k in range(1, col+1):\n                if k < len(horizontal) and (k == 0 or horizontal[k-1][i] == '0') and (k == len(horizontal)-1 or horizontal[k][i] == '0'):\n                    solution[i][n] = '1'\n                    break\n\n    for row in solution:\n        print(''.join(row))",
+        "result": "failed: testcase 0"
+    },
+    "3599": {
+        "body": "import sys\n\n    schedule = [0] * N\n    current_time = 0\n    for i in range(N):\n        while current_time < breaks[i]:\n            schedule[i] += 1\n            current_time += 1\n        if current_time + breaks[i] > T:\n            break\n        schedule[i] += breaks[i]\n        current_time += breaks[i]\n    return ' '.join(map(str, schedule))\n\nT = int(input())\nN = int(input())\nbreaks = list(map(int, input().split()))\nprint(the_drinking_musicians(T, N, breaks))",
+        "result": "failed: testcase 0"
+    },
+    "3687": {
+        "body": "    n, q, s = map(int, input().split())\n    queue_sizes = list(map(int, input().split()))\n    sensor_to_queue = list(map(int, input().split()))\n    downlink_windows = [list(map(int, input().split())) for _ in range(n)]\n    \n    for i in range(q):\n        queue_sizes[i] -= sum(a[j] for j in range(s) if sensor_to_queue[j] == i + 1)\n    \n    possible = True\n    remaining_data = 0\n    for window in downlink_windows:\n        d, *data = window\n        needed_space = sum(data)\n        if queue_sizes[sensor_to_queue[i] - 1] >= data[i] and queue_sizes[i] <= queue_sizes[i]:\n            queue_sizes[i] -= data[i]\n        else:\n            possible = False\n            remaining_data += sum(data)\n    \n    print(\"possible\" if possible and sum(queue_sizes) == 0 else \"impossible\")",
+        "result": "failed: testcase 0"
+    },
+    "3864": {
+        "body": "    n = int(input())\n    expected_values = [0, 1, 0, 2, 1, 3, 2, 3]\n    for _ in range(n):\n        print(sum(expected_values) // len(expected_values)) % 998244353",
+        "result": "failed: testcase 0"
+    },
+    "3504": {
+        "body": "    D, S = map(int, input().split())\n    sensors = []\n    for _ in range(S):\n        x1, x2, y = map(int, input().split())\n        sensors.append((x1, x2, y))\n    droplets = []\n    for _ in range(D):\n        x, y = map(int, input().split())\n        droplets.append((x, y))\n    \n    result = []\n    for d in droplets:\n        hit = False\n        for s in sensors:\n            if s[0] <= d[0] <= s[1]:\n                result.append(s[2])\n                hit = True\n                break\n        if not hit:\n            result.append(0)\n    \n    print(*result, sep='\\n')",
+        "result": "failed: testcase 0"
+    },
+    "3451": {
+        "body": "    balance = 0\n    effort = [c for c in costs]\n    \n    for i in range(k+1):\n        moves = 0\n        open_parentheses = 0\n        close_parentheses = 0\n        \n        for j in range(len(seq)):\n            if seq[j] == '(':\n                open_parentheses += 1\n            elif seq[j] == ')':\n                close_parentheses += 1\n            \n            if (open_parentheses > close_parentheses and i % 2 != 0) or (close_parentheses > open_parentheses and i % 2 == 0):\n                moves += effort[j]\n        \n        balance = moves\n        if moves <= k:\n            return int(balance)\n    return '?'",
+        "result": "failed: testcase 0"
+    },
+    "3156": {
+        "body": "    N = int(input())\n    K = int(input())\n    stores = {}\n    for _ in range(K):\n        store_index, item_name = map(str, input().split())\n        if store_index not in stores:\n            stores[store_index] = set()\n        stores[store_index].add(item_name)\n    \n    M = int(input())\n    items = [input() for _ in range(M)]\n    \n    for i in range(M-1):\n        item1 = items[i]\n        item2 = items[i+1]\n        found = False\n        for store_index, items_in_store in stores.items():\n            if item1 in items_in_store and item2 in items_in_store:\n                print(\"ambiguous\")\n                return\n        if not any(item1 in items_in_store and item2 not in items_in_store for items_in_store in stores.values()):\n            print(\"impossible\")\n            return\n    print(\"unique\")",
+        "result": "failed: testcase 0"
+    },
+    "3697": {
+        "body": "    n, k, m, a = map(int, input().split())\n    g = list(map(int, input().split()))\n    elected = [3] * n\n    for i in range(k):\n        if g[a - 1] == i + 1:\n            elected[i] = 1\n        else:\n            elected[i] = 2\n        a -= 1\n    return ' '.join(str(x) for x in elected)",
+        "result": "failed: testcase 0"
+    },
+    "3647": {
+        "body": "    C, R = map(int, input().split())\n    maze = [list(input()) for _ in range(R)]\n    goal_x, goal_y = None, None\n    for i in range(R):\n        for j in range(C):\n            if maze[i][j] == 'M':\n                goal_x, goal_y = j, i\n                break\n        if goal_x is not None:\n            break\n\n    min_moves = [[0]*C for _ in range(R)]\n    moves = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # right, left, down, up\n    queue = [(goal_y, goal_x, 0)]\n\n    while queue:\n        y, x, count = queue.pop(0)\n        if min_moves[y][x] > count or min_moves[y][x] == -1:\n            for dx, dy in moves:\n                ny, nx = y + dy, x + dx\n                if (0 <= ny < R) and (0 <= nx < C):\n                    if maze[ny][nx] == '#':\n                        break\n                    elif maze[ny][nx] == '_':\n                        queue.append((ny, nx, count + 1))\n                    else:\n                        min_moves[ny][nx] = count + 1\n                        queue.append((ny, nx, count + 1))\n                else:\n                    break\n\n    for i in range(R):\n        for j in range(C):\n            if maze[i][j] == '_':\n                for dx, dy in moves:\n                    ny, nx = i + dy, j + dx\n                    if (0 <= ny < R) and (0 <= nx < C):\n                        if maze[ny][nx] == 'M':\n                            min_moves[i][j] = count + 1\n                            break\n                    else:\n                        break\n\n    for line in min_moves:\n        print(' '.join(map(str, line)))",
+        "result": "failed: testcase 0"
+    },
+    "3699": {
+        "body": "import math\n\n    a_x, a_y, b_x, b_y, t_x, t_y = map(int, input().split())\n    n = int(input())\n\n    bottles = []\n    for _ in range(n):\n        x, y = map(int, input().split())\n        bottles.append((x, y))\n\n    min_distance = float('inf')\n    \n    for bottle in bottles:\n        adil_dist = abs(bottle[0] - a_x) + abs(bottle[1] - a_y)\n        bera_dist = abs(bottle[0] - b_x) + abs(bottle[1] - b_y)\n\n        total_distance = adil_dist + bera_dist\n        min_distance = min(min_distance, total_distance)\n\n    print(min_distance)",
+        "result": "failed: testcase 0"
+    },
+    "3145": {
+        "body": "    X, A, B = map(int, input().split())\n    allowed_digits = set(input())\n    count = 0\n    for i in range(A, B+1):\n        is_multiple = True\n        temp = i\n        while temp > 0:\n            digit = temp % 10\n            if str(digit) not in allowed_digits:\n                is_multiple = False\n                break\n            temp //= 10\n        if is_multiple:\n            count += 1\n    print(count)",
+        "result": "timed out"
+    },
+    "3795": {
+        "body": "    bills = [1, 2, 5, 10, 20, 50, 100]\n    euro_bills = [5, 10, 20, 50, 100, 200]\n\n    for bill in bills:\n        if d * bill <= n:\n            n -= d * bill\n        else:\n            break\n\n    for bill in euro_bills:\n        if e * bill <= n:\n            n -= e * bill\n        else:\n            break\n\n    return n",
+        "result": "failed: testcase 0"
+    },
+    "3353": {
+        "body": "from collections import deque, defaultdict\n\n    P, R, L = map(int, input().split())\n    graph = defaultdict(list)\n    for _ in range(L):\n        e1, e2 = map(int, input().split())\n        if e1 == -2:\n            graph[e2].append(-1)\n        elif e2 == -1:\n            graph[e1].append(-1)\n        else:\n            graph[e1].append(e2)\n            graph[e2].append(e1)\n\n    visited = set()\n    queue = deque([(0, 0)])\n    time = 0\n    while queue:\n        for _ in range(len(queue)):\n            person, location = queue.popleft()\n            if location not in visited:\n                visited.add(location)\n                for neighbor in graph[location]:\n                    if neighbor == -1:\n                        return time + P\n                    queue.append((person + 1, neighbor))\n        time += 1\n    n = len(visited) - R\n    print(n if n > 0 else \"minimum total time: {}\".format(time))",
+        "result": "failed: testcase 0"
+    },
+    "3065": {
+        "body": "    N = int(input())\n    L = int(input())\n    walk = list(map(int, input().split()))\n    neighbours = [list(map(int, input().split())) for _ in range(N)]\n    \n    current_room = 0\n    sentry_room = -1\n    for _ in range(L):\n        if walk[_] == current_room:\n            current_room = (current_room + 1) % N\n        else:\n            current_room = walk[_]\n        \n        if len(neighbours[current_room]) > 0 and random.random() < 0.5:\n            current_room = random.choice(neighbours[current_room])\n    \n    return 1 / (2 ** L)",
+        "result": "failed: testcase 0"
+    },
+    "3250": {
+        "body": "    b, d = map(int, input().split())\n    for m in range(1, d):\n        if f(b, m) % d == 0:\n            return \"yes\"\n    return \"no\"\n\n    n = 0\n    a = 1\n    while True:\n        n += a * (b ** m)\n        if a >= d:\n            break\n        a *= b\n    return n - ((a // d) * (b ** m)) + (f(a % d, m-1) if m > 0 else 0)\n\nprint(is_valid_divisibility_hack())",
+        "result": "failed: testcase 0"
+    },
+    "3306": {
+        "body": "    n, m = map(int, input().split())\n    calls = []\n    for _ in range(n):\n        p, c = map(int, input().split())\n        calls.append((p, c))\n    \n    calls.sort()\n    i, total_calls = 0, 0\n    while i < len(calls) - 1:\n        p1, c1 = calls[i]\n        p2, c2 = calls[i + 1]\n        \n        if p1 <= m // 2 and p2 >= m // 2:\n            total_calls += (c2 - c1)\n        else:\n            total_calls += min(c1, c2)\n        \n        i += 1\n    \n    return total_calls",
+        "result": "failed: testcase 0"
+    },
+    "3970": {
+        "body": "    n, k = map(int, input().split())\n    arr = list(map(int, input().split()))\n    arr.sort()\n    subset_size = 0\n    for i in range(n):\n        multiple_free = True\n        for j in range(i):\n            if (arr[i] % k) == (arr[j] // k) and arr[i] > arr[j]:\n                multiple_free = False\n                break\n        if multiple_free:\n            subset_size += 1\n    return subset_size",
+        "result": "failed: testcase 0"
+    },
+    "3655": {
+        "body": "    w, h = map(int, input().split())\n    robot_pixels = []\n    for _ in range(h):\n        row = list(map(int, input().split()))\n        robot_pixels.append(row)\n    \n    floor_pixels = []\n    for _ in range(h):\n        row = list(map(int, input().split()))\n        floor_pixels.append(row)\n    \n    max_matches = 0\n    candidates = []\n    for y in range(h):\n        for x in range(w):\n            matches = sum(p == q for p, q in zip(robot_pixels[y], floor_pixels[y]))\n            if matches > max_matches:\n                max_matches = matches\n                candidates = [(x, y)]\n            elif matches == max_matches:\n                candidates.append((x, y))\n    return '\\n'.join(map(str, sorted(candidates)))",
+        "result": "failed: testcase 0"
+    },
+    "3589": {
+        "body": "    count = [0] * 10\n    for x in range(L, R + 1):\n        product = 1\n        temp = x\n        while temp > 0:\n            digit = temp % 10\n            if digit != 0:\n                product *= digit\n            temp //= 10\n        remainder = (product // 10) % 10\n        count[remainder] += 1\n    for i in range(9):\n        print(count[i], end=' ')\n    print()",
+        "result": "failed: testcase 0"
+    },
+    "3257": {
+        "body": "import math\n\n    a, b, c = map(float, input().split())\n    side_length = min(a, b, c)\n    if side_length <= 0:\n        return -1\n    area = (side_length ** 2) * math.sqrt(3) / 4\n    print(\"{:.6f}\".format(area))",
+        "result": "failed: testcase 0"
+    },
+    "3927": {
+        "body": "import math\n\n    n = int(input())\n    masses = list(map(int, input().split()))\n    \n    total_mass = sum(masses)\n    k_values = [0] * (total_mass + 1)\n    \n    for mass in masses:\n        for i in range(total_mass, mass - 1, -1):\n            k_values[i] = max(k_values[i], k_values[i - mass] + 1)\n    \n    return k_values[total_mass]",
+        "result": "failed: testcase 0"
+    },
+    "3319": {
+        "body": "import sys\n\n    n_x, n_y, n_z = map(int, [i for i in sys.stdin.readline().split()])\n    planetoids = []\n    for _ in range(n):\n        m, x, y, z, vx, vy, vz = map(int, [i for i in sys.stdin.readline().split()])\n        planetoids.append((m, (x, y, z), (vx, vy, vz)))\n    \n    planetoids.sort(key=lambda p: p[0], reverse=True)\n    \n    collisions = True\n    time = 0\n    while collisions:\n        collisions = False\n        new_planetoids = []\n        for i, p in enumerate(planetoids):\n            px, py, pz = p[1]\n            vx, vy, vz = p[2]\n            if (px >= n_x-1) or (px % n_x == 0):\n                px %= n_x\n            if (py >= n_y-1) or (py % n_y == 0):\n                py %= n_y\n            if (pz >= n_z-1) or (pz % n_z == 0):\n                pz %= n_z\n            \n            for j, q in enumerate(planetoids[i+1:], i+1):\n                qx, qy, qz = q[1]\n                qvx, qvy, qvz = q[2]\n                if (qx >= n_x-1) or (qx % n_x == 0):\n                    qx %= n_x\n                if (qy >= n_y-1) or (qy % n_y == 0):\n                    qy %= n_y\n                if (pz >= n_z-1) or (pz % n_z == 0):\n                    pz %= n_z\n                if (px == qx and py == qy and pz == qz):\n                    m1, m2 = p[0], q[0]\n                    vx1, vy1, vz1 = p[2]\n                    vx2, vy2, vz2 = q[2]\n                    new_mass = m1 + m2\n                    new_vx = (vx1 + vx2) // 2\n                    new_vy = (vy1 + vy2) // 2\n                    new_vz = (vz1 + vz2) // 2\n                    planetoids.pop(i)\n                    planetoids.pop(j-1)\n                    planetoids.insert(0, (new_mass, (px, py, pz), (new_vx, new_vy, new_vz)))\n                    collisions = True\n                    break\n            else:\n                new_planetoids.append((m, (px, py, pz), (vx, vy, vz)))\n        planetoids = new_planetoids\n    \n    p = len(planetoids)\n    \n    print(p)\n    \n    for i, p in enumerate(sorted(planetoids)):\n        m, loc, vel = p\n        px, py, pz = loc\n        vx, vy, vz = vel\n        if (px >= n_x-1) or (px % n_x == 0):\n            px %= n_x\n        if (py >= n_y-1) or (py % n_y == 0):\n            py %= n_y\n        if (pz >= n_z-1) or (pz % n_z == 0):\n            pz %= n_z\n        \n        print(f\"P{i}: {m} {px} {py} {pz} {vx} {vy} {vz}\")",
+        "result": "failed: testcase 0"
+    },
+    "3009": {
+        "body": "    n = int(input())\n    line_coords = []\n    total_energy = 0\n    \n    for _ in range(n):\n        x, y, energy = map(int, input().split())\n        \n        if energy > 0:\n            line_coords.append((x, y))\n            total_energy += energy\n        else:\n            total_energy += energy\n            \n    if total_energy == 0:\n        print(\"IMPOSSIBLE\")\n        return\n        \n    x_coords = [coord[0] for coord in line_coords]\n    y_coords = [coord[1] for coord in line_coords]\n    \n    min_x, max_x = min(x_coords), max(x_coords)\n    min_y, max_y = min(y_coords), max(y_coords)\n    \n    length = 2 * (max_x - min_x) + 2 * (max_y - min_y)\n    \n    print(\"{:.6f}\".format(length))",
+        "result": "failed: testcase 0"
+    },
+    "3896": {
+        "body": "    n = int(input(), 2)\n    complexity = 0\n    for i in range(n):\n        j = i ^ n - 1\n        for k in range(i + 1, n):\n            l = k ^ n - 1\n            if i < k and (i ^ j) > (k ^ l):\n                complexity += 1\n    print(complexity % 1000000007)",
+        "result": "timed out"
+    },
+    "3509": {
+        "body": "    a, b = map(int, input().split())\n    n, m = map(int, input().split())\n    roads = []\n    for _ in range(m):\n        u, v, t = map(int, input().split())\n        roads.append((u-1, v-1, t))\n    roads.sort(key=lambda x: x[2])\n    waiting_time = 0\n    total_travel_time = 0\n    last_intersection = 0\n    for road in roads:\n        u, v, t = road\n        if u > last_intersection:\n            waiting_time += (u - last_intersection) * (b - a)\n        total_travel_time += t\n        last_intersection = v\n    return min(a + total_travel_time, b - 1)",
+        "result": "failed: testcase 0"
+    },
+    "3547": {
+        "body": "import math\n\n    n = int(input())\n    total_area = 0\n    \n    for _ in range(n):\n        x1, y1, x2, y2 = map(float, input().split())\n        \n        for i in range(int(y1), int(y2)):\n            for j in range(int(x1), int(x2)):\n                if abs(i) <= 1000 and abs(j) <= 1000:\n                    total_area += 1\n    print(format(total_area, \".2f\"))",
+        "result": "failed: testcase 0"
+    },
+    "3017": {
+        "body": "    n, e = map(int, input().split())\n    count = 0\n    for k in range(n + 1):\n        str_k = str(k)\n        if '2' * (2 ** e) in str_k:\n            count += 1\n    print(count)",
+        "result": "timed out"
+    },
+    "3076": {
+        "body": "    jewels = []\n    for _ in range(n):\n        size, value = map(int, input().split())\n        jewels.append((size, value))\n    jewels.sort()\n    dp = [0] * (k + 1)\n    for size, value in jewels:\n        for i in range(k, size - 1, -1):\n            if dp[i - size] + value > dp[i]:\n                dp[i] = dp[i - size] + value\n    return ' '.join(str(x) for x in dp)",
+        "result": "failed: testcase 0"
+    },
+    "3923": {
+        "body": "    N, A, B = map(int, input().split())\n    P = [i for i in range(1, N+1)]\n    \n    for i in range(N):\n        if i % (A+B) < A:\n            P[i] = i % (N-1) + 1\n        else:\n            P[i] = N - i + 1\n    \n    print(*P, sep=' ')",
+        "result": "timed out"
+    },
+    "3332": {
+        "body": "import sys\n\n    n = int(input())\n    priorities = []\n    for _ in range(n):\n        s, d, p = map(int, input().split())\n        priorities.append((s, d, p))\n    \n    priorities.sort()\n    stack = []\n    total_priority = 0\n    current_time = 0\n    \n    for start, duration, priority in priorities:\n        while len(stack) > 0 and stack[-1] < start:\n            stack.pop()\n        \n        if len(stack) == 0 or stack[-1] <= start:\n            stack.append(current_time + duration)\n            total_priority += priority\n        elif current_time >= start:\n            total_priority += priority\n        \n        current_time = max(current_time, start + duration)\n    \n    return total_priority\n\nprint(max_priority())",
+        "result": "failed: testcase 0"
+    },
+    "3240": {
+        "body": "    k, v = map(int, input().split())\n    votes = []\n    for _ in range(v - 1):\n        p, b = map(float, input().split())\n        votes.append((p, b))\n    votes.sort()\n    max_yraglac_positions = 0\n    best_ballots = 0\n    for i in range(int(2 ** k)):\n        total_votes = 0\n        for j, (p, b) in enumerate(votes):\n            if i & (1 << j):\n                total_votes += p * min((i >> j) + 1, 2)\n            else:\n                total_votes += (1 - p) * ((2 ** k) - 1 - (i >> j))\n        yraglac_positions = sum(1 for bit in str(total_votes)[::-1] if not int(bit))\n        if yraglac_positions > max_yraglac_positions:\n            max_yraglac_positions = yraglac_positions\n            best_ballots = i\n    print(best_ballots)",
+        "result": "failed: testcase 0"
+    },
+    "3368": {
+        "body": "import sys\n\n    n, m = map(int, input().split())\n    animal_data = [[] for _ in range(n)]\n    \n    for i in range(n):\n        data = input().split()\n        animal_type = ' '.join(data[1:]).lower()\n        for j in range(int(data[1])):\n            animal_data[i].append(' '.join(data[j+2:]).lower())\n        \n    for i in range(n):\n        if len(animal_data[i]) != 0:\n            if set(animal_data[i]) & {animal_type} == set():\n                return 'POSSIBLE'\n    return 'IMPOSSIBLE'",
+        "result": "failed: testcase 0"
+    },
+    "3538": {
+        "body": "    n, d = map(int, input().split())\n    frogs = []\n    for _ in range(n):\n        l, w, h = map(int, input().split())\n        frogs.append((l, w, h))\n    frogs.sort(key=lambda x: x[0], reverse=True)\n    escapes = 0\n    i = 0\n    while i < len(frogs):\n        height = 0\n        for j in range(i + 1, len(frogs)):\n            if height + frogs[j][2] <= d and sum(frog[1] for frog in frogs[:j]) + frogs[j][1] <= d:\n                height += frogs[j][2]\n                i += 1\n        if height < d:\n            break\n        escapes += 1\n    print(escapes)",
+        "result": "failed: testcase 0"
+    },
+    "3183": {
+        "body": "import sys\n\n    n, m, s, t = [int(x) for x in sys.stdin.readline().split()]\n    graph = {}\n    for _ in range(m):\n        u, v, c, w = [int(x) for x in sys.stdin.readline().split()]\n        if u not in graph:\n            graph[u] = []\n        if v not in graph:\n            graph[v] = []\n        graph[u].append((v, c, w))\n    total_flow = 0\n    total_cost = 0\n    while True:\n        pqueue = [(s, float('inf'))]\n        parent = {}\n        flow = 0\n        cost = 0\n        while pqueue:\n            u, d = heapq.heappop(pqueue)\n            for v, c, w in graph.get(u, []):\n                if v not in parent and c > 0 and w <= d:\n                    parent[v] = (u, c, w)\n                    new_cost = cost + w\n                    heapq.heappush(pqueue, (v, min(d, c) - w))\n            if t in parent:\n                break\n        while t in parent:\n            p, f, w = parent[t]\n            total_flow += f\n            total_cost += w * f\n            t = p\n    print(total_flow, total_cost)",
+        "result": "timed out"
+    },
+    "3916": {
+        "body": "    n = int(input())\n    nodes = [int(input()) for _ in range(n)]\n    min_distance = 0\n    max_factorial = 1\n    for node in nodes:\n        while node > max_factorial:\n            max_factorial *= len(str(node))\n        distance = node - max_factorial\n        if distance < min_distance or min_distance == 0:\n            min_distance = distance\n    return min_distance + n",
+        "result": "failed: testcase 0"
+    },
+    "3195": {
+        "body": "import sys\n\n    observations = []\n    for _ in range(n):\n        line = [int(x) for x in sys.stdin.readline().split()]\n        observations.append((line[0], line[1]))\n    \n    t_q, c_q = [int(x) for x in sys.stdin.readline().split()]\n    possible_Ts = set()\n    \n    green_seen = False\n    yellow_seen = False\n    red_seen = False\n    \n    for t, c in observations:\n        if c == 'green':\n            green_seen = True\n            possible_Ts.update(range(t - T_g + 1, t))\n        elif c == 'yellow':\n            yellow_seen = True\n            possible_Ts.update(range(t - T_y + 1, t))\n        elif c == 'red':\n            red_seen = True\n            possible_Ts.update(range(t - T_r + 1, t))\n    \n    if green_seen and not yellow_seen:\n        possible_Ts -= set(range(t_q - T_g, t_q))\n    if yellow_seen and not red_seen:\n        possible_Ts -= set(range(t_q - T_y, t_q))\n    if red_seen:\n        possible_Ts -= {t for t in range(t_q) if (t % (T_g + T_y + T_r)) < T_g}\n    \n    prob = 0\n    if c_q == 'green':\n        prob = len({t for t in possible_Ts if t % (T_g + T_y + T_r) < T_g}) / len(possible_Ts)\n    elif c_q == 'yellow':\n        prob = len({t for t in possible_Ts if t % (T_g + T_y + T_r) >= T_g and t % (T_g + T_y + T_r) < T_g + T_y}) / len(possible_Ts)\n    else:\n        prob = len({t for t in possible_Ts if t % (T_g + T_y + T_r) >= T_g + T_y and t % (T_g + T_y + T_r) < T_g + T_y + T_r}) / len(possible_Ts)\n    \n    sys.stdout.write(str(prob))\n    sys.stdout.flush()",
+        "result": "failed: testcase 0"
+    },
+    "3998": {
+        "body": "    n = int(input())\n    ratings = [int(x) for x in input().split()]\n    min_rating = min(ratings)\n    max_rating = sum(ratings)\n    matches = 0\n    match_ratings = []\n    while max_rating > 2 * (n - 1):\n        diff = max_rating - 2 * (n - 1)\n        for i in range(diff, 0, -1):\n            if min_rating + i <= max_rating:\n                max_rating -= i\n                matches += 1\n                match_ratings.append([1] * n)\n                for j in range(min_rating, min_rating+i):\n                    for k in range(len(ratings)):\n                        if ratings[k] == j:\n                            match_ratings[-1][k] = 0\n                break\n    print(max_rating)\n    print(matches)\n    for i in range(matches):\n        print(''.join(map(str, match_ratings[i])))",
+        "result": "timed out"
+    },
+    "3150": {
+        "body": "import sys\n\n    N = int(input())\n    trenches = []\n    for _ in range(N):\n        x1, y1, x2, y2 = map(int, input().split())\n        trenches.append((x1, y1, x2, y2))\n    \n    ways = 0\n    for i in range(3):\n        for j in range(i+1, 3):\n            seen = set()\n            for k in range(N):\n                x1, y1, x2, y2 = trenches[k]\n                if (x1 <= min(x1, x2) and x2 <= max(x1, x2)) or \\\n                   (y1 <= min(y1, y2) and y2 <= max(y1, y2)):\n                    seen.add(k)\n            ways += len(seen) if i == 0 else 0\n    \n    print(ways)",
+        "result": "failed: testcase 0"
+    },
+    "3566": {
+        "body": "    a = [int(input()) for _ in range(n)]\n    ans = []\n    for i in range(q):\n        x, hut_idx = map(int, input().split())\n        a[hut_idx] = x\n        diff = float('inf')\n        pos = -1\n        for j in range(n):\n            left = sum(1 for k in range(j) if a[k])\n            right = n - left - 1\n            d = abs(left - right)\n            if d < diff:\n                diff = d\n                pos = j + 1\n        ans.append(str(pos))\n    print('\\n'.join(ans))",
+        "result": "failed: testcase 0"
+    },
+    "3401": {
+        "body": "    n, s, t, q = map(int, input().split())\n    hills = []\n    for _ in range(n):\n        x, y, h = map(int, input().split())\n        hills.append((x, y, h))\n    springs = list(map(int, input().split()))\n    towns = list(map(int, input().split()))\n    \n    min_length = float('inf')\n    for i in range(s):\n        for j in range(t):\n            spring_hill = hills[springs[i] - 1]\n            town_hill = hills[towns[j] - 1]\n            if spring_hill[2] <= town_hill[2]:\n                length = 0\n                for k in range(len(hills)):\n                    if (k == springs[i] - 1 or k == towns[j] - 1) and length > 0:\n                        break\n                    if hills[k][2] > spring_hill[2] and hills[k][2] <= town_hill[2]:\n                        length += 1\n                min_length = min(min_length, length)\n    if min_length == float('inf'):\n        print(\"IMPOSSIBLE\")\n    else:\n        print(round(min_length / q, 6))",
+        "result": "failed: testcase 0"
+    },
+    "3660": {
+        "body": "import sys\n\n    message = input().upper()\n    n = int(input())\n    stickers = []\n    for _ in range(n):\n        word, price = input().split(), int(input())\n        stickers.append((word.upper(), price))\n    \n    min_cost = 0\n    current_word = ''\n    current_stickers = []\n    sticker_price = 0\n    \n    for char in message:\n        found = False\n        for i, (word, _) in enumerate(stickers):\n            if word.startswith(char) and len(word) <= 2:\n                if not current_word or current_word[-1] != char:\n                    if len(current_stickers) >= 2:\n                        return 'IMPOSSIBLE'\n                    sticker_price += _\n                    current_word = word\n                    current_stickers = [i]\n                else:\n                    for j in range(len(current_stickers)):\n                        if stickers[current_stickers[j]][0][-1] == char:\n                            sticker_price -= _ * len(current_stickers)\n                            del current_stickers[j]\n                    break\n        if not found:\n            return 'IMPOSSIBLE'\n    \n    return str(sticker_price + sum(_[1] for _ in current_stickers))",
+        "result": "failed: testcase 0"
+    },
+    "3721": {
+        "body": "    n, m, q = map(int, input().split())\n    elements = set()\n    for _ in range(q):\n        r, c = map(int, input().split())\n        elements.add((r, c))\n    \n    min_purchases = 0\n    while len(elements) < n * m:\n        max_degree = -1\n        element_to_remove = None\n        for (r1, c1), (r2, c2) in itertools.combinations(sorted(list(elements)), 2):\n            if r1 == r2 and c1 != c2 or r1 != r2 and c1 == c2:\n                degree = sum(1 for (rr, cc) in elements if rr == r1 or rr == r2 if c1 != c2 else cc == c1)\n                if degree > max_degree:\n                    max_degree = degree\n                    element_to_remove = ((r1, c1), (r2, c2))\n        if element_to_remove is not None:\n            elements.remove(element_to_remove[0])\n            elements.remove(element_to_remove[1])\n            min_purchases += 1\n        else:\n            break\n    \n    print(min_purchases)",
+        "result": "failed: testcase 0"
+    },
+    "3811": {
+        "body": "    n = int(input())\n    gcds = []\n    for _ in range(n):\n        a, b = map(int, input().split())\n        common_divisor = 2\n        while common_divisor <= min(a, b):\n            if a % common_divisor == 0 and b % common_divisor == 0:\n                gcds.append(common_divisor)\n                break\n            common_divisor += 1\n    wcd = max(gcds) if gcds else -1\n    print(wcd)",
+        "result": "timed out"
+    },
+    "3528": {
+        "body": "import math\n\n    N = int(input())\n    nails = []\n    for _ in range(N):\n        x, y = map(int, input().split())\n        nails.append((x, y))\n    \n    areas = []\n    area = 0.0\n    for pick in input()[-(N-2):]:\n        if pick == 'L':\n            nail_index = min(range(N), key=lambda i: nails[i][0])\n        elif pick == 'R':\n            nail_index = max(range(N), key=lambda i: nails[i][0])\n        elif pick == 'U':\n            nail_index = max(range(N), key=lambda i: nails[i][1])\n        elif pick == 'D':\n            nail_index = min(range(N), key=lambda i: nails[i][1])\n        \n        area += nails[nail_index][0] * nails[nail_index][1]\n        areas.append(area)\n    \n    for _ in range(N-2):\n        print(f\"{math.floor(areas.pop()):.1f}\")",
+        "result": "failed: testcase 0"
+    },
+    "3890": {
+        "body": "    n, k = map(int, input().split())\n    res = 1\n    for i in range(2, k):\n        if i <= k:\n            res *= (i - 1)\n        else:\n            res *= n - i + 1\n    print(res % 1000000007)",
+        "result": "failed: testcase 0"
+    },
+    "3534": {
+        "body": "    n = int(input())\n    composition = list(map(int, input().split()))\n    prev_key = composition[0]\n    correct_keys = 1\n    k = 0\n    for i in range(1, n):\n        if composition[i] > prev_key:\n            k += 1\n        elif composition[i] < prev_key:\n            k -= 1\n        prev_key += k\n        if prev_key == composition[i]:\n            correct_keys += 1\n    print(correct_keys)\n    print(k)",
+        "result": "failed: testcase 0"
+    },
+    "3371": {
+        "body": "    n, c = map(int, input().split())\n    first_encounters = {}\n    for _ in range(c):\n        a, b, y = map(int, input().split())\n        if (a, b) not in first_encounters:\n            first_encounters[(a, b)] = y\n        else:\n            return \"Impossible\"\n    year = 2008\n    while True:\n        first_part = set()\n        second_part = set()\n        for pair, y in first_encounters.items():\n            if y <= year:\n                first_part.add(pair[0])\n                first_part.add(pair[1])\n            else:\n                second_part.add(pair[0])\n                second_part.add(pair[1])\n        if len(first_part) <= 2*n//3 and len(second_part) <= 2*n//3:\n            return str(year)\n        year -= 1",
+        "result": "timed out"
+    },
+    "3621": {
+        "body": "    n = int(input())\n    color_matrix = [[int(c) for c in input().split()] for _ in range(n)]\n    \n    total_sum = 0\n    for i in range(1 << n):\n        same_colors = True\n        subset_size = 0\n        for j in range(n):\n            if (i & (1 << j)):\n                subset_size += 1\n                same_color = color_matrix[j][0]\n                for k in range(j+1, n):\n                    if ((i & (1 << k)) and color_matrix[k][j] != same_color):\n                        same_colors = False\n                        break\n        if same_colors:\n            total_sum += subset_size\n    return total_sum % (10**9 + 7)",
+        "result": "failed: testcase 0"
+    },
+    "3392": {
+        "body": "import sys\n\n    n = int(sys.stdin.readline().strip())\n    height_map = []\n    for _ in range(n):\n        row = list(map(int, sys.stdin.readline().split()))\n        height_map.append(row)\n    growth_map = []\n    for _ in range(n):\n        row = list(map(int, sys.stdin.readline().split()))\n        growth_map.append(row)\n\n    max_group_height = 0\n    for i in range(n):\n        for j in range(n):\n            if height_map[i][j] == 1:\n                my_var = [i, j]\n                visited = [[False]*n for _ in range(n)]\n                dfs(my_var[0], my_var[1], height_map, growth_map, visited)\n                max_group_height = max(max_group_height, calculate_group_size(height_map, visited))\n    print(max_group_height)\n\n    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:\n        nx, ny = x + dx, y + dy\n        if 0 <= nx < len(height_map) and 0 <= ny < len(height_map[0]) and not visited[nx][ny]:\n            if height_map[nx][ny] == 1:\n                my_var = [nx, ny]\n                visited[nx][ny] = True\n                dfs(my_var[0], my_var[1], height_map, growth_map, visited)\n\n    group_size = 0\n    for i in range(len(visited)):\n        for j in range(len(visited[0])):\n            if height_map[i][j] == 1 and not visited[i][j]:\n                my_var = [i, j]\n                stack = [[my_var[0], my_var[1]]]\n                while stack:\n                    x, y = stack.pop()\n                    group_size += 1\n                    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:\n                        nx, ny = x + dx, y + dy\n                        if 0 <= nx < len(height_map) and 0 <= ny < len(height_map[0]) and not visited[nx][ny] and height_map[nx][ny] == 1:\n                            stack.append([nx, ny])\n                            visited[nx][ny] = True\n    return group_size",
+        "result": "failed: testcase 0"
+    },
+    "3095": {
+        "body": "    R, S = map(int, input().split())\n    A = [list(map(int, input().split())) for _ in range(R)]\n    \n    max_cool_elements = 0\n    \n    for r1 in range(2, R+1):\n        for c1 in range(2, S+1):\n            for r2 in range(r1-1, -1, -1):\n                for c2 in range(c1-1, -1, -1):\n                    submatrix = [row[c1:c2+1] for row in A[r2-r1+1:r2+1]]\n                    \n                    if is_cool(submatrix):\n                        max_cool_elements = max(max_cool_elements, r1*c1)\n                    \n    print(max_cool_elements)\n\n    R, S = len(A), len(A[0])\n    \n    for i in range(1, R-1):\n        if (A[i][0] + A[R-1][S-1]) > (A[0][S-1] + A[i][S-1]):\n            return False\n    \n    return True",
+        "result": "failed: testcase 0"
+    },
+    "3769": {
+        "body": "    p, k = map(int, input().split())\n    total = 1\n    for i in range(1, p):\n        if pow(k, i, p) == 1:\n            total += 1\n    print(total % (10**9 + 7))",
+        "result": "timed out"
+    },
+    "3563": {
+        "body": "    n = int(input())\n    holes = []\n    for _ in range(n):\n        x, y = map(int, input().split())\n        holes.append((x, y))\n    holes.sort()\n    lines = 0\n    prev_x, prev_y = None, None\n    for x, y in holes:\n        if (prev_x is None or prev_x <= x) and (prev_y is None or prev_y < y):\n            lines += 1\n        prev_x, prev_y = x, y\n    print(lines)",
+        "result": "failed: testcase 0"
+    },
+    "3618": {
+        "body": "    MOD = 998244353\n    dp = [0] * (n + 1)\n    dp[1] = 2\n    for i in range(2, n + 1):\n        if i % 10 <= 8:\n            dp[i] = (dp[i - 1] + dp[i - 1]) % MOD\n        else:\n            dp[i] = (dp[i - 1] + 1) % MOD\n    return dp[n]",
+        "result": "failed: testcase 0"
+    },
+    "3830": {
+        "body": "    t = int(input())\n    for _ in range(t):\n        n = int(input())\n        s = list(input())\n        returnable_rooms = 0\n        for i in range(n):\n            if (s[i] == '>' and s[(i+1)%n] == '<') or (s[i] == '<' and s[(i-1)%n] == '>'):\n                returnable_rooms += 1\n        print(returnable_rooms)",
+        "result": "failed: testcase 0"
+    },
+    "3912": {
+        "body": "    s = ''.join(sorted(s))\n    k = 1\n    res = []\n    i = 0\n    while i < n:\n        j = i + 1\n        while j <= n and s[i] == s[j]:\n            j += 1\n        res.append(s[i:j])\n        i = j\n        k += 1\n    print(k)\n    print(' '.join(res))",
+        "result": "failed: testcase 0"
+    },
+    "3878": {
+        "body": "    n, m = map(int, input().split())\n    graph = {}\n    for _ in range(m):\n        u, v = map(int, input().split())\n        if u not in graph:\n            graph[u] = set()\n        if v not in graph:\n            graph[v] = set()\n        graph[u].add(v)\n        graph[v].add(u)\n\n    steps = 0\n    selected_guests = []\n    while True:\n        for guest in list(graph):\n            if len(graph[guest]) == n - 1:\n                for friend in graph[guest]:\n                    graph[friend] = set(range(1, n + 1))\n                del graph[guest]\n                steps += 1\n                selected_guests.append(str(guest))\n                break\n        else:\n            continue\n        break\n\n    print(steps)\n    print(' '.join(selected_guests))",
+        "result": "timed out"
+    },
+    "3010": {
+        "body": "import sys\n\n    n = int(input())\n    points = set()\n    \n    for _ in range(n):\n        x0, y0, x1, y1 = map(int, input().split())\n        \n        if x0 == x1:\n            for y in range(min(y0, y1), max(y0, y1)+1):\n                points.add((x0, y))\n        elif y0 == y1:\n            for x in range(min(x0, x1), max(x0, x1)+1):\n                points.add((x, y0))\n        else:\n            m = (y1 - y0) * 1.0 / (x1 - x0)\n            b = y0 - m * x0\n            for x in range(min(x0, x1), max(x0, x1)+1):\n                y = int(m * x + b)\n                points.add((x, y))\n    \n    return len(points) if n > 0 else -1\n\nprint(intersecting_points())",
+        "result": "failed: testcase 0"
+    },
+    "3068": {
+        "body": "    investigations = int(input())\n    hands = {}\n    for _ in range(investigations):\n        suspects, player, reply = input().split()\n        if player == '1':\n            player_hands = hands.setdefault(suspects[0], set())\n            player_hands.add(suspects[1])\n        else:\n            player_hands = hands.setdefault(suspects[0], set())\n            player_hands.discard(suspects[1])\n    solutions = 0\n    for suspect1 in range(26):\n        for suspect2 in range(suspect1 + 1, 26):\n            for suspect3 in range(26):\n                if (suspect1 not in hands.get(chr(ord('A') + suspect1), set()) and \n                    suspect2 not in hands.get(chr(ord('A') + suspect2), set()) and\n                    suspect3 not in hands.get(chr(ord('A') + suspect3), set()):\n                    solutions += 1\n    print(solutions)",
+        "result": "failed: testcase 0"
+    },
+    "3030": {
+        "body": "    n = int(input())\n    parent_values = [0] * (n + 1)\n    for _ in range(n):\n        v, p = map(int, input().split())\n        parent_values[p+1] = v\n    heap_nodes = 1\n    for i in range(2, n + 1):\n        if parent_values[i] >= parent_values[(i-1)//2]:\n            heap_nodes += 1\n    return heap_nodes",
+        "result": "failed: testcase 0"
+    },
+    "3630": {
+        "body": "    s1, s2 = input().split()\n    moves = 0\n    for i in range(len(s1)):\n        while s1[i] != s2[i]:\n            if 'z' in s1[:i+1]:\n                break\n            elif 'a' in s2[:i+1]:\n                break\n            if ord(s1[i]) < ord(s2[i]):\n                moves += 1\n                for j in range(i):\n                    s1 = (chr(ord(s1[j]) + 1)).join(s1.split()[0])\n            else:\n                moves += 1\n                for j in range(i+1, len(s1)):\n                    s1 = s1[:j] + chr(ord(s1[j]) - 1) + s1[j+1:]\n    print(moves)",
+        "result": "timed out"
+    },
+    "3133": {
+        "body": "    n, A, B = map(int, input().split())\n    turns_A = [0] * n\n    turns_B = [0] * n\n    for i in range(n):\n        l, r, t = map(int, input().split())\n        if t == 1:\n            turns_A[A] += 1\n            turns_B[B] += 1\n        A_turns = turns_A.copy()\n        B_turns = turns_B.copy()\n        for j in range(i+1):\n            A_turns[l] -= 1\n            A_turns[r] += 1\n            if t == 1 and A_turns[A] > B_turns[B]:\n                print(\"indistinguishable\")\n                return\n            B_turns[l] -= 1\n            B_turns[r] += 1\n            if t == 1 and B_turns[B] > A_turns[A]:\n                print(0)\n                return\n    print(\"indistinguishable\")",
+        "result": "failed: testcase 0"
+    },
+    "3480": {
+        "body": "import sys\n\n    L, D = map(int, input().split())\n    for _ in range(L):\n        line, times = input().split('\\n'), list(map(int, input().split()))\n        first_voice = ''\n        second_voice = ''\n        t = 0\n        for syllable, time in zip(line.split(), times):\n            if t < D:\n                second_voice += '/' * (t - D) + '_'\n            else:\n                second_voice += syllable.ljust(time)\n            first_voice += syllable.ljust(time) + '_'\n            t += 1\n        print(first_voice.rstrip())\n        print(second_voice.rstrip())",
+        "result": "failed: testcase 0"
+    },
+    "3389": {
+        "body": "    n, k = map(int, input().split())\n    video_types = list(input())\n\n    clicks = 0\n    current_type = None\n\n    for _ in range(n):\n        if video_types[0] != current_type:\n            clicks += 1\n            current_type = video_types.pop(0)\n\n    print(clicks)",
+        "result": "failed: testcase 1"
+    },
+    "3925": {
+        "body": "    s = input()\n    max_len = 0\n    for i in range(len(s)):\n        ones = 0\n        zeros = 0\n        for j in range(i, len(s), 2):\n            if s[j] == 'w':\n                ones += 1\n            else:\n                zeros += 1\n            if ones > zeros and len(s) - j <= max_len:\n                break\n            elif zeros >= ones and len(s) - j > max_len:\n                max_len = len(s) - j\n    print(max_len)",
+        "result": "failed: testcase 0"
+    },
+    "3700": {
+        "body": "    n, k = map(int, input().split())\n    count = 0\n    for i in range(1, n):\n        if i <= k:\n            j = k - i\n            if j <= n and j >= i:\n                count += 1\n    print(count)",
+        "result": "timed out"
+    },
+    "3944": {
+        "body": "    a = 1\n    for i in range(1, n+1):\n        for j in range(1, m+1):\n            for p in range(1, k+1):\n                if (i <= 3) and ((j <= 2) or (p <= 2)):\n                    a = (a * 3) % 1000000007\n    print(a)",
+        "result": "failed: testcase 0"
+    },
+    "3821": {
+        "body": "import math\n    n = int(input())\n    probs = [float(input()) for _ in range(n)]\n    total_prob = 0\n    for i in range(n):\n        prob = 1\n        for j in range(i+1):\n            prob *= (1-probs[j])\n        total_prob += prob * probs[i]\n    print(total_prob)",
+        "result": "failed: testcase 0"
+    },
+    "3667": {
+        "body": "    w, p = map(int, input().split())\n    wells = []\n    pipes = [[] for _ in range(w)]\n    for _ in range(w):\n        x, y = map(int, input().split())\n        wells.append((x, y))\n    for _ in range(p):\n        s, x, y = map(int, input().split())\n        for i in range(w):\n            if abs(x - wells[i][0]) + abs(y - wells[i][1]) <= 10000:\n                pipes[i].append((s, x, y))\n                break\n    intersections = []\n    visited = [False] * w\n    for i in range(w):\n        if not visited[i]:\n            stack = [(i, wells[i])]\n            while stack:\n                j, (x1, y1) = stack.pop()\n                for k, (s, x2, y2) in enumerate(pipes[j]):\n                    if abs(x1 - s) + abs(y1 - y2) <= 10000 and not visited[sum(1 for pipe in pipes[:j] + [pipe] if (x2, y2) in pipe)]:\n                        stack.extend([(k, (x2, y2)) for _ in range(2)])\n                        visited[sum(1 for pipe in pipes[:j+1] + [pipe] if (x2, y2) in pipe)] = True\n                    elif abs(x1 - x2) <= 10000 and abs(y1 - y2) <= 10000:\n                        intersections.append((max(s, min(x1, x2)), max(s, min(y1, y2))))\n    if len(intersections) > w:\n        print(\"impossible\")\n    else:\n        print(\"possible\")",
+        "result": "failed: testcase 0"
+    },
+    "3959": {
+        "body": "import math\n\n    n, m = map(int, input().split())\n    total_pokemon_types = [0] * (m + 1)\n    gym_types = []\n    \n    for _ in range(n):\n        g = int(input())\n        types = list(map(int, input().split()))\n        for t in set(types):\n            total_pokemon_types[t] += 1\n        gym_types.append(types)\n\n    valid_plans = 1\n    for i in range(m + 1):\n        if total_pokemon_types[i] > 0:\n            valid_plans *= math.factorial(total_pokemon_types[i])\n    \n    print(valid_plans % (10**9 + 7))",
+        "result": "failed: testcase 0"
+    },
+    "3692": {
+        "body": "import sys\n\n    n = int(input())\n    regions = 0\n    for _ in range(n):\n        x, y, r = map(int, input().split())\n        if not (x-r <= 0 <= x+r or y-r <= 0 <= y+r):\n            regions += 1\n    print(regions)",
+        "result": "failed: testcase 0"
+    },
+    "3894": {
+        "body": "    n, k = map(int, input().split())\n    a = list(map(int, input().split()))\n    \n    for i in range(n):\n        if a[i] % 2 == 1:\n            return \"Kevin\"\n        \n    return \"Nicky\"",
+        "result": "failed: testcase 0"
+    },
+    "3856": {
+        "body": "    n = int(input())\n    total_width = 0\n    max_height = 0\n    for _ in range(n):\n        w, h = map(int, input().split())\n        total_width += w\n        max_height = max(max_height, h)\n    return total_width * max_height if n % 2 == 1 else (total_width + max_height) * n // 2",
+        "result": "failed: testcase 0"
+    },
+    "3282": {
+        "body": "    P = int(input())\n    total_count = 0\n    bills = []\n    for a in range(1, P):\n        for b in range(a + 1, P):\n            if str(a) + str(b) != str(P): \n                if len(set(str(a) + str(b))) == 3:\n                    total_count += 1\n                    bills.append((a, b))\n    print(total_count)\n    for i in range(min(5000, total_count)):\n        print(*bills[i])",
+        "result": "timed out"
+    },
+    "3596": {
+        "body": "from math import gamma, erf, sin, cos, pi, exp\n\n    a, b, c = map(float, input().split())\n    t1, t2, t3, t4 = map(int, input().split())\n    n, k, r, s, l = map(int, input().split())\n\n        return c * (t1 * gamma(x) + pow(log(erf(t3 * x)), 0.5) - pow(J_k(x), t4))\n\n            total = 0\n            for _ in range(10000):  # Ensure sufficient precision\n                total += cos(k * tau - x * sin(tau)) / (2 * pi)\n                tau += 0.01\n            return total\n\n        return lambda x: sum(int_cos(k, tau, x) * 0.01 for _ in range(10000)) / 10000\n\n        return sum((f ** i)(0) / math.factorial(i) * x**i for i in range(r + 1))\n\n        return sum(P(n - 1) * x**i for i in range(r + n + 1))\n\n        return (P_s(x)) ** ((P_s.degree() + 1) * math.factorial(P_s.degree()))\n\n    s = int(input())\n    P_s = P_n\n    degree = P_s.degree()\n    location = ((g(s) + l)**2 / (pi * exp)) + (1 / (l + 1))\n    print(f\"{location:.2f}\")",
+        "result": "failed: testcase 0"
+    },
+    "3540": {
+        "body": "    puzzle = [list(input().strip()) for _ in range(4)]\n    moves = 0\n    for i in range(4):\n        row_count = {'R': 0, 'G': 0, 'B': 0, 'Y': 0}\n        for j in range(4):\n            row_count[puzzle[i][j]] += 1\n        if row_count['R'] > 0 and row_count['G'] > 0 and row_count['B'] > 0 and row_count['Y'] > 0:\n            break\n        elif i < 3 and puzzle[i][0] == puzzle[i+1][0]:\n            moves += 1\n        else:\n            for j in range(4):\n                if puzzle[0][j] != puzzle[3][j]:\n                    break\n            for _ in range(moves + 1):\n                puzzle.append(puzzle.pop(0))\n    return str(moves)",
+        "result": "failed: testcase 0"
+    },
+    "3354": {
+        "body": "import math\n\n    s, r, n, z = map(float, input().split())\n    area_sandwich = math.pi * (s ** 2)\n    max_area_pickles = area_sandwich * (z / 100)\n    \n    pickles_placed = 0\n    for i in range(n):\n        if math.pi * (r ** 2) + (math.pi * ((i % 2) * 2 + r) ** 2) <= max_area_pickles:\n            pickles_placed += 1\n        else:\n            break\n    \n    return pickles_placed",
+        "result": "failed: testcase 0"
+    },
+    "3217": {
+        "body": "    n = int(input())\n    panels_needed = 0\n    for _ in range(n):\n        x, y, z = map(int, input().split())\n        is_enclosed = False\n        for i in range(10):\n            for j in range(10):\n                for k in range(10):\n                    if (i >= x-1 and i <= x+1) and (j >= y-1 and j <= y+1) and (k >= z-1 and k <= z+1):\n                        panels_needed += 1\n                        is_enclosed = True\n                        break\n                if is_enclosed:\n                    break\n            if is_enclosed:\n                break\n    print(panels_needed)",
+        "result": "failed: testcase 0"
+    },
+    "3520": {
+        "body": "    n, p, c = map(int, input().split())\n    pills = []\n    for _ in range(p):\n        time, x, y = map(int, input().split())\n        pills.append((time, x, y))\n    pills.sort()\n    max_age = 0\n    current_time = 0\n    last_pill = 0\n    for pill in pills:\n        time, x, y = pill\n        if time - last_pill > c:\n            current_time += (time - last_pill) - y\n        else:\n            current_time += time - last_pill - y - c\n        max_age = max(max_age, current_time + n)\n        last_pill = time\n    return round(max_age, 6)",
+        "result": "failed: testcase 0"
+    },
+    "3475": {
+        "body": "    t, n = map(int, input().split())\n    d_mins = [int(input()) for _ in range(t)]\n    a_maxs = [int(input()) for _ in range(t)]\n    distances = []\n    headings = []\n    \n    for _ in range(n-1):\n        distance, heading = map(int, input().split())\n        distances.append(distance)\n        headings.append(heading)\n    \n    min_distance_threshold = 0\n    max_heading_range = 0\n    \n    for i in range(t):\n        if d_mins[i] < min_distance_threshold:\n            min_distance_threshold = d_mins[i]\n        if a_maxs[i] > max_heading_range:\n            max_heading_range = a_maxs[i]\n    \n    s_0 = 0\n    k = 1\n    \n    for i in range(1, n-1):\n        total_distance = sum(distances[:i+1])\n        \n        if total_distance < min_distance_threshold or abs(headings[i-1] - headings[i]) > max_heading_range:\n            s_0 = i\n            k += 1\n    \n    print(k if s_0 == n-2 else 'IMPOSSIBLE')",
+        "result": "failed: testcase 0"
+    },
+    "3977": {
+        "body": "    nodes = [False] * n\n    for _ in range(k):\n        node = int(input()) - 1\n        nodes[node] = True\n    edges = []\n    for _ in range(m):\n        u, v = map(int, input().split())\n        edges.append((min(u, v), max(u, v)))\n    count = 0\n    for edge in set(edges):\n        if not (nodes[edge[0]] and nodes[edge[1]]):\n            count += 1\n    return count",
+        "result": "failed: testcase 0"
+    },
+    "3626": {
+        "body": "    n = int(input())\n    rectangles = []\n    for _ in range(n):\n        x1, y1, x2, y2 = map(int, input().split())\n        rectangles.append((x1, y1, x2, y2))\n    \n    for i in range(len(rectangles)):\n        for j in range(i+1, len(rectangles)):\n            (x1, y1, x2, y2) = rectangles[i]\n            (x3, y3, x4, y4) = rectangles[j]\n            \n            if max(0, min(x2, x4)) > min(0, max(x1, x3)) and \\\n               max(0, min(y2, y4)) > min(0, max(y1, y3)):\n                return 1\n    return 0",
+        "result": "failed: testcase 0"
+    },
+    "3584": {
+        "body": "import math\n\n    N, M, K = map(int, input().split())\n    onions = []\n    fence_posts = []\n    for _ in range(N):\n        x, y = map(int, input().split())\n        onions.append((x, y))\n    for _ in range(M):\n        A, B = map(int, input().split())\n        fence_posts.append((A, B))\n\n    onions.sort()\n    fence_posts.sort()\n\n    max_protected = 0\n    for i in range(len(fence_posts) - K + 1):\n        protected_onions = []\n        for onion in onions:\n            x, y = onion\n            flag = False\n            for j in range(i, i+K):\n                A, B = fence_posts[j]\n                if min(A, B) <= x and max(A, B) >= x and min(A, B) <= y and max(A, B) >= y:\n                    flag = True\n                    break\n            if flag:\n                protected_onions.append(onion)\n        max_protected = max(max_protected, len(protected_onions))\n    return max_protected",
+        "result": "failed: testcase 0"
+    },
+    "3950": {
+        "body": "    n, q = map(int, input().split())\n    a = list(map(int, input().split()))\n    \n    for i in range(q):\n        l_i, r_i = map(int, input().split())\n        \n        for j in range(l_i-1, r_i):\n            a[j] = i + 1\n            \n    if max(a) > q:\n        print(\"NO\")\n    else:\n        print(\"YES\")\n        print(*a, sep=' ')",
+        "result": "failed: testcase 0"
+    },
+    "3075": {
+        "body": "    n, g = map(int, input().split())\n    costs = []\n    for _ in range(n):\n        d, c = map(int, input().split())\n        if d > g:\n            return \"cancel road trip\"\n        costs.append((c, d))\n    costs.sort()\n    total_distance = 0\n    cost = 0\n    tank_capacity_reached = False\n    for _, d in costs:\n        while total_distance + d <= g and total_distance < g:\n            if not tank_capacity_reached:\n                cost += min(d - total_distance, costs[0][0])\n                tank_capacity_reached = True\n            total_distance += d\n    return str(cost)",
+        "result": "failed: testcase 0"
+    },
+    "3711": {
+        "body": "    n, m, k = map(int, input().split())\n    if k > n*m // 2:\n        return -1\n    area = max(0, min(n-1, m-1) - k)\n    for i in range(k+1):\n        if (n-i)*(m-k+i) >= area:\n            return (n-i)*(m-k+i)\n    return -1",
+        "result": "timed out"
+    }
+}
