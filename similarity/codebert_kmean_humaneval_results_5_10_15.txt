@@ -1,0 +1,157 @@
+
+../results/HumanEval_llama3.json
+[Num_cluster = 5]
+num_passed: 56
+num_total: 164
+===============================================
+[Num_cluster = 10]
+num_passed: 58
+num_total: 164
+===============================================
+[Num_cluster = 15]
+num_passed: 55
+num_total: 164
+===============================================
+../results/HumanEval_llama3.1.json
+[Num_cluster = 5]
+num_passed: 88
+num_total: 164
+===============================================
+[Num_cluster = 10]
+num_passed: 90
+num_total: 164
+===============================================
+[Num_cluster = 15]
+num_passed: 86
+num_total: 164
+===============================================
+../results/HumanEval_mistral-nemo.json
+[Num_cluster = 5]
+num_passed: 57
+num_total: 164
+===============================================
+[Num_cluster = 10]
+num_passed: 58
+num_total: 164
+===============================================
+[Num_cluster = 15]
+num_passed: 56
+num_total: 164
+===============================================
+../results/HumanEval_qwen2.5-coder.json
+[Num_cluster = 5]
+num_passed: 107
+num_total: 164
+===============================================
+[Num_cluster = 10]
+num_passed: 110
+num_total: 164
+===============================================
+[Num_cluster = 15]
+num_passed: 110
+num_total: 164
+===============================================
+../results/HumanEval_llama3_instruction.json
+[Num_cluster = 5]
+num_passed: 54
+num_total: 164
+===============================================
+[Num_cluster = 10]
+num_passed: 52
+num_total: 164
+===============================================
+[Num_cluster = 15]
+num_passed: 52
+num_total: 164
+===============================================
+../results/HumanEval_llama3.1_instruction.json
+[Num_cluster = 5]
+num_passed: 87
+num_total: 164
+===============================================
+[Num_cluster = 10]
+num_passed: 81
+num_total: 164
+===============================================
+[Num_cluster = 15]
+num_passed: 82
+num_total: 164
+===============================================
+../results/HumanEval_mistral-nemo_instruction.json
+[Num_cluster = 5]
+num_passed: 56
+num_total: 164
+===============================================
+[Num_cluster = 10]
+num_passed: 55
+num_total: 164
+===============================================
+[Num_cluster = 15]
+num_passed: 57
+num_total: 164
+===============================================
+../results/HumanEval_qwen2.5-coder_instruction.json
+[Num_cluster = 5]
+num_passed: 126
+num_total: 164
+===============================================
+[Num_cluster = 10]
+num_passed: 126
+num_total: 164
+===============================================
+[Num_cluster = 15]
+num_passed: 125
+num_total: 164
+===============================================
+../results/HumanEval_llama3_rule.json
+[Num_cluster = 5]
+num_passed: 29
+num_total: 164
+===============================================
+[Num_cluster = 10]
+num_passed: 23
+num_total: 164
+===============================================
+[Num_cluster = 15]
+num_passed: 25
+num_total: 164
+===============================================
+../results/HumanEval_llama3.1_rule.json
+[Num_cluster = 5]
+num_passed: 56
+num_total: 164
+===============================================
+[Num_cluster = 10]
+num_passed: 63
+num_total: 164
+===============================================
+[Num_cluster = 15]
+num_passed: 64
+num_total: 164
+===============================================
+../results/HumanEval_mistral-nemo_rule.json
+[Num_cluster = 5]
+num_passed: 54
+num_total: 164
+===============================================
+[Num_cluster = 10]
+num_passed: 53
+num_total: 164
+===============================================
+[Num_cluster = 15]
+num_passed: 54
+num_total: 164
+===============================================
+../results/HumanEval_qwen2.5-coder_rule.json
+[Num_cluster = 5]
+num_passed: 114
+num_total: 164
+===============================================
+[Num_cluster = 10]
+num_passed: 118
+num_total: 164
+===============================================
+[Num_cluster = 15]
+num_passed: 121
+num_total: 164
+===============================================
