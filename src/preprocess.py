@@ -2,14 +2,18 @@ import json
 import ast
 import os
 import argparse
+from tqdm import tqdm
 from copy import deepcopy
 
 class Augmentor:
-    def __init__(self, benchmark, model):
+    def __init__(self, benchmark, model, mode=None):
         self.benchmark = benchmark
         self.model = model
+        self.mode = mode
         self.data_path = f"../data/{self.benchmark}.jsonl"
         self.result_path = f"../results/{self.benchmark}_{self.model}.json"
+        if mode:
+            self.result_path = f"../results/{self.benchmark}_{self.model}_{self.mode}.json"
         self.output_dir = f"../preprocessed_results/"
 
     def augment(self):
@@ -35,9 +39,12 @@ class Augmentor:
                     sample[0] = data[problem_id] + response
                 elif self.benchmark == "APPS":
                     sample[0] = response
-
-        with open(os.path.join(self.output_dir, f"augmented/{self.benchmark}_{self.model}_augmented.json"), "w") as f:
-            json.dump(results, f, indent=4)
+        if not self.mode:
+            with open(os.path.join(self.output_dir, f"augmented/{self.benchmark}_{self.model}_augmented.json"), "w") as f:
+                json.dump(results, f, indent=4)
+        if self.mode:
+            with open(os.path.join(self.output_dir, f"augmented/{self.benchmark}_{self.model}_{self.mode}_augmented.json"), "w") as f:
+                json.dump(results, f, indent=4)
         
         return results
 
@@ -79,23 +86,30 @@ class VariableUnifier(ast.NodeTransformer):
 
 
 class Preprocessor:
-    def __init__(self, benchmark, model):
+    def __init__(self, benchmark, model, mode=None):
         self.benchmark = benchmark
         self.model = model
+        self.mode = mode
         self.data_path = f"../data/{self.benchmark}.jsonl"
         self.aug_path = f"../preprocessed_results/augmented/{self.benchmark}_{self.model}_augmented.json"
+        if self.mode:
+            self.aug_path = f"../preprocessed_results/augmented/{self.benchmark}_{self.model}_{self.mode}_augmented.json"
         self.output_dir = f"../preprocessed_results/"
         
     def record_result(self, dirname, data):
-        with open(os.path.join(self.output_dir, f"{dirname}/{self.benchmark}_{self.model}.json"), "w") as f:
-            json.dump(data, f, indent=4)
+        if not self.mode:
+            with open(os.path.join(self.output_dir, f"{dirname}/{self.benchmark}_{self.model}.json"), "w") as f:
+                json.dump(data, f, indent=4)
+        if self.mode:
+            with open(os.path.join(self.output_dir, f"{dirname}/{self.benchmark}_{self.model}_{self.mode}.json"), "w") as f:
+                json.dump(data, f, indent=4)
         return
 
     def ast_preprocess(self):
         with open(self.aug_path, "r") as f:
             data = json.load(f)
         
-        for problem_id, samples in data.items():
+        for problem_id, samples in tqdm(data.items(), desc=f"{self.benchmark}_{self.model}_{self.mode}"):
             for sample in samples:
                 try:
                     root = ast.parse(sample[0])
@@ -110,7 +124,7 @@ class Preprocessor:
     def variable_unify(self, data):
         global var_dict, var_id
 
-        for problem_id, samples in data.items():
+        for problem_id, samples in tqdm(data.items(), desc=f"{self.benchmark}_{self.model}_{self.mode}"):
             for sample in samples:
                 # print("---------------------sample---------------------------")
                 # print(sample[0])
@@ -139,27 +153,31 @@ if __name__ == "__main__":
     parser.add_argument("mode", type=str)
     args = parser.parse_args()
 
-    # benchmarks = ["HumanEval", "APPS"]
-    benchmarks = ["HumanEval"]
+    benchmarks = ["HumanEval", "APPS"]
+    # benchmarks = ["HumanEval"]
     models = ["llama3.1", "llama3", "mistral-nemo", "qwen2.5-coder"]
+    modes = [None, "instruction", "rule"]
 
     if args.mode == "augment":
         for bm in benchmarks:
             for model in models:
-                augmentor = Augmenter(bm, model)
-                augmentor.augment()
+                for mode in modes:
+                    augmentor = Augmentor(bm, model, mode)
+                    augmentor.augment()
     
     elif args.mode == "ast-only":
         for bm in benchmarks:
             for model in models:
-                preprocessor = Preprocessor(bm, model)
-                ast_reduced = preprocessor.ast_preprocess()
-                preprocessor.record_result("ast_only", ast_reduced)
+                for mode in modes:
+                    preprocessor = Preprocessor(bm, model, mode)
+                    ast_reduced = preprocessor.ast_preprocess()
+                    preprocessor.record_result("ast_only", ast_reduced)
 
     elif args.mode == "var-unif":
         for bm in benchmarks:
             for model in models:
-                preprocessor = Preprocessor(bm, model)
-                ast_reduced = preprocessor.ast_preprocess()
-                var_reduced = preprocessor.variable_unify(ast_reduced)
-                preprocessor.record_result("var_unif", var_reduced)
+                for mode in modes:
+                    preprocessor = Preprocessor(bm, model, mode)
+                    ast_reduced = preprocessor.ast_preprocess()
+                    var_reduced = preprocessor.variable_unify(ast_reduced)
+                    preprocessor.record_result("var_unif", var_reduced)
