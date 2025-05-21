@@ -23,7 +23,7 @@ class Normalize_ast(ast.NodeTransformer):
         self.generic_visit(node)
         return node
 
-def get_final_answer_dict(results_path):
+def get_final_answer_dict(results_path, preprocessing):
     with open(results_path, 'r') as f:
         results = json.load(f)
 
@@ -36,7 +36,7 @@ def get_final_answer_dict(results_path):
         print(prob)
         final_answer_dict[prob] = {}
 
-        normalized_trees = []
+        trees = []
         zsses = []
         passed = []
         for a in answers:
@@ -44,10 +44,11 @@ def get_final_answer_dict(results_path):
                 tree = ast.parse(a[0])
                 # print(ast.dump(tree, indent=4))
                 # print('-'*50)
-                normalized_tree = normalizer.visit(tree)
-                ast.fix_missing_locations(normalized_tree)
-                zss = ast_to_zss(normalized_tree)
-                normalized_trees.append(normalized_tree)
+                if preprocessing:
+                    tree = normalizer.visit(tree)
+                    ast.fix_missing_locations(tree)
+                zss = ast_to_zss(tree)
+                trees.append(tree)
                 # print(ast.dump(normalized_tree, indent=4))
                 # print(ast.unparse(normalized_tree))
                 # print("="*50)
@@ -76,7 +77,7 @@ def get_final_answer_dict(results_path):
         if avg_dists:
             min_value = min(avg_dists)
             min_index = avg_dists.index(min_value)
-            final_answer_dict[prob]['code'] = ast.unparse(normalized_trees[min_index])
+            final_answer_dict[prob]['code'] = ast.unparse(trees[min_index])
             final_answer_dict[prob]['result'] = passed[min_index]
             final_answer_dict[prob]['average_distance'] = min_value
         else:
@@ -126,10 +127,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-b', '--benchmark', default='HumanEval', type=str, help='Benchmark name')
     parser.add_argument('-r', '--responses_path', default='../preprocessed_results/ast_only/HumanEval_llama3.json')
+    parser.add_argument('-p', '--preprocessing', default=False)
     args = parser.parse_args()
     assert args.benchmark in['HumanEval', 'APPS']
 
-    final_answer_dict = get_final_answer_dict(args.responses_path)
+    final_answer_dict = get_final_answer_dict(args.responses_path, args.preprocessing)
     num_passed, num_total = evaluate(final_answer_dict)
     print(f"num_passed: {num_passed}")
     print(f"num_total: {num_total}")

@@ -15,4 +15,7 @@ num_total: 164
 num_passed: 128
 num_total: 164
 ===============================================
-
+../preprocessed_results/ast_only/HumanEval_llama3_rule.json
+num_passed: 30
+num_total: 164
+===============================================
