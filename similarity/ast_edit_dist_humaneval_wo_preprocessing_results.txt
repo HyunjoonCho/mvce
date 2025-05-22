@@ -1,0 +1,49 @@
+
+../preprocessed_results/ast_only/HumanEval_llama3.json
+num_passed: 68
+num_total: 164
+===============================================
+../preprocessed_results/ast_only/HumanEval_llama3.1.json
+num_passed: 93
+num_total: 164
+===============================================
+../preprocessed_results/ast_only/HumanEval_mistral-nemo.json
+num_passed: 90
+num_total: 164
+===============================================
+../preprocessed_results/ast_only/HumanEval_qwen2.5-coder.json
+num_passed: 128
+num_total: 164
+===============================================
+../preprocessed_results/ast_only/HumanEval_llama3_rule.json
+num_passed: 30
+num_total: 164
+===============================================
+../preprocessed_results/ast_only/HumanEval_llama3.1_rule.json
+num_passed: 65
+num_total: 164
+===============================================
+../preprocessed_results/ast_only/HumanEval_mistral-nemo_rule.json
+num_passed: 79
+num_total: 164
+===============================================
+../preprocessed_results/ast_only/HumanEval_qwen2.5-coder_rule.json
+num_passed: 125
+num_total: 164
+===============================================
+../preprocessed_results/ast_only/HumanEval_llama3_instruction.json
+num_passed: 53
+num_total: 164
+===============================================
+../preprocessed_results/ast_only/HumanEval_llama3.1_instruction.json
+num_passed: 89
+num_total: 164
+===============================================
+../preprocessed_results/ast_only/HumanEval_mistral-nemo_instruction.json
+num_passed: 81
+num_total: 164
+===============================================
+../preprocessed_results/ast_only/HumanEval_qwen2.5-coder_instruction.json
+num_passed: 134
+num_total: 164
+===============================================

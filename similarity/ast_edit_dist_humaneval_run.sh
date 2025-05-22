@@ -1,6 +1,7 @@
 #!/bin/bash
 
-output_file="./ast_edit_dist_humaneval_results.txt"
+# without preprocessing
+output_file="./ast_edit_dist_humaneval_wo_preprocessing_results.txt"
 echo "" > "$output_file"
 
 result_paths=(
