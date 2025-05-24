@@ -85,7 +85,7 @@ if __name__ == "__main__":
         entropy.append(entr)
         passed_count += int(is_passed)
 
-    model, mode, dataset = decompose_name(args.responses_path)
+    dataset, model, mode = decompose_name(args.responses_path)
     results_to_save = {
         'model': model,
         'mode': mode,
