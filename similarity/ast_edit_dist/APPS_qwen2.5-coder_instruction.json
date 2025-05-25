@@ -1,0 +1,1502 @@
+{
+    "4693": {
+        "code": "(a, b) = map(int, input().split())\nresult = a + b\nif result >= 10:\n    print('error')\nelse:\n    print(result)",
+        "result": "passed",
+        "average_distance": 6.2
+    },
+    "4077": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4006": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4556": {
+        "code": "print(input().split()[1][0])",
+        "result": "failed: testcase 0",
+        "average_distance": 15.166666666666666
+    },
+    "4571": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4019": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4265": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4657": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nq = int(data[0])\nindex = 1\nresults = []\nfor _ in range(q):\n    n = int(data[index])\n    k = int(data[index + 1])\n    a = list(map(int, data[index + 2:index + 2 + n]))\n    index += 2 + n\n    if (k - 1) * 2 > n:\n        results.append('NO')\n    else:\n        results.append('YES')\n        for i in range(k):\n            if i == k - 1:\n                results.append(n)\n            else:\n                results.append((i + 1) * 2)\nfor result in results:\n    print(result)",
+        "result": "failed: testcase 0",
+        "average_distance": 138.0
+    },
+    "4599": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4774": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4851": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4655": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nq = int(data[0])\nresults = []\nfor i in range(q):\n    a = int(data[3 * i + 1])\n    b = int(data[3 * i + 2])\n    c = int(data[3 * i + 3])\n    if a > b:\n        (a, b) = (b, a)\n    if a > c:\n        (a, c) = (c, a)\n    if b > c:\n        (b, c) = (c, b)\n    alice_candies = max(a, (a + c) // 2)\n    results.append(alice_candies)\nfor result in results:\n    print(result)",
+        "result": "failed: testcase 0",
+        "average_distance": 89.75
+    },
+    "4132": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4085": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4399": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4999": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4727": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4906": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4011": {
+        "code": "n = int(input())\na = input()\nf = list(map(int, input().split()))\nmax_num = a\nfor i in range(n):\n    for j in range(i + 1, n + 1):\n        segment = a[i:j]\n        new_segment = ''.join((str(f[int(digit) - 1]) for digit in segment))\n        if int(new_segment) > int(max_num):\n            max_num = new_segment\nprint(max_num)",
+        "result": "failed: testcase 0",
+        "average_distance": 39.5
+    },
+    "4099": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4465": {
+        "code": "A = int(input())\nB = int(input())\nprint((A - 1) * (B - 1))",
+        "result": "failed: testcase 0",
+        "average_distance": 10.0
+    },
+    "4315": {
+        "code": "import math\nR = int(input())\ncircumference = 2 * math.pi * R\nprint(circumference)",
+        "result": "passed",
+        "average_distance": 1.1111111111111112
+    },
+    "4633": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4734": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4229": {
+        "code": "N = int(input())\nsum_fizzbuzz = 0\nfor i in range(1, N + 1):\n    if i % 3 == 0 and i % 5 == 0:\n        sum_fizzbuzz += i\n    elif i % 3 == 0:\n        continue\n    elif i % 5 == 0:\n        continue\n    else:\n        sum_fizzbuzz += i\nprint(sum_fizzbuzz)",
+        "result": "failed: testcase 0",
+        "average_distance": 12.0
+    },
+    "4321": {
+        "code": "(n, k) = map(int, input().split())\nfor _ in range(k):\n    if n % 10 != 0:\n        n -= 1\n    else:\n        n //= 10\nprint(n)",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4503": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nH = int(data[0])\nN = int(data[1])\nA = list(map(int, data[2:]))\nif H <= max(A):\n    print('Yes')\nelse:\n    moves = [False] * (H + 1)\n    for a in A:\n        if not moves[a]:\n            moves[a] = True\n            H -= a\n    if H <= 0:\n        print('Yes')\n    else:\n        print('No')",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4855": {
+        "code": "import sys\nfrom math import ceil\n(A, I) = map(int, input().split())\nrequired_citations = ceil(I * A)\nscientists_to_bribe = required_citations - A\nprint(scientists_to_bribe)",
+        "result": "failed: testcase 0",
+        "average_distance": 28.25
+    },
+    "4704": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4829": {
+        "code": "(l, r) = map(int, input().split())\nif l == 0 and r == 0:\n    print('Not a moose')\nelif l == r:\n    points = l + r\n    print(f'Even {points}')\nelse:\n    max_tines = max(l, r)\n    if max_tines - min(l, r) <= 4:\n        points = 2 * max_tines\n        print(f'Odd {points}')\n    else:\n        print('Not a moose')",
+        "result": "passed",
+        "average_distance": 29.333333333333332
+    },
+    "4730": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4729": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4582": {
+        "code": "a = input()\nb = input()\nif a == 'H':\n    if b == 'H':\n        print('H')\n    else:\n        print('D')\nelif b == 'H':\n    print('D')\nelse:\n    print('H')",
+        "result": "failed: testcase 0",
+        "average_distance": 10.76923076923077
+    },
+    "4910": {
+        "code": "from collections import Counter\nimport sys\nN = int(input())\ncostumes = [input().strip() for _ in range(N)]\ncostume_counts = Counter(costumes)\nmax_count = max(costume_counts.values())\nbest_costumes = [category for (category, count) in costume_counts.items() if count == max_count]\nbest_costumes.sort()\nprint('\\n'.join(best_costumes))",
+        "result": "failed: testcase 0",
+        "average_distance": 12.0
+    },
+    "4323": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4626": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nq = int(data[0])\nresults = []\nindex = 1\nfor _ in range(q):\n    a = int(data[index])\n    b = int(data[index + 1])\n    c = int(data[index + 2])\n    index += 3\n    min_distance = float('inf')\n    for dx_a in [-1, 0, 1]:\n        for dx_b in [-1, 0, 1]:\n            for dx_c in [-1, 0, 1]:\n                a_prime = a + dx_a\n                b_prime = b + dx_b\n                c_prime = c + dx_c\n                distance = abs(a_prime - b_prime) + abs(a_prime - c_prime) + abs(b_prime - c_prime)\n                min_distance = min(min_distance, distance)\n    results.append(min_distance)\nfor result in results:\n    print(result)",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4400": {
+        "code": "print(S.count('R'))",
+        "result": "failed: testcase 0",
+        "average_distance": 7.166666666666667
+    },
+    "4794": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4096": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4530": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4724": {
+        "code": "R = int(input())\nG = int(input())\nperformance = 2 * G - R\nprint(performance)",
+        "result": "passed",
+        "average_distance": 4.0625
+    },
+    "4276": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4708": {
+        "code": "N = int(input())\nK = int(input())\nX = int(input())\nY = int(input())\ntotal_fee = K * X + max(0, N - K) * Y\nprint(total_fee)",
+        "result": "failed: testcase 1",
+        "average_distance": 0.0
+    },
+    "4396": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4155": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4557": {
+        "code": "(A, B, X) = map(int, input().split())\nif A <= X <= A + B:\n    print('YES')\nelse:\n    print('NO')",
+        "result": "passed",
+        "average_distance": 9.0
+    },
+    "4930": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4715": {
+        "code": "(a, b, c) = map(int, input().split())\ncolors = {a, b, c}\nprint(len(colors))",
+        "result": "passed",
+        "average_distance": 20.666666666666668
+    },
+    "4008": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4257": {
+        "code": "(a, b) = map(int, input().split())\nprint(a * b)",
+        "result": "passed",
+        "average_distance": 0.5263157894736842
+    },
+    "4584": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4195": {
+        "code": "(D, N) = map(int, input().split())\nresult = 0\ncount = 0\nfor i in range(1, 10 ** 6):\n    if (i % 100 == 0) ** D:\n        count += 1\n        if count == N:\n            result = i\n            break\nprint(result)",
+        "result": "failed: testcase 2",
+        "average_distance": 0.0
+    },
+    "4176": {
+        "code": "import math\nA = int(input())\nB = int(input())\nprint(math.lcm(A, B))",
+        "result": "failed: testcase 0",
+        "average_distance": 11.666666666666666
+    },
+    "4166": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4827": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4871": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4148": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4316": {
+        "code": "s = input()\nif len(set(s)) == 2 and s.count(s[0]) == 2 and (s.count(s[1]) == 2):\n    print('Yes')\nelse:\n    print('No')",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4397": {
+        "code": "(N, i) = map(int, input().split())\nj = N - i + 1\nprint(j)",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4180": {
+        "code": "N = int(input())\nchange = N % 1000\nprint(change)",
+        "result": "failed: testcase 0",
+        "average_distance": 5.333333333333333
+    },
+    "4907": {
+        "code": "n = int(input())\nif n % 2 == 0:\n    print('Bob')\nelse:\n    print('Alice')\n    print(1)",
+        "result": "failed: testcase 0",
+        "average_distance": 2.5
+    },
+    "4839": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4665": {
+        "code": "from collections import namedtuple\nN = int(input())\ncolumns = input().split()\nStudent = namedtuple('Student', columns)\ntotal_marks = 0\nfor _ in range(N):\n    student_data = input().split()\n    student = Student(*student_data)\n    total_marks += float(student.MARKS)\naverage_marks = total_marks / N\nprint(f'{average_marks:.2f}')",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4785": {
+        "code": "if 'ss' in input():\n    print('hiss')\nelse:\n    print('no hiss')",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4272": {
+        "code": "N = int(input())\nS = input()\ncount = S.count('ABC')\nprint(count)",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4092": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4023": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4160": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4815": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4514": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4585": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4781": {
+        "code": "K = int(input())\nN = int(input())\nplayers = list(range(1, 9))\nbox_index = players.index(K)\nfor _ in range(N):\n    (T, Z) = input().split()\n    if Z != 'P':\n        box_index += 1\nprint(box_index % len(players) + 1)",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "4551": {
+        "code": "(A, B, C, D) = map(int, input().split())\nL = A + B\nR = C + D\nif L > R:\n    print('Left')\nelif L < R:\n    print('Right')\nelse:\n    print('Balanced')",
+        "result": "passed",
+        "average_distance": 1.8125
+    },
+    "4345": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4075": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4408": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4282": {
+        "code": "from sys import stdin, stdout\nn = int(input())\na = [tuple(map(int, input().split())) for _ in range(n)]\nneighbors = {i: set() for i in range(1, n + 1)}\nfor i in range(n):\n    (x, y) = a[i]\n    neighbors[x].add(y)\n    neighbors[y].add(x)\nstart = next((kid for (kid, neighs) in neighbors.items() if len(neighs) == 1))\ncircle = [start]\ncurrent = start\nwhile True:\n    next_kids = neighbors[current] - {circle[-2]}\n    current = list(next_kids)[0]\n    circle.append(current)\n    if current == start and len(circle) > 1:\n        break\nstdout.write(' '.join(map(str, circle)) + '\\n')",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "4331": {
+        "code": "n = int(input())\nif '7' in str(n):\n    print('Yes')\nelse:\n    print('No')",
+        "result": "passed",
+        "average_distance": 2.8333333333333335
+    },
+    "4550": {
+        "code": "(a, b, c) = map(int, input().split())\ntotal_candies = a + b + c\nif total_candies % 2 == 0:\n    print('Yes')\nelse:\n    print('No')",
+        "result": "failed: testcase 1",
+        "average_distance": 0.0
+    },
+    "4271": {
+        "code": "N = int(input())\nA = list(map(int, input().split()))\nB = list(map(int, input().split()))\nC = list(map(int, input().split()))\nsatisfaction = B[A[0] - 1]\nfor i in range(1, N):\n    satisfaction += B[A[i] - 1]\n    if A[i] == A[i - 1] + 1:\n        satisfaction += C[i - 1]\nprint(satisfaction)",
+        "result": "failed: testcase 0",
+        "average_distance": 3.5
+    },
+    "4848": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4694": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4213": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nN = int(data[0])\nA = list(map(int, data[1:]))\nmax_diff = 0\nmin_value = A[0]\nfor i in range(1, N):\n    max_diff = max(max_diff, abs(A[i] - min_value))\n    min_value = min(min_value, A[i])\nprint(max_diff)",
+        "result": "failed: testcase 5",
+        "average_distance": 37.333333333333336
+    },
+    "4471": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4802": {
+        "code": "(h, m) = map(int, input().split())\nm -= 45\nif m < 0:\n    h -= 1\n    m += 60\nif h < 0:\n    h += 24\nprint(h, m)",
+        "result": "passed",
+        "average_distance": 10.2
+    },
+    "4890": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4286": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4713": {
+        "code": "N = int(input())\nS = input()\nmax_x = 0\ncurrent_x = 0\nfor char in S:\n    if char == 'I':\n        current_x += 1\n    elif char == 'D':\n        current_x -= 1\n    max_x = max(max_x, current_x)\nprint(max_x)",
+        "result": "passed",
+        "average_distance": 3.0
+    },
+    "4698": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4841": {
+        "code": "n = int(input())\ncounts = [input().strip() for _ in range(n)]\nexpected_count = 0\nfor count in counts:\n    if count == 'mumble':\n        continue\n    expected_count += 1\n    if not (count.isdigit() and int(count) == expected_count):\n        print('something is fishy')\n        break\nelse:\n    print('makes sense')",
+        "result": "failed: testcase 0",
+        "average_distance": 31.5
+    },
+    "4865": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4957": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4382": {
+        "code": "import sys\nN = int(input())\nprint(N ** 3)",
+        "result": "passed",
+        "average_distance": 0.75
+    },
+    "4456": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4594": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4560": {
+        "code": "N = int(input())\nA = int(input())\nif N % 500 == A:\n    print('Yes')\nelse:\n    print('No')",
+        "result": "failed: testcase 0",
+        "average_distance": 16.0
+    },
+    "4320": {
+        "code": "for _ in range(int(input())):\n    n = int(input())\n    x = 1\n    while True:\n        if n % x == 0:\n            k = 1\n            sum_x = 0\n            while sum_x < n:\n                sum_x += x * 2 ** k\n                k += 1\n            if sum_x == n:\n                print(x)\n                break\n        x += 1",
+        "result": "timed out",
+        "average_distance": 70.0
+    },
+    "4500": {
+        "code": "(A, B, C) = map(int, input().split())\nif A + B >= C:\n    print('Yes')\nelse:\n    print('No')",
+        "result": "passed",
+        "average_distance": 6.75
+    },
+    "4739": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4410": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2441": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "276": {
+        "code": "gems = ['Power', 'Time', 'Space', 'Soul', 'Reality', 'Mind']\nseen_colors = set((input().strip() for _ in range(int(input()))))\nabsent_gems = [gem for (gem, color) in zip(gems, ['purple', 'green', 'blue', 'orange', 'red', 'yellow']) if color not in seen_colors]\nprint(len(absent_gems))\nfor gem in absent_gems:\n    print(gem)",
+        "result": "passed",
+        "average_distance": 40.0
+    },
+    "2635": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "281": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2300": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2104": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1995": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2064": {
+        "code": "n = int(input())\nresult = 0\nwhile n >= 2:\n    if n >= 6:\n        result = result * 10 + 9\n        n -= 6\n    elif n == 5:\n        result = result * 10 + 3\n        n -= 5\n    elif n == 4:\n        result = result * 10 + 2\n        n -= 4\n    else:\n        break\nprint(result)",
+        "result": "failed: testcase 0",
+        "average_distance": 54.0
+    },
+    "1715": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\n(A, B, Q) = (int(data[0]), int(data[1]), int(data[2]))\ns = list(map(int, data[3:3 + A]))\nt = list(map(int, data[3 + A:3 + A + B]))\nx = list(map(int, data[3 + A + B:]))\nfor xi in x:\n    si_idx = bisect_left(s, xi)\n    ti_idx = bisect_left(t, xi)\n    min_dist = float('inf')\n    if si_idx < A:\n        min_dist = min(min_dist, abs(xi - s[si_idx]) + (t[ti_idx] - s[si_idx]))\n        if ti_idx < B and t[ti_idx] > xi:\n            min_dist = min(min_dist, abs(t[ti_idx] - xi) + (s[si_idx + 1] - t[ti_idx]))\n    if ti_idx < B:\n        min_dist = min(min_dist, abs(xi - t[ti_idx]) + (s[si_idx] - t[ti_idx]))\n        if si_idx < A and s[si_idx] > xi:\n            min_dist = min(min_dist, abs(s[si_idx] - xi) + (t[ti_idx + 1] - s[si_idx]))\n    print(min_dist)",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "2074": {
+        "code": "(n, m) = map(int, input().split())\ncosts = [list(map(int, input().split())) for _ in range(n)]\nmax_min_cost = max((min(row) for row in costs))\nprint(max_min_cost)",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "2921": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1642": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "947": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "743": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1397": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1144": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "890": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2410": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nt = int(data[0])\nindex = 1\nresults = []\nfor _ in range(t):\n    n = int(data[index])\n    index += 1\n    a = list(map(int, data[index:index + n]))\n    index += n\n    if all((x > 0 for x in a)):\n        results.append('YES')\n    else:\n        adel_max_tastiness = max((sum(a[l:r + 1]) for l in range(n) for r in range(l, n)))\n        yasser_tastiness = sum(a)\n        if yasser_tastiness > adel_max_tastiness:\n            results.append('YES')\n        else:\n            results.append('NO')\nfor result in results:\n    print(result)",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "1004": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "531": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nn = int(data[0])\nx = list(map(int, data[1:]))\nmin_x = min(x)\nmax_x = max(x)\ntotal_sum = sum(x)\ndesired_average = total_sum // n\ny = [desired_average] * n\nfor i in range(n):\n    if x[i] != desired_average:\n        if x[i] < desired_average and desired_average + 1 <= max_x:\n            y[i] = desired_average + 1\n        elif x[i] > desired_average and min_x <= desired_average - 1:\n            y[i] = desired_average - 1\nmin_equal_measurements = sum((1 for i in range(n) if x[i] == y[i]))\nprint(min_equal_measurements)\nprint(' '.join(map(str, y)))",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "510": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2555": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "324": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2912": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nN = int(data[0])\nstrings = data[1:N + 1]\noperations = [(int(data[N + i]) - 1, int(data[N + i + 1]) - 1) for i in range(N - 1)]\nfor (a, b) in operations:\n    strings[a] += strings[b]\n    strings[b] = ''\nprint(strings[-1])",
+        "result": "failed: testcase 0",
+        "average_distance": 20.285714285714285
+    },
+    "9": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "249": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2999": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2239": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2615": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2542": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "511": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1409": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2274": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2420": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1267": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2356": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "108": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1833": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2324": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2372": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1984": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1253": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "523": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2934": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1745": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1422": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1763": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nN = int(data[0])\nA = int(data[1])\nR = int(data[2])\nM = int(data[3])\nheights = list(map(int, data[4:]))\ntotal_cost = 0\nmax_height = max(heights)\nmin_height = min(heights)\nfor height in heights:\n    if height < max_height:\n        total_cost += (max_height - height) * R\n    else:\n        total_cost += (height - min_height) * A\nprint(total_cost)",
+        "result": "failed: testcase 0",
+        "average_distance": 23.0
+    },
+    "974": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2343": {
+        "code": "import math\nimport sys\ninput = sys.stdin.read\ndata = input().split()\nt = int(data[0])\nresults = []\nindex = 1\nfor _ in range(t):\n    n = int(data[index])\n    k = int(data[index + 1])\n    index += 2\n    if k == 0:\n        results.append('YES 0')\n    else:\n        min_n = math.ceil(math.log2(k))\n        if 2 ** (min_n * 2) <= k < 2 ** ((min_n + 1) * 2):\n            results.append(f'YES {min_n}')\n        else:\n            results.append('NO')\nfor result in results:\n    print(result)",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "627": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1655": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2124": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1093": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "899": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "551": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1772": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1339": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "440": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2801": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2749": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2319": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2121": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2617": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "175": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "995": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "582": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1402": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1141": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2836": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1109": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2125": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1746": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1294": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1159": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2025": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1429": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1950": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nn = int(data[0])\na = list(map(int, data[1:]))\ntotal_penalty = 0\nfor i in range(n):\n    if a[i] > 1:\n        total_penalty += min(2 * a[i] - 4, 3 * a[i] - 9)\nprint(total_penalty)",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "631": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2480": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2363": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nn = int(data[0])\nresults = []\nfor i in range(1, 2 * n, 2):\n    a = int(data[i])\n    b = int(data[i + 1])\n    operations = 0\n    while a > 0 and b > 0:\n        if a == b:\n            break\n        elif a > b:\n            a -= b\n        else:\n            b -= a\n        operations += 1\n    results.append(operations)\nprint('\\n'.join(map(str, results)))",
+        "result": "timed out",
+        "average_distance": 0.0
+    },
+    "909": {
+        "code": "a = int(input())\nb = int(input())\nc = int(input())\nmax_value = max(a + b * c, a * (b + c), a * b * c)\nprint(max_value)",
+        "result": "failed: testcase 0",
+        "average_distance": 4.0
+    },
+    "154": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "39": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1885": {
+        "code": "from math import comb\nn = int(input())\nresult = 0\nfor group_size in range(5, 8):\n    result += comb(n, group_size)\nprint(result)",
+        "result": "passed",
+        "average_distance": 13.333333333333334
+    },
+    "1180": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1856": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "522": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1719": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1842": {
+        "code": "import math\n(a, b, c) = map(int, input().split())\ndiscriminant = b ** 2 - 4 * a * c\nroot1 = (-b + math.sqrt(discriminant)) / (2 * a)\nroot2 = (-b - math.sqrt(discriminant)) / (2 * a)\nprint(max(root1, root2))\nprint(min(root1, root2))",
+        "result": "passed",
+        "average_distance": 6.333333333333333
+    },
+    "806": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "365": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1158": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "33": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2498": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2309": {
+        "code": "from collections import defaultdict\nimport sys\ninput = sys.stdin.read\ndata = input().split()\nn = int(data[0])\nwords = data[1:]\nvowel_count = defaultdict(int)\nlast_vowel = defaultdict(list)\nfor word in words:\n    count = 0\n    last = None\n    for char in word:\n        if char in 'aeiou':\n            count += 1\n            last = char\n    vowel_count[word] = count\n    if last is not None:\n        last_vowel[last].append(word)\nlyrics = []\nfor (v1, words1) in last_vowel.items():\n    for w1 in words1:\n        for (v2, words2) in last_vowel.items():\n            if v1 == v2:\n                for w2 in words2:\n                    if vowel_count[w1] == vowel_count[w2]:\n                        lyrics.append((w1, w2))\nprint(len(lyrics) // 2)\nfor i in range(0, len(lyrics), 2):\n    print(f'{lyrics[i][0]} {lyrics[i + 1][0]}\\n{lyrics[i][1]} {lyrics[i + 1][1]}')",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "1326": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2950": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1983": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1767": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2382": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3907": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nn = int(data[0])\nm = int(data[1])\ncoupons = []\nfor i in range(m):\n    q_i = int(data[2 + 2 * i])\n    w_i = int(data[3 + 2 * i])\n    coupons.append((q_i, w_i))\ncoupons.sort(key=lambda x: -x[1])\nmax_money = 0\nfor (q_i, w_i) in coupons:\n    max_times = n // q_i\n    if n % q_i != 0:\n        max_times += 1\n    max_money += max_times * w_i\nprint(max_money)",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "3676": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3293": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3587": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3530": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3900": {
+        "code": "from collections import defaultdict\nimport sys\ninput = sys.stdin.read\ndata = input().split()\nn = int(data[0])\np = int(data[1])\ncoders = []\nfor i in range(n):\n    x = int(data[2 + 2 * i]) - 1\n    y = int(data[3 + 2 * i]) - 1\n    coders.append((x, y))\nsuspects = set()\nfor coder in coders:\n    suspects.update(coder)\n    count = 0\n    for coder in coders:\n        if suspect1 in coder or suspect2 in coder:\n            count += 1\n    return count\nresult = 0\nfor suspect1 in suspects:\n    for suspect2 in suspects:\n        if suspect1 != suspect2 and count_agreements(suspect1, suspect2) >= p:\n            result += 1\nprint(result)",
+        "result": "failed: testcase 0",
+        "average_distance": 154.0
+    },
+    "3996": {
+        "code": "from fractions import Fraction\nimport sys\ninput = sys.stdin.read\ndata = input().split()\nk = int(data[0])\na = list(map(int, data[1:]))\nn = 1\nfor x in a:\n    n *= x\nprobability = Fraction(1, 2 ** k)\np = probability.numerator % (10 ** 9 + 7)\nq = probability.denominator % (10 ** 9 + 7)\nprint(f'{p}/{q}')",
+        "result": "failed: testcase 1",
+        "average_distance": 71.0
+    },
+    "3276": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3834": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3012": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3745": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3028": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3196": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3405": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3126": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3279": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3599": {
+        "code": "(T, N) = map(int, input().split())\nbreaks = list(map(int, input().split()))\nstage_time = [0] * N\ncurrent_time = 0\nfor i in range(N):\n    if current_time + breaks[i] <= T:\n        stage_time[i] = current_time\n        current_time += breaks[i]\n    else:\n        break_time = T - current_time\n        stage_time[i] = current_time\n        current_time = T\nprint(*stage_time)",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "3687": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3864": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3504": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3451": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3156": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3697": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3647": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3699": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3145": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3795": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3353": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3065": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3250": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3306": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3970": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3655": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3589": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3257": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3927": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3319": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3009": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3896": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3509": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3547": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3017": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3076": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3923": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3332": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3240": {
+        "code": "from sys import stdin, stdout\nimport math\n(k, v) = map(int, input().split())\nprobabilities = [1]\nballots = [0]\nfor _ in range(v - 1):\n    (p, b) = map(float, input().split())\n    probabilities.append(p)\n    ballots.append(b)\n    total_prob = 1.0\n    yraglac_wins = 0\n    for i in range(2 ** k):\n        vote_counts = [my_ballots]\n        for j in range(v - 1):\n            if random.random() < probabilities[j]:\n                vote_counts.append(ballots[j])\n        total_count = sum(vote_counts)\n        binary_total = format(total_count, '0{}b'.format(k))\n        yraglac_wins += ('0' * (k - len(binary_total) + 1) + binary_total).count('0')\n    return yraglac_wins / total_prob\nmax_expected_wins = 0\noptimal_ballots = 0\nfor i in range(2 ** k):\n    expected_wins = expected_yraglac_wins(i)\n    if expected_wins > max_expected_wins:\n        max_expected_wins = expected_wins\n        optimal_ballots = i\nstdout.write(str(optimal_ballots) + '\\n')",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "3368": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3538": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3183": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3916": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3195": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3998": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3150": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3566": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3401": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3660": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3721": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3811": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3528": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3890": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3534": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3371": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3621": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3392": {
+        "code": "import sys\nfrom collections import deque\ninput = sys.stdin.read\ndata = input().split()\nN = int(data[0])\nheights = []\ngrowth_speeds = []\nindex = 1\nfor i in range(N):\n    row = list(map(int, data[index:index + N]))\n    heights.append(row)\n    index += N\nfor i in range(N):\n    row = list(map(int, data[index:index + N]))\n    growth_speeds.append(row)\n    index += N\n    if x < 0 or x >= N or y < 0 or (y >= N):\n        return 0\n    if heights[x][y] != current_height:\n        return 0\n    if (x, y) in visited:\n        return 0\n    visited.add((x, y))\n    size = 1\n    for (dx, dy) in [(-1, 0), (1, 0), (0, -1), (0, 1)]:\n        size += dfs(x + dx, y + dy, current_height)\n    return size\nmax_size = 0\nfor i in range(N):\n    for j in range(N):\n        visited = set()\n        size = dfs(i, j, heights[i][j])\n        max_size = max(max_size, size)\nprint(max_size)",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "3095": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3769": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3563": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3618": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3830": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3912": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3878": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3010": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3068": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3030": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3630": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3133": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3480": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3389": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3925": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3700": {
+        "code": "(n, k) = map(int, input().split())\ncount = 0\nfor i in range(1, n):\n    j = k - i\n    if j > i and j <= n:\n        count += 1\nprint(count)",
+        "result": "timed out",
+        "average_distance": 5.666666666666667
+    },
+    "3944": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3821": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3667": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3959": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3692": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3894": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3856": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3282": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3596": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3540": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3354": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3217": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3520": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3475": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3977": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3626": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3584": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3950": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3075": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nn = int(data[0])\ng = int(data[1])\nstations = []\nfor i in range(n):\n    d = int(data[2 + 2 * i])\n    c = int(data[3 + 2 * i])\n    stations.append((d, c))\nstations.sort()\ntotal_cost = 0\ncurrent_fuel = g\ni = 0\nwhile current_fuel > 0 and i < n:\n    (d, c) = stations[i]\n    if current_fuel >= d:\n        total_cost += (d - current_fuel) * c\n        current_fuel = d\n    else:\n        i += 1\nif current_fuel >= stations[-1][0]:\n    print(total_cost)\nelse:\n    print('cancel road trip')",
+        "result": "timed out",
+        "average_distance": 79.0
+    },
+    "3711": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    }
+}

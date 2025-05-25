@@ -1,0 +1,1502 @@
+{
+    "4693": {
+        "code": "(a, b) = map(int, input().split())\nresult = a + b\nif result >= 10:\n    print('error')\nelse:\n    print(result)",
+        "result": "passed",
+        "average_distance": 4.333333333333333
+    },
+    "4077": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4006": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4556": {
+        "code": "contest_name = input().split()\nabbreviation = contest_name[0][0] + contest_name[2]\nprint(abbreviation)",
+        "result": "failed: testcase 0",
+        "average_distance": 12.0
+    },
+    "4571": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4019": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4265": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4657": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4599": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4774": {
+        "code": "operators = ['+', '-', '*', '/']\n(a, b, c, d) = map(int, input().split())\nvalid_expressions = []\nfor op1 in operators:\n    for op2 in operators:\n        if op2 == '/' and (b == 0 or d == 0):\n            continue\n        expression = f'{a} {op1} {b} = {c} {op2} {d}'\n        try:\n            if eval(expression.replace('=', '==')):\n                valid_expressions.append(expression)\n        except ZeroDivisionError:\n            continue\nif valid_expressions:\n    print('\\n'.join(sorted(valid_expressions)))\nelse:\n    print('problems ahead')",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "4851": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4655": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nq = int(data[0])\nresults = []\nindex = 1\nfor _ in range(q):\n    a = int(data[index])\n    b = int(data[index + 1])\n    c = int(data[index + 2])\n    piles = sorted([a, b, c])\n    alice_candies = piles[2]\n    bob_candies = max(piles[0], piles[1])\n    if alice_candies > bob_candies:\n        alice_candies += (bob_candies - piles[0]) // 2\n        bob_candies -= (bob_candies - piles[0]) // 2\n    elif bob_candies > alice_candies:\n        bob_candies += (alice_candies - piles[1]) // 2\n        alice_candies -= (alice_candies - piles[1]) // 2\n    results.append(alice_candies)\nfor result in results:\n    print(result)",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "4132": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4085": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4399": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4999": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4727": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4906": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4011": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4099": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4465": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4315": {
+        "code": "import math\nR = int(input())\ncircumference = 2 * math.pi * R\nprint(f'{circumference:.10f}')",
+        "result": "passed",
+        "average_distance": 4.0
+    },
+    "4633": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4734": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4229": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4321": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4503": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4855": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4704": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4829": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4730": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4729": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4582": {
+        "code": "a = input()\nb = input()\nif a == 'H':\n    if b == 'H':\n        print('H')\n    else:\n        print('D')\nelif b == 'H':\n    print('D')\nelse:\n    print('H')",
+        "result": "failed: testcase 0",
+        "average_distance": 23.0
+    },
+    "4910": {
+        "code": "import sys\nn = int(input())\ncostumes = [input().strip() for _ in range(n)]\ncategory_counts = {}\nfor costume in costumes:\n    if costume not in category_counts:\n        category_counts[costume] = 0\n    category_counts[costume] += 1\nmax_count = max(category_counts.values())\nbest_costumes = sorted([costume for (costume, count) in category_counts.items() if count == max_count])\nprint('\\n'.join(best_costumes))",
+        "result": "failed: testcase 0",
+        "average_distance": 19.75
+    },
+    "4323": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4626": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4400": {
+        "code": "s = input()\nmax_rainy_days = 0\ncurrent_rainy_days = 0\nfor char in s:\n    if char == 'R':\n        current_rainy_days += 1\n        max_rainy_days = max(max_rainy_days, current_rainy_days)\n    else:\n        current_rainy_days = 0\nprint(max_rainy_days)",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4794": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4096": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4530": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4724": {
+        "code": "r = int(input())\ng = int(input())\nrequired_performance = (2 * g - r) // 1\nprint(required_performance)",
+        "result": "passed",
+        "average_distance": 10.333333333333334
+    },
+    "4276": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4708": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4396": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4155": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4557": {
+        "code": "(A, B, X) = map(int, input().split())\nif A <= X <= A + B:\n    print('YES')\nelse:\n    print('NO')",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4930": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4715": {
+        "code": "(a, b, c) = map(int, input().split())\ncolors = set([a, b, c])\nprint(len(colors))",
+        "result": "passed",
+        "average_distance": 24.0
+    },
+    "4008": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4257": {
+        "code": "import sys\n(A, B) = map(int, input().split())\nprint(A * B)",
+        "result": "passed",
+        "average_distance": 1.8333333333333333
+    },
+    "4584": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4195": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4176": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4166": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4827": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4871": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4148": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4316": {
+        "code": "import sys\ns = input()\nchar_count = {}\nfor char in s:\n    if char in char_count:\n        char_count[char] += 1\n    else:\n        char_count[char] = 1\nvalid_chars = [count == 2 for count in char_count.values()]\nif sum(valid_chars) == 2:\n    print('Yes')\nelse:\n    print('No')",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4397": {
+        "code": "(N, i) = map(int, input().split())\nj = N - i + 1\nprint(j)",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4180": {
+        "code": "amount_due = int(input())\nchange_received = amount_due % 1000\nprint(change_received)",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "4907": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4839": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4665": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4785": {
+        "code": "word = input()\nfor i in range(len(word) - 1):\n    if word[i] == 's' and word[i + 1] == 's':\n        print('hiss')\n        break\nelse:\n    print('no hiss')",
+        "result": "passed",
+        "average_distance": 0.0
+    },
+    "4272": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4092": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4023": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4160": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4815": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4514": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4585": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4781": {
+        "code": "import sys\nk = int(input())\nn = int(input())\ncurrent_player = k - 1\nquestions = []\nfor _ in range(n):\n    (t, z) = input().split()\n    questions.append((int(t), z))\nfor (time_taken, answer) in questions:\n    if answer == 'N' or answer == 'P':\n        continue\n    current_player += 1\n    current_player %= 8\nprint(current_player + 1)",
+        "result": "failed: testcase 0",
+        "average_distance": 61.0
+    },
+    "4551": {
+        "code": "(a, b, c, d) = map(int, input().split())\nl = a + b\nr = c + d\nif l < r:\n    print('Left')\nelif l == r:\n    print('Balanced')\nelse:\n    print('Right')",
+        "result": "failed: testcase 0",
+        "average_distance": 5.2
+    },
+    "4345": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4075": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4408": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4282": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4331": {
+        "code": "n = int(input())\nif '7' in str(n):\n    print('Yes')\nelse:\n    print('No')",
+        "result": "passed",
+        "average_distance": 7.769230769230769
+    },
+    "4550": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4271": {
+        "code": "import sys\nN = int(input())\nA = list(map(int, input().split()))\nB = list(map(int, input().split()))\nC = list(map(int, input().split()))\ntotal_points = 0\nfor i in range(N):\n    total_points += B[A[i] - 1]\n    if i < N - 1:\n        total_points += C[A[i] - 1]\nprint(total_points)",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "4848": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4694": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4213": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4471": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4802": {
+        "code": "(h, m) = map(int, input().split())\nm -= 45\nif m < 0:\n    m += 60\n    h -= 1\nif h < 0:\n    h += 24\nprint(h, m)",
+        "result": "passed",
+        "average_distance": 19.0
+    },
+    "4890": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4286": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4713": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4698": {
+        "code": "import sys\nlines = sys.stdin.read().splitlines()\nN = int(lines[0])\nT = list(map(int, lines[1].split()))\nM = int(lines[2])\ndrinks = []\nfor i in range(M):\n    (P, X) = map(int, lines[3 + i].split())\n    drinks.append((P - 1, X))\nresults = []\nfor (P, X) in drinks:\n    total_time = sum(T)\n    total_time += X - T[P]\n    results.append(total_time)\nfor result in results:\n    print(result)",
+        "result": "passed",
+        "average_distance": 71.5
+    },
+    "4841": {
+        "code": "n = int(input())\nbites = input().split()\ncurrent_count = 0\nfor bite in bites:\n    if bite == 'mumble':\n        if current_count < 1:\n            print('something is fishy')\n            break\n    else:\n        bite = int(bite)\n        if bite != current_count + 1:\n            print('something is fishy')\n            break\n        current_count += 1\nelse:\n    print('makes sense')",
+        "result": "failed: testcase 0",
+        "average_distance": 23.5
+    },
+    "4865": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4957": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4382": {
+        "code": "n = int(input())\nprint(n ** 3)",
+        "result": "passed",
+        "average_distance": 4.333333333333333
+    },
+    "4456": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4594": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4560": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4320": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4500": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4739": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "4410": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2441": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "276": {
+        "code": "gems = ['purple', 'green', 'blue', 'orange', 'red', 'yellow']\nseen = set((input().strip() for _ in range(int(input()))))\nabsent = [g.capitalize() for g in gems if g not in seen]\nprint(len(absent))\nfor a in absent:\n    print(a)",
+        "result": "failed: testcase 0",
+        "average_distance": 31.0
+    },
+    "2635": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "281": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2300": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2104": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1995": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2064": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1715": {
+        "code": "import bisect\nimport sys\n(A, B, Q) = map(int, input().split())\nshrines = list(map(int, [input() for _ in range(A)]))\ntemples = list(map(int, [input() for _ in range(B)]))\nqueries = list(map(int, [input() for _ in range(Q)]))\nresults = []\nfor x in queries:\n    i_shrine = bisect.bisect_right(shrines, x)\n    i_temple = bisect.bisect_right(temples, x)\n    min_distance = float('inf')\n    if i_shrine > 0:\n        min_distance = min(min_distance, abs(shrines[i_shrine - 1] - x))\n    if i_temple > 0:\n        min_distance = min(min_distance, abs(temples[i_temple - 1] - x))\n    if i_shrine < A:\n        min_distance = min(min_distance, shrines[i_shrine] - x)\n    if i_temple < B:\n        min_distance = min(min_distance, temples[i_temple] - x)\n    if i_shrine > 0 and i_temple > 0:\n        for s in range(max(0, i_shrine - 2), min(A, i_shrine + 3)):\n            for t in range(max(0, i_temple - 2), min(B, i_temple + 3)):\n                dist = abs(shrines[s] - x) + abs(temples[t] - x)\n                min_distance = min(min_distance, dist)\n    results.append(min_distance)\nfor result in results:\n    print(result)",
+        "result": "timed out",
+        "average_distance": 0.0
+    },
+    "2074": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2921": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1642": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "947": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "743": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1397": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1144": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "890": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2410": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1004": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "531": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "510": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2555": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "324": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2912": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nN = int(data[0])\nstrings = data[1:N + 1]\noperations = [(int(data[N + i * 2]) - 1, int(data[N + i * 2 + 1]) - 1) for i in range(N - 1)]\nfor (a, b) in operations:\n    strings[a] += strings[b]\n    strings[b] = ''\nprint(strings[0])",
+        "result": "failed: testcase 0",
+        "average_distance": 10.0
+    },
+    "9": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "249": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2999": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2239": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2615": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2542": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "511": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1409": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2274": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2420": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1267": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2356": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "108": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1833": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2324": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2372": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1984": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1253": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "523": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2934": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1745": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1422": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1763": {
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nN = int(data[0])\nA = int(data[1])\nR = int(data[2])\nM = int(data[3])\nheights = list(map(int, data[4:]))\ntotal_cost = 0\nwhile len(set(heights)) > 1:\n    max_height = max(heights)\n    min_height = min(heights)\n    diff = max_height - min_height\n    if A <= R + M:\n        total_cost += A * diff\n        for i in range(N):\n            if heights[i] == max_height:\n                heights[i] -= 1\n                break\n    elif R <= M:\n        total_cost += R * diff\n        for i in range(N):\n            if heights[i] == min_height:\n                heights[i] += 1\n                break\n    else:\n        total_cost += M * diff\n        for i in range(N):\n            if heights[i] == max_height:\n                heights[i] -= 1\n                break\nprint(total_cost)",
+        "result": "timed out",
+        "average_distance": 0.0
+    },
+    "974": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2343": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "627": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1655": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2124": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1093": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "899": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "551": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1772": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1339": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "440": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2801": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2749": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2319": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2121": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2617": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "175": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "995": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "582": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1402": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1141": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2836": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1109": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2125": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1746": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1294": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1159": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2025": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1429": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1950": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "631": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2480": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2363": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "909": {
+        "code": "import sys\na = int(input())\nb = int(input())\nc = int(input())\nmax_value = max(a + b * c, a * (b + c), a * b * c)\nprint(max_value)",
+        "result": "failed: testcase 0",
+        "average_distance": 5.4
+    },
+    "154": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "39": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1885": {
+        "code": "from math import comb\nn = int(input())\ntotal_variants = 0\nfor group_size in range(5, 8):\n    total_variants += comb(n, group_size)\nprint(total_variants)",
+        "result": "passed",
+        "average_distance": 1.5
+    },
+    "1180": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1856": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "522": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1719": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1842": {
+        "code": "import math\n(a, b, c) = map(int, input().split())\ndiscriminant = b ** 2 - 4 * a * c\nroot1 = (-b + math.sqrt(discriminant)) / (2 * a)\nroot2 = (-b - math.sqrt(discriminant)) / (2 * a)\nif root1 > root2:\n    print(root1)\n    print(root2)\nelse:\n    print(root2)\n    print(root1)",
+        "result": "passed",
+        "average_distance": 19.0
+    },
+    "806": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "365": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1158": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "33": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2498": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2309": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1326": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2950": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1983": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "1767": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "2382": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3907": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3676": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3293": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3587": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3530": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3900": {
+        "code": "from collections import Counter\n(n, p) = map(int, input().split())\nstatements = [tuple(map(int, input().split())) for _ in range(n)]\nsuspects = set()\nfor (x, y) in statements:\n    suspects.add(x)\n    suspects.add(y)\nsuspect_count = len(suspects)\nif suspect_count < 2 or n - suspect_count < p:\n    print(0)\nelse:\n    count = 0\n    for i in range(1, suspect_count + 1):\n        for j in range(i + 1, suspect_count + 1):\n            if any((x == i or x == j or y == i or (y == j) for (x, y) in statements)):\n                count += 1\n    print(count)",
+        "result": "failed: testcase 0",
+        "average_distance": 73.0
+    },
+    "3996": {
+        "code": "from fractions import Fraction\nimport sys\nk = int(input())\na = list(map(int, input().split()))\nprob = Fraction(1, 2)\nfor i in a:\n    prob *= Fraction(i - 1, i)\nnumerator = prob.numerator % (10 ** 9 + 7)\ndenominator = prob.denominator % (10 ** 9 + 7)\nprint(f'{numerator}/{denominator}')",
+        "result": "failed: testcase 0",
+        "average_distance": 0.0
+    },
+    "3276": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3834": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3012": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3745": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3028": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3196": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3405": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3126": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3279": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3599": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3687": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3864": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3504": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3451": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3156": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3697": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3647": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3699": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3145": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3795": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3353": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3065": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3250": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3306": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3970": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3655": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3589": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3257": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3927": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3319": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3009": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3896": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3509": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3547": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3017": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3076": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3923": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3332": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3240": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3368": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3538": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3183": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3916": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3195": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3998": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3150": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3566": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3401": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3660": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3721": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3811": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3528": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3890": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3534": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3371": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3621": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3392": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3095": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3769": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3563": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3618": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3830": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3912": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3878": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3010": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3068": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3030": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3630": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3133": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3480": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3389": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3925": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3700": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3944": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3821": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3667": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3959": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3692": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3894": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3856": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3282": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3596": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3540": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3354": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3217": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3520": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3475": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3977": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3626": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3584": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3950": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3075": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    },
+    "3711": {
+        "code": null,
+        "result": "failed",
+        "average_distance": null
+    }
+}
