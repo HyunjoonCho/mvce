@@ -1,15 +1,10 @@
 #!/bin/bash
 
 # without preprocessing
-output_file="./ast_edit_dist_humaneval_wo_preprocessing_results.txt"
+output_file="./ast_edit_dist_humaneval_preprocessing_results2.txt"
 echo "" > "$output_file"
 
 result_paths=(
-    '../preprocessed_results/ast_only/HumanEval_llama3.json'
-    '../preprocessed_results/ast_only/HumanEval_llama3.1.json'
-    '../preprocessed_results/ast_only/HumanEval_mistral-nemo.json'
-    '../preprocessed_results/ast_only/HumanEval_qwen2.5-coder.json'
-    '../preprocessed_results/ast_only/HumanEval_llama3_rule.json'
     '../preprocessed_results/ast_only/HumanEval_llama3.1_rule.json'
     '../preprocessed_results/ast_only/HumanEval_mistral-nemo_rule.json'
     '../preprocessed_results/ast_only/HumanEval_qwen2.5-coder_rule.json'
@@ -21,8 +16,8 @@ result_paths=(
 
 for result_path in "${result_paths[@]}"; do
     echo "$result_path" >> "$output_file"
-    echo "python ast_similarity.py -b HumanEval -r $result_path"
-    output=$(python ast_similarity.py -b HumanEval -r "$result_path")
+    echo "python ast_similarity.py -b HumanEval -p True -r $result_path"
+    output=$(python ast_similarity.py -b HumanEval -p True -r "$result_path")
     num_passed=$(echo "$output" | grep -oP 'num_passed:\s*\K\d+')
     num_total=$(echo "$output" | grep -oP 'num_total:\s*\K\d+')
     echo "num_passed: $num_passed" >> "$output_file"
