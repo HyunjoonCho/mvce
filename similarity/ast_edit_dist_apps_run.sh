@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # without preprocessing
-output_file="./ast_edit_dist_apps_wo_preprocessing_results.txt"
+output_file="./ast_edit_dist_apps_preprocessing_results.txt"
 echo "" > "$output_file"
 
 result_paths=(
@@ -21,8 +21,8 @@ result_paths=(
 
 for result_path in "${result_paths[@]}"; do
     echo "$result_path" >> "$output_file"
-    echo "python ast_similarity.py -b APPS -r $result_path"
-    output=$(python ast_similarity.py -b APPS -r "$result_path")
+    echo "python ast_similarity.py -b APPS -p True -r $result_path"
+    output=$(python ast_similarity.py -b APPS -p True -r "$result_path")
     num_passed=$(echo "$output" | grep -oP 'num_passed:\s*\K\d+')
     num_total=$(echo "$output" | grep -oP 'num_total:\s*\K\d+')
     echo "num_passed: $num_passed" >> "$output_file"

@@ -1,6 +1,6 @@
 {
     "HumanEval/0": {
-        "code": "from typing import List\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    for i in range(len(numbers)):\n        for j in range(i + 1, len(numbers)):\n            if numbers[i] - numbers[j] <= threshold:\n                return True\n    return False",
+        "code": "from typing import List\n\ndef has_close_elements(numbers: List[float], threshold: float) -> bool:\n    for i in range(len(numbers)):\n        for j in range(1 + i, len(numbers)):\n            if numbers[i] - numbers[j] <= threshold:\n                return True\n    return False",
         "result": "failed: ",
         "average_distance": 21.5
     },
@@ -52,7 +52,7 @@
     "HumanEval/10": {
         "code": "def is_palindrome(string: str) -> bool:\n    return string == string[::-1]\n\ndef make_palindrome(string: str) -> str:\n    for i in range(len(input_string), 0, -1):\n        if input_string[:i] == input_string[i - 1::-1]:\n            return input_string + input_string[:i][::-1]\n    return input_string",
         "result": "failed: name 'input_string' is not defined",
-        "average_distance": 34.1
+        "average_distance": 34.0
     },
     "HumanEval/11": {
         "code": "from typing import List\n\ndef string_xor(a: str, b: str) -> str:\n    result = ''\n    for i in range(len(a)):\n        if a[i] == b[i]:\n            result += '0'\n        else:\n            result += '1'\n    return result",
@@ -70,12 +70,12 @@
         "average_distance": 12.5625
     },
     "HumanEval/14": {
-        "code": "from typing import List\n\ndef all_prefixes(string: str) -> List[str]:\n    prefixes = []\n    for i in range(len(string) + 1):\n        prefixes.append(string[:i])\n    return prefixes",
+        "code": "from typing import List\n\ndef all_prefixes(string: str) -> List[str]:\n    prefixes = []\n    for i in range(1 + len(string)):\n        prefixes.append(string[:i])\n    return prefixes",
         "result": "failed: ",
         "average_distance": 2.0
     },
     "HumanEval/15": {
-        "code": "def string_sequence(n: int) -> str:\n    result = ''\n    for i in range(n + 1):\n        result += str(i) + ' '\n    return result.rstrip()",
+        "code": "def string_sequence(n: int) -> str:\n    result = ''\n    for i in range(1 + n):\n        result += ' ' + str(i)\n    return result.rstrip()",
         "result": "passed",
         "average_distance": 0.0
     },
@@ -92,7 +92,7 @@
     "HumanEval/18": {
         "code": "def how_many_times(string: str, substring: str) -> int:\n    count = 0\n    for i in range(len(string)):\n        if string[i:i + len(substring)] == substring:\n            count += 1\n    return count",
         "result": "passed",
-        "average_distance": 19.4
+        "average_distance": 19.8
     },
     "HumanEval/19": {
         "code": "from typing import List\n\ndef sort_numbers(numbers: str) -> str:\n    num_list = [int(num) for num in numbers.split()]\n    num_list.sort()\n    return ' '.join(map(str, num_list))",
@@ -100,7 +100,7 @@
         "average_distance": 35.0
     },
     "HumanEval/20": {
-        "code": "from typing import List, Tuple\n\ndef find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n    min_diff = numbers[1] - numbers[0]\n    closest_pair = (numbers[0], numbers[1])\n    for index_a in range(len(numbers) - 1):\n        for index_b in range(index_a + 1, len(numbers)):\n            diff = numbers[index_b] - numbers[index_a]\n            if diff <= min_diff:\n                min_diff = diff\n                closest_pair = (numbers[index_a], numbers[index_b])\n    return closest_pair",
+        "code": "from typing import List, Tuple\n\ndef find_closest_elements(numbers: List[float]) -> Tuple[float, float]:\n    min_diff = numbers[1] - numbers[0]\n    closest_pair = (numbers[0], numbers[1])\n    for index_a in range(len(numbers) - 1):\n        for index_b in range(1 + index_a, len(numbers)):\n            diff = numbers[index_b] - numbers[index_a]\n            if diff <= min_diff:\n                min_diff = diff\n                closest_pair = (numbers[index_a], numbers[index_b])\n    return closest_pair",
         "result": "failed: ",
         "average_distance": 46.5
     },
@@ -155,14 +155,14 @@
         "average_distance": 0.42857142857142855
     },
     "HumanEval/31": {
-        "code": "def is_prime(n):\n    if n <= 1:\n        return False\n    for divisor in range(2, int(n ** 0.5) + 1):\n        if n % divisor == 0:\n            return False\n    return True",
+        "code": "def is_prime(n):\n    if n <= 1:\n        return False\n    for divisor in range(2, 1 + int(n ** 0.5)):\n        if n % divisor == 0:\n            return False\n    return True",
         "result": "passed",
         "average_distance": 4.0
     },
     "HumanEval/32": {
         "code": "import math\n\ndef poly(xs: list, x: float):\n    return sum([coeff * math.pow(x, i) for (i, coeff) in enumerate(xs)])\n\ndef find_zero(xs: list):\n    for i in range(2, len(xs), 2):\n        if xs[i] != 0:\n            return -xs[i - 1] / xs[i]",
         "result": "failed: must be real number, not NoneType",
-        "average_distance": 17.5
+        "average_distance": 18.0
     },
     "HumanEval/33": {
         "code": "def sort_third(l: list):\n    thirds = [x for (i, x) in enumerate(l) if i % 3 == 0]\n    thirds.sort()\n    for i in range(0, len(l), 3):\n        l[i] = thirds.pop(0)\n    return l",
@@ -190,37 +190,37 @@
         "average_distance": 40.5
     },
     "HumanEval/38": {
-        "code": "def encode_cyclic(s: str):\n    groups = [s[3 * i:min(3 * i + 3, len(s))] for i in range((len(s) + 2) // 3)]\n    groups = [group[1:] + group[0] if len(group) == 3 else group for group in groups]\n    return ''.join(groups)\n\ndef decode_cyclic(s: str):\n    groups = [s[3 * i:min(3 * i + 3, len(s))] for i in range((len(s) + 2) // 3)]\n    decoded_groups = ['' for _ in range(len(groups))]\n    for (i, group) in enumerate(groups):\n        if len(group) == 3:\n            decoded_groups[i] = group[-1] + group[:-1]\n        else:\n            decoded_groups[i] = group\n    return ''.join(decoded_groups)",
+        "code": "def encode_cyclic(s: str):\n    groups = [s[3 * i:min(3 + 3 * i, len(s))] for i in range((2 + len(s)) // 3)]\n    groups = [group[0] + group[1:] if len(group) == 3 else group for group in groups]\n    return ''.join(groups)\n\ndef decode_cyclic(s: str):\n    groups = [s[3 * i:min(3 + 3 * i, len(s))] for i in range((2 + len(s)) // 3)]\n    decoded_groups = ['' for _ in range(len(groups))]\n    for (i, group) in enumerate(groups):\n        if len(group) == 3:\n            decoded_groups[i] = group[-1] + group[:-1]\n        else:\n            decoded_groups[i] = group\n    return ''.join(decoded_groups)",
         "result": "passed",
         "average_distance": 0.0
     },
     "HumanEval/39": {
-        "code": "def prime_fib(n: int):\n    if num < 2:\n        return False\n    for i in range(2, int(num ** 0.5) + 1):\n        if num % i == 0:\n            return False\n    return True\n(a, b) = (0, 1)\ncount = 0\nfor _ in range(n):\n    (a, b) = (b, a + b)\n    if is_prime(b):\n        count += 1\n        if count == n:\n            break\nreturn b",
+        "code": "def prime_fib(n: int):\n    if num < 2:\n        return False\n    for i in range(2, 1 + int(num ** 0.5)):\n        if num % i == 0:\n            return False\n    return True\n(a, b) = (0, 1)\ncount = 0\nfor _ in range(n):\n    (a, b) = (b, a + b)\n    if is_prime(b):\n        count += 1\n        if count == n:\n            break\nreturn b",
         "result": "failed: 'return' outside function (<string>, line 32)",
         "average_distance": 30.294117647058822
     },
     "HumanEval/40": {
-        "code": "def triples_sum_to_zero(l: list):\n    for a_index in range(len(l)):\n        for b_index in range(a_index + 1, len(l)):\n            for c_index in range(b_index + 1, len(l)):\n                if l[a_index] + l[b_index] + l[c_index] == 0:\n                    return True\n    return False",
+        "code": "def triples_sum_to_zero(l: list):\n    for a_index in range(len(l)):\n        for b_index in range(1 + a_index, len(l)):\n            for c_index in range(1 + b_index, len(l)):\n                if l[a_index] + l[b_index] + l[c_index] == 0:\n                    return True\n    return False",
         "result": "passed",
         "average_distance": 42.583333333333336
     },
     "HumanEval/41": {
-        "code": "def car_race_collision(n: int):\n    collisions = 0\n    for left_car in range(n):\n        for right_car in range(left_car + 1, n):\n            if left_car < right_car <= n - 1:\n                collisions += 1\n    return collisions",
+        "code": "def car_race_collision(n: int):\n    collisions = 0\n    for left_car in range(n):\n        for right_car in range(1 + left_car, n):\n            if left_car < right_car <= n - 1:\n                collisions += 1\n    return collisions",
         "result": "failed: ",
-        "average_distance": 22.22222222222222
+        "average_distance": 23.0
     },
     "HumanEval/42": {
         "code": "def incr_list(l: list):\n    for idx in range(len(l)):\n        l[idx] += 1",
         "result": "failed: ",
-        "average_distance": 8.333333333333334
+        "average_distance": 9.666666666666666
     },
     "HumanEval/43": {
         "code": "def pairs_sum_to_zero(l):\n    seen_nums = set()\n    for num in l:\n        if -num in seen_nums:\n            return True\n        seen_nums.add(num)\n    return False",
         "result": "passed",
-        "average_distance": 7.769230769230769
+        "average_distance": 7.6923076923076925
     },
     "HumanEval/44": {
-        "code": "def change_base(x: int, base: int):\n    result = ''\n    while x > 0:\n        remainder = x % base\n        result = str(remainder) + result\n        x //= base\n    return result",
+        "code": "def change_base(x: int, base: int):\n    result = ''\n    while x > 0:\n        remainder = x % base\n        result = result + str(remainder)\n        x //= base\n    return result",
         "result": "passed",
         "average_distance": 12.076923076923077
     },
@@ -230,14 +230,14 @@
         "average_distance": 2.0
     },
     "HumanEval/46": {
-        "code": "def fib4(n: int):\n    (a, b, c, d) = (0, 0, 2, 0)\n    for _ in range(n - 3):\n        (a, b, c, d) = (b, c, d, a + b + c + d)\n    return d",
-        "result": "passed",
-        "average_distance": 37.36363636363637
+        "code": "def fib4(n: int):\n    if n <= 2:\n        return n % 2\n    else:\n        (a, b, c, d) = (0, 0, 2, 0)\n        for _ in range(3, 1 + n):\n            (a, b, c, d) = (b, c, d, a + b + c + d)\n        return d",
+        "result": "failed: ",
+        "average_distance": 38.63636363636363
     },
     "HumanEval/47": {
         "code": "def median(l: list):\n    sorted_l = sorted(l)\n    n = len(sorted_l)\n    if n % 2 == 1:\n        return sorted_l[n // 2]\n    else:\n        mid1 = sorted_l[(n - 1) // 2]\n        mid2 = sorted_l[n // 2]\n        return (mid1 + mid2) / 2.0",
         "result": "passed",
-        "average_distance": 33.63636363636363
+        "average_distance": 34.18181818181818
     },
     "HumanEval/48": {
         "code": "def is_palindrome(text: str):\n    for _index in range(len(text) // 2):\n        if text[_index] != text[-_index - 1]:\n            return False\n    return True",
@@ -245,14 +245,14 @@
         "average_distance": 13.818181818181818
     },
     "HumanEval/49": {
-        "code": "def modp(n: int, p: int):\n    result = 1\n    for i in range(2, n + 1):\n        result = result * 2 % p\n    return result",
+        "code": "def modp(n: int, p: int):\n    result = 1\n    for i in range(2, 1 + n):\n        result = 2 * result % p\n    return result",
         "result": "failed: ",
-        "average_distance": 8.642857142857142
+        "average_distance": 8.571428571428571
     },
     "HumanEval/50": {
-        "code": "def encode_shift(s: str):\n    return ''.join([chr((ord(ch) + 5 - ord('a')) % 26 + ord('a')) for ch in s])\n\ndef decode_shift(s: str):\n    return ''.join([chr((ord(ch) - 5 + ord('a')) % 26 + ord('a')) for ch in s])",
-        "result": "failed: ",
-        "average_distance": 11.0
+        "code": "def encode_shift(s: str):\n    return ''.join([chr((5 + ord(ch) - ord('a')) % 26 + ord('a')) for ch in s])\n\ndef decode_shift(s: str):\n    return ''.join([chr((ord(ch) - 5 - ord('a')) % 26 + ord('a')) for ch in s])",
+        "result": "passed",
+        "average_distance": 14.0
     },
     "HumanEval/51": {
         "code": "def remove_vowels(text):\n    vowels = 'aeiouAEIOU'\n    result = ''\n    for char in text:\n        if char not in vowels:\n            result += char\n    return result",
@@ -277,7 +277,7 @@
     "HumanEval/55": {
         "code": "def fib(n: int):\n    (a, b) = (0, 1)\n    for _ in range(n):\n        (a, b) = (b, a + b)\n    return a",
         "result": "passed",
-        "average_distance": 7.642857142857143
+        "average_distance": 7.5
     },
     "HumanEval/56": {
         "code": "def correct_bracketing(brackets: str):\n    count = 0\n    for char in brackets:\n        if char == '<':\n            count += 1\n        elif char == '>':\n            count -= 1\n            if count < 0:\n                return False\n    return count == 0",
@@ -295,12 +295,12 @@
         "average_distance": 10.571428571428571
     },
     "HumanEval/59": {
-        "code": "def largest_prime_factor(n: int):\n    i = n\n    while i % 2 == 0:\n        i //= 2\n    for x in range(3, int(n ** 0.5) + 1, 2):\n        while i % x == 0:\n            i //= x\n    if i > 2:\n        return i\n    return 2",
+        "code": "def largest_prime_factor(n: int):\n    i = n\n    while i % 2 == 0:\n        i //= 2\n    for x in range(3, 1 + int(n ** 0.5), 2):\n        while i % x == 0:\n            i //= x\n    if i > 2:\n        return i\n    return 2",
         "result": "failed: ",
-        "average_distance": 30.636363636363637
+        "average_distance": 30.818181818181817
     },
     "HumanEval/60": {
-        "code": "def sum_to_n(n: int):\n    total = 0\n    for num in range(1, n + 1):\n        total += num\n    return total",
+        "code": "def sum_to_n(n: int):\n    total = 0\n    for num in range(1, 1 + n):\n        total += num\n    return total",
         "result": "passed",
         "average_distance": 0.0
     },
@@ -315,9 +315,9 @@
         "average_distance": 0.0
     },
     "HumanEval/63": {
-        "code": "def fibfib(n: int):\n    if n < 3:\n        return n % 2\n    (a, b, c) = (0, 0, 1)\n    for _ in range(3, n + 1):\n        (a, b, c) = (b, c, a + b + c)\n    return c",
+        "code": "def fibfib(n: int):\n    if n < 3:\n        return n % 2\n    (a, b, c) = (0, 0, 1)\n    for _ in range(3, 1 + n):\n        (a, b, c) = (b, c, a + b + c)\n    return c",
         "result": "failed: ",
-        "average_distance": 10.5
+        "average_distance": 10.75
     },
     "HumanEval/64": {
         "code": "FIX = '\\nAdd more test cases.\\n'\n\ndef vowels_count(s):\n    vowels = 'aeiou'\n    count = 0\n    for char in s.lower():\n        if char in vowels or (char == 'y' and s[-1] == 'y'):\n            count += 1\n    return count",
@@ -365,7 +365,7 @@
         "average_distance": 23.25
     },
     "HumanEval/73": {
-        "code": "def smallest_change(arr):\n    left = 0\n    right = len(arr) - 1\n    changes = 0\n    for i in range(len(arr) // 2 + 1):\n        if arr[left] != arr[right]:\n            changes += 1\n        left += 1\n        right -= 1\n    return changes",
+        "code": "def smallest_change(arr):\n    left = 0\n    right = len(arr) - 1\n    changes = 0\n    for i in range(1 + len(arr) // 2):\n        if arr[left] != arr[right]:\n            changes += 1\n        left += 1\n        right -= 1\n    return changes",
         "result": "failed: ",
         "average_distance": 30.46153846153846
     },
@@ -375,7 +375,7 @@
         "average_distance": 7.714285714285714
     },
     "HumanEval/75": {
-        "code": "def is_multiply_prime(a):\n    if a < 6:\n        return False\n    num_factors = 0\n    for i in range(2, int(a ** 0.5) + 1):\n        while a % i == 0 and i <= a // i:\n            num_factors += 1\n            a //= i\n    if a > 1:\n        num_factors += 1\n    return num_factors == 3",
+        "code": "def is_multiply_prime(a):\n    if a < 6:\n        return False\n    num_factors = 0\n    for i in range(2, 1 + int(a ** 0.5)):\n        while a % i == 0 and i <= a // i:\n            num_factors += 1\n            a //= i\n    if a > 1:\n        num_factors += 1\n    return num_factors == 3",
         "result": "passed",
         "average_distance": 42.5
     },
@@ -385,7 +385,7 @@
         "average_distance": 23.63157894736842
     },
     "HumanEval/77": {
-        "code": "def iscube(a):\n    for i in range(-a, a + 1):\n        if i ** 3 == a:\n            return True\n    return False",
+        "code": "def iscube(a):\n    for i in range(-a, 1 + a):\n        if i ** 3 == a:\n            return True\n    return False",
         "result": "failed: Third test error: False",
         "average_distance": 2.6
     },
@@ -395,12 +395,12 @@
         "average_distance": 2.857142857142857
     },
     "HumanEval/79": {
-        "code": "def decimal_to_binary(decimal):\n    binary = ''\n    db = 'db'\n    for _ in range(decimal):\n        binary = str(decimal % 2) + binary\n    return db + binary + db",
+        "code": "def decimal_to_binary(decimal):\n    binary = ''\n    db = 'db'\n    for _ in range(decimal):\n        binary = binary + str(decimal % 2)\n    return binary + db + db",
         "result": "failed: ",
-        "average_distance": 51.0
+        "average_distance": 52.0
     },
     "HumanEval/80": {
-        "code": "def is_happy(s):\n    if len(s) < 3:\n        return False\n    for i in range(len(s) - 2):\n        if s[i] == s[i + 1] or s[i] == s[i + 2] or s[i + 1] == s[i + 2]:\n            return False\n    return True",
+        "code": "def is_happy(s):\n    if len(s) < 3:\n        return False\n    for i in range(len(s) - 2):\n        if s[i] == s[1 + i] or s[i] == s[2 + i] or s[1 + i] == s[2 + i]:\n            return False\n    return True",
         "result": "passed",
         "average_distance": 7.8
     },
@@ -410,7 +410,7 @@
         "average_distance": 20.375
     },
     "HumanEval/82": {
-        "code": "def prime_length(string):\n    if n < 2:\n        return False\n    for num in range(2, int(n ** 0.5) + 1):\n        if n % num == 0:\n            return False\n    return True\n    length = len(string)\n    return is_prime(length)",
+        "code": "def prime_length(string):\n    if n < 2:\n        return False\n    for num in range(2, 1 + int(n ** 0.5)):\n        if n % num == 0:\n            return False\n    return True\n    length = len(string)\n    return is_prime(length)",
         "result": "failed: name 'n' is not defined",
         "average_distance": 10.6
     },
@@ -420,9 +420,9 @@
         "average_distance": 10.25
     },
     "HumanEval/84": {
-        "code": "def solve(N):\n    binary = ''\n    while n > 0:\n        binary = str(n % 2) + binary\n        n //= 2\n    return binary",
+        "code": "def solve(N):\n    binary = ''\n    while n > 0:\n        binary = binary + str(n % 2)\n        n //= 2\n    return binary",
         "result": "failed: local variable 'n' referenced before assignment",
-        "average_distance": 18.6875
+        "average_distance": 18.75
     },
     "HumanEval/85": {
         "code": "def add(lst):\n    sum_even = 0\n    for i in range(1, len(lst), 2):\n        if lst[i] % 2 == 0:\n            sum_even += lst[i]\n    return sum_even",
@@ -430,7 +430,7 @@
         "average_distance": 7.0
     },
     "HumanEval/86": {
-        "code": "def anti_shuffle(s):\n    result = ''\n    for word in s.split():\n        sorted_word = ''.join(sorted(word))\n        result += sorted_word + ' '\n    return result.strip()",
+        "code": "def anti_shuffle(s):\n    result = ''\n    for word in s.split():\n        sorted_word = ''.join(sorted(word))\n        result += ' ' + sorted_word\n    return result.strip()",
         "result": "passed",
         "average_distance": 24.714285714285715
     },
@@ -442,10 +442,10 @@
     "HumanEval/88": {
         "code": "def sort_array(array):\n    sorted_array = array.copy()\n    first_index_value = sorted_array[0]\n    last_index_value = sorted_array[-1]\n    if (first_index_value + last_index_value) % 2 == 1:\n        sorted_array.sort()\n    else:\n        sorted_array.sort(reverse=True)\n    return sorted_array",
         "result": "failed: list index out of range",
-        "average_distance": 37.90909090909091
+        "average_distance": 37.27272727272727
     },
     "HumanEval/89": {
-        "code": "def encrypt(s):\n    result = ''\n    for char in s:\n        if char.isalpha():\n            ascii_offset = ord('a') if char.islower() else ord('A')\n            encrypted_char = chr((ord(char) - ascii_offset + 6) % 26 + ascii_offset)\n            result += encrypted_char\n    return result",
+        "code": "def encrypt(s):\n    result = ''\n    for char in s:\n        if char.isalpha():\n            ascii_offset = ord('a') if char.islower() else ord('A')\n            encrypted_char = chr((6 + (ord(char) - ascii_offset)) % 26 + ascii_offset)\n            result += encrypted_char\n    return result",
         "result": "failed: This prints if this assert fails 1 (good for debugging!)",
         "average_distance": 27.4
     },
@@ -455,9 +455,9 @@
         "average_distance": 13.0625
     },
     "HumanEval/91": {
-        "code": "def is_bored(S):\n    count = 0\n    sentences = s.split('.') + s.split('?') + s.split('!')\n    for sentence in sentences:\n        if sentence.strip().startswith('I'):\n            count += 1\n    return count",
+        "code": "def is_bored(S):\n    count = 0\n    sentences = s.split('!') + (s.split('.') + s.split('?'))\n    for sentence in sentences:\n        if sentence.strip().startswith('I'):\n            count += 1\n    return count",
         "result": "failed: name 's' is not defined",
-        "average_distance": 19.571428571428573
+        "average_distance": 19.428571428571427
     },
     "HumanEval/92": {
         "code": "def any_int(x, y, z):\n    if not (isinstance(x, int) and isinstance(y, int) and isinstance(z, int)):\n        return False\n    return x == y + z or y == x + z or z == x + y",
@@ -465,14 +465,14 @@
         "average_distance": 25.90909090909091
     },
     "HumanEval/93": {
-        "code": "def encode(message):\n    vowels = 'aeiou'\n    encoded_message = ''\n    for char in message:\n        if char.isalpha():\n            if char.lower() in vowels:\n                new_char = chr((ord(char) - ord('a') + 2) % 26 + ord('a'))\n            else:\n                new_char = char.swapcase()\n            encoded_message += new_char\n    return encoded_message",
+        "code": "def encode(message):\n    vowels = 'aeiou'\n    encoded_message = ''\n    for char in message:\n        if char.isalpha():\n            if char.lower() in vowels:\n                new_char = chr((2 + (ord(char) - ord('a'))) % 26 + ord('a'))\n            else:\n                new_char = char.swapcase()\n            encoded_message += new_char\n    return encoded_message",
         "result": "failed: This prints if this assert fails 1 (good for debugging!)",
-        "average_distance": 28.384615384615383
+        "average_distance": 28.307692307692307
     },
     "HumanEval/94": {
-        "code": "def skjkasdkd(lst):\n    if n < 2:\n        return False\n    for i in range(2, int(n ** 0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n    primes = [n for n in lst if is_prime(n)]\n    largest_prime = max(primes)\n    digits_sum = sum((int(digit) for digit in str(largest_prime)))\n    return digits_sum",
+        "code": "def skjkasdkd(lst):\n    if n < 2:\n        return False\n    for i in range(2, 1 + int(n ** 0.5)):\n        if n % i == 0:\n            return False\n    return True\n    primes = [n for n in lst if is_prime(n)]\n    largest_prime = max(primes)\n    digits_sum = sum((int(digit) for digit in str(largest_prime)))\n    return digits_sum",
         "result": "failed: name 'n' is not defined",
-        "average_distance": 26.454545454545453
+        "average_distance": 26.363636363636363
     },
     "HumanEval/95": {
         "code": "def check_dict_case(dict):\n    if not dict_to_check:\n        return False\n    first_key = next(iter(dict_to_check))\n    case = first_key.islower()\n    for key in dict_to_check:\n        if key.islower() != case or not isinstance(key, str):\n            return False\n    return True",
@@ -480,7 +480,7 @@
         "average_distance": 24.90909090909091
     },
     "HumanEval/96": {
-        "code": "def count_up_to(n):\n    if num < 2:\n        return False\n    for i in range(2, int(num ** 0.5) + 1):\n        if num % i == 0:\n            return False\n    return True\n    primes = []\n    for num in range(2, n + 1):\n        if is_prime(num):\n            primes.append(num)\n    return primes",
+        "code": "def count_up_to(n):\n    if num < 2:\n        return False\n    for i in range(2, 1 + int(num ** 0.5)):\n        if num % i == 0:\n            return False\n    return True\n    primes = []\n    for num in range(2, 1 + n):\n        if is_prime(num):\n            primes.append(num)\n    return primes",
         "result": "failed: local variable 'num' referenced before assignment",
         "average_distance": 9.571428571428571
     },
@@ -495,17 +495,17 @@
         "average_distance": 5.0
     },
     "HumanEval/99": {
-        "code": "def closest_integer(value):\n    num = float(value)\n    if num >= 0:\n        return int(num + 0.5)\n    else:\n        return int(num - 0.5)",
+        "code": "def closest_integer(value):\n    num = float(value)\n    if num >= 0:\n        return int(0.5 + num)\n    else:\n        return int(num - 0.5)",
         "result": "passed",
         "average_distance": 23.4
     },
     "HumanEval/100": {
         "code": "def make_a_pile(n):\n    pile = []\n    current_stones = n\n    for _ in range(n):\n        pile.append(current_stones)\n        if current_stones % 2 == 0:\n            current_stones += 2\n        else:\n            current_stones += 1\n    return pile",
         "result": "failed: Test 3",
-        "average_distance": 8.636363636363637
+        "average_distance": 8.909090909090908
     },
     "HumanEval/101": {
-        "code": "def words_string(s):\n    return s.split(',') + s.split(' ')",
+        "code": "def words_string(s):\n    return s.split(' ') + s.split(',')",
         "result": "failed: ",
         "average_distance": 6.5
     },
@@ -515,9 +515,9 @@
         "average_distance": 7.8
     },
     "HumanEval/103": {
-        "code": "def rounded_avg(n, m):\n    if n > m:\n        return -1\n    sum_val = 0\n    for i in range(n, m + 1):\n        sum_val += i\n    avg = round(sum_val / (m - n + 1))\n    return bin(avg)[2:]",
+        "code": "def rounded_avg(n, m):\n    if n > m:\n        return -1\n    sum_val = 0\n    for i in range(n, 1 + m):\n        sum_val += i\n    avg = round(sum_val / (1 + (m - n)))\n    return bin(avg)[2:]",
         "result": "failed: ",
-        "average_distance": 23.5
+        "average_distance": 24.0
     },
     "HumanEval/104": {
         "code": "def unique_digits(x):\n    result = []\n    for num in x:\n        if not any((digit % 2 == 0 for digit in str(num))):\n            result.append(num)\n    return sorted(result)",
@@ -530,12 +530,12 @@
         "average_distance": 22.357142857142858
     },
     "HumanEval/106": {
-        "code": "def f(n):\n    result = []\n    for a in range(1, n + 1):\n        if a % 2 == 0:\n            factorial = 1\n            for b in range(1, a + 1):\n                factorial *= b\n            result.append(factorial)\n        else:\n            sum_ = 0\n            for c in range(1, a + 1):\n                sum_ += c\n            result.append(sum_)\n    return result",
+        "code": "def f(n):\n    result = []\n    for a in range(1, 1 + n):\n        if a % 2 == 0:\n            factorial = 1\n            for b in range(1, 1 + a):\n                factorial *= b\n            result.append(factorial)\n        else:\n            sum_ = 0\n            for c in range(1, 1 + a):\n                sum_ += c\n            result.append(sum_)\n    return result",
         "result": "passed",
         "average_distance": 0.0
     },
     "HumanEval/107": {
-        "code": "def even_odd_palindrome(n):\n    even_count = 0\n    odd_count = 0\n    for i in range(1, n + 1):\n        if str(i) == str(i)[::-1]:\n            if i % 2 == 0:\n                even_count += 1\n            else:\n                odd_count += 1\n    return (even_count, odd_count)",
+        "code": "def even_odd_palindrome(n):\n    even_count = 0\n    odd_count = 0\n    for i in range(1, 1 + n):\n        if str(i) == str(i)[::-1]:\n            if i % 2 == 0:\n                even_count += 1\n            else:\n                odd_count += 1\n    return (even_count, odd_count)",
         "result": "passed",
         "average_distance": 1.0526315789473684
     },
@@ -547,7 +547,7 @@
     "HumanEval/109": {
         "code": "def move_one_ball(arr):\n    sorted_arr = sorted(arr)\n    for _ in range(len(arr)):\n        arr.append(arr.pop(0))\n        if arr == sorted_arr:\n            return True\n    return False",
         "result": "failed: ",
-        "average_distance": 14.083333333333334
+        "average_distance": 14.333333333333334
     },
     "HumanEval/110": {
         "code": "def exchange(lst1, lst2):\n    for i in range(len(lst1)):\n        if lst1[i] % 2 != 0:\n            found = False\n            for j in range(len(lst2)):\n                if lst2[j] % 2 == 0:\n                    (lst1[i], lst2[j]) = (lst2[j], lst1[i])\n                    found = True\n                    break\n            if not found:\n                return 'NO'\n    return 'YES'",
@@ -557,7 +557,7 @@
     "HumanEval/111": {
         "code": "def histogram(test):\n    counts = {}\n    max_count = 0\n    for letter in test.split():\n        if letter not in counts:\n            counts[letter] = 1\n        else:\n            counts[letter] += 1\n        if counts[letter] > max_count:\n            max_count = counts[letter]\n    results = {k: v for (k, v) in counts.items() if v == max_count}\n    return results",
         "result": "passed",
-        "average_distance": 15.25
+        "average_distance": 15.5
     },
     "HumanEval/112": {
         "code": "def reverse_delete(s, c):\n    result = ''\n    for char in s:\n        if char not in c:\n            result += char\n    is_palindrome = result == result[::-1]\n    return (result, is_palindrome)",
@@ -565,9 +565,9 @@
         "average_distance": 9.2
     },
     "HumanEval/113": {
-        "code": "def odd_count(lst):\n    result = []\n    for i in range(len(lst)):\n        num_odds = sum((1 for c in lst[i] if int(c) % 2 != 0))\n        result.append(f'the number of odd elements {num_odds}n the str{num_odds}ng {i + 1} of the {num_odds}nput.')\n    return result",
+        "code": "def odd_count(lst):\n    result = []\n    for i in range(len(lst)):\n        num_odds = sum((1 for c in lst[i] if int(c) % 2 != 0))\n        result.append(f'the number of odd elements {num_odds}n the str{num_odds}ng {1 + i} of the {num_odds}nput.')\n    return result",
         "result": "failed: Test 1",
-        "average_distance": 14.866666666666667
+        "average_distance": 15.066666666666666
     },
     "HumanEval/114": {
         "code": "def minSubArraySum(nums):\n    min_sum = float('inf')\n    current_sum = 0\n    for i in range(len(nums)):\n        current_sum += nums[i]\n        if current_sum < min_sum:\n            min_sum = current_sum\n        if current_sum > 0:\n            current_sum = 0\n    return min_sum",
@@ -590,14 +590,14 @@
         "average_distance": 21.153846153846153
     },
     "HumanEval/118": {
-        "code": "def get_closest_vowel(word):\n    vowels = 'aeiouAEIOU'\n    closest_vowel = ''\n    for i in range(1, len(word) - 1):\n        if word[i] in vowels and word[i + 1] not in vowels:\n            closest_vowel = word[i]\n    return closest_vowel",
+        "code": "def get_closest_vowel(word):\n    vowels = 'aeiouAEIOU'\n    closest_vowel = ''\n    for i in range(1, len(word) - 1):\n        if word[i] in vowels and word[1 + i] not in vowels:\n            closest_vowel = word[i]\n    return closest_vowel",
         "result": "failed: ",
         "average_distance": 8.0
     },
     "HumanEval/119": {
         "code": "def match_parens(lst):\n    open_count = 0\n    close_count = 0\n    for char in lst[0] + lst[1]:\n        if char == '(':\n            open_count += 1\n        elif char == ')':\n            close_count += 1\n        if open_count < close_count:\n            return 'No'\n    return 'Yes' if open_count == close_count else 'No'",
         "result": "failed: ",
-        "average_distance": 11.0
+        "average_distance": 11.2
     },
     "HumanEval/120": {
         "code": "def maximum(arr, k):\n    max_nums = []\n    for i in range(k):\n        max_num = arr[0]\n        for num in arr:\n            if num >= max_num:\n                max_num = num\n        max_nums.append(max_num)\n        arr.remove(max_num)\n    return sorted(max_nums)",
@@ -615,9 +615,9 @@
         "average_distance": 6.411764705882353
     },
     "HumanEval/123": {
-        "code": "def get_odd_collatz(n):\n    collatz_sequence = []\n    current_number = n\n    while current_number != 1:\n        if current_number % 2 == 1:\n            collatz_sequence.append(current_number)\n        current_number = current_number // 2 if current_number % 2 == 0 else 3 * current_number + 1\n    return sorted(collatz_sequence)",
+        "code": "def get_odd_collatz(n):\n    collatz_sequence = []\n    current_number = n\n    while current_number != 1:\n        if current_number % 2 == 1:\n            collatz_sequence.append(current_number)\n        current_number = current_number // 2 if current_number % 2 == 0 else 1 + 3 * current_number\n    return sorted(collatz_sequence)",
         "result": "failed: ",
-        "average_distance": 10.23076923076923
+        "average_distance": 9.461538461538462
     },
     "HumanEval/124": {
         "code": "def valid_date(date):\n    if not date or '-' not in date or len(date) != 10:\n        return False\n    (day, month, year) = map(int, date.split('-'))\n    if month < 1 or month > 12:\n        return False\n    if month in (1, 3, 5, 7, 8, 10, 12) and (not 1 <= day <= 31):\n        return False\n    elif month in (4, 6, 9, 11) and (not 1 <= day <= 30):\n        return False\n    elif month == 2 and (not 1 <= day <= 29):\n        return False\n    return True",
@@ -632,27 +632,27 @@
     "HumanEval/126": {
         "code": "def is_sorted(lst):\n    prev = None\n    for num in lst:\n        if prev is not None and num < prev:\n            return False\n        elif prev == num:\n            return False\n        prev = num\n    return True",
         "result": "failed: This prints if this assert fails 7 (good for debugging!)",
-        "average_distance": 17.0
+        "average_distance": 16.666666666666668
     },
     "HumanEval/127": {
-        "code": "def intersection(interval1, interval2):\n    if n < 2:\n        return False\n    for num in range(2, int(n ** 0.5) + 1):\n        if n % num == 0:\n            return False\n    return True\n    start = max(interval1[0], interval2[0])\n    end = min(interval1[1], interval2[1])\n    if start <= end:\n        length = end - start + 1\n        return 'YES' if is_prime(length) else 'NO'\n    else:\n        return 'NO'",
+        "code": "def intersection(interval1, interval2):\n    if n < 2:\n        return False\n    for num in range(2, 1 + int(n ** 0.5)):\n        if n % num == 0:\n            return False\n    return True\n    start = max(interval1[0], interval2[0])\n    end = min(interval1[1], interval2[1])\n    if start <= end:\n        length = 1 + (end - start)\n        return 'YES' if is_prime(length) else 'NO'\n    else:\n        return 'NO'",
         "result": "failed: name 'n' is not defined",
         "average_distance": 8.588235294117647
     },
     "HumanEval/128": {
-        "code": "def prod_signs(arr):\n    if not arr:\n        return None\n    sign_product = 1\n    magnitude_sum = 0\n    for num in arr:\n        if num == 0:\n            continue\n        sign_product *= 1 if num > 0 else -1\n        magnitude_sum += abs(num)\n    return sign_product * magnitude_sum",
+        "code": "def prod_signs(arr):\n    if not arr:\n        return None\n    sign_product = 1\n    magnitude_sum = 0\n    for num in arr:\n        if num == 0:\n            continue\n        sign_product *= 1 if num > 0 else -1\n        magnitude_sum += abs(num)\n    return magnitude_sum * sign_product",
         "result": "failed: ",
         "average_distance": 26.875
     },
     "HumanEval/129": {
-        "code": "def minPath(grid, k):\n    n = len(grid)\n    moves = [(0, 1), (0, -1), (1, 0), (-1, 0)]\n    paths = []\n    for i in range(n):\n        for j in range(n):\n            path = [grid[i][j]]\n            (x, y) = (i, j)\n            for _ in range(k - 1):\n                (dx, dy) = moves[random.randint(0, 3)]\n                (nx, ny) = (x + dx, y + dy)\n                if 0 <= nx < n and 0 <= ny < n:\n                    path.append(grid[nx][ny])\n                    (x, y) = (nx, ny)\n            paths.append(sorted(path))\n    return min(paths, key=lambda x: tuple(x))",
+        "code": "def minPath(grid, k):\n    n = len(grid)\n    moves = [(0, 1), (0, -1), (1, 0), (-1, 0)]\n    paths = []\n    for i in range(n):\n        for j in range(n):\n            path = [grid[i][j]]\n            (x, y) = (i, j)\n            for _ in range(k - 1):\n                (dx, dy) = moves[random.randint(0, 3)]\n                (nx, ny) = (dx + x, dy + y)\n                if 0 <= nx < n and 0 <= ny < n:\n                    path.append(grid[nx][ny])\n                    (x, y) = (nx, ny)\n            paths.append(sorted(path))\n    return min(paths, key=lambda x: tuple(x))",
         "result": "failed: name 'random' is not defined",
         "average_distance": 0.0
     },
     "HumanEval/130": {
-        "code": "def tri(n):\n    trib = []\n    for i in range(n + 1):\n        if i == 0:\n            trib.append(1)\n        elif i % 2 == 0:\n            trib.append(1 + i // 2)\n        else:\n            trib.append(trib[i - 1] + trib[i - 2] + trib[i + 1])\n    return trib",
+        "code": "def tri(n):\n    trib = []\n    for i in range(1 + n):\n        if i == 0:\n            trib.append(1)\n        elif i % 2 == 0:\n            trib.append(1 + i // 2)\n        else:\n            trib.append(trib[1 + i] + (trib[i - 1] + trib[i - 2]))\n    return trib",
         "result": "failed: list index out of range",
-        "average_distance": 28.5
+        "average_distance": 31.25
     },
     "HumanEval/131": {
         "code": "def digits(n):\n    product = 1\n    for digit in str(n):\n        if int(digit) % 2 != 0:\n            product *= int(digit)\n    return product",
@@ -665,7 +665,7 @@
         "average_distance": 4.470588235294118
     },
     "HumanEval/133": {
-        "code": "def sum_squares(lst):\n    result = 0\n    for num in lst:\n        squared = int(num + 1) ** 2\n        result += squared\n    return result",
+        "code": "def sum_squares(lst):\n    result = 0\n    for num in lst:\n        squared = int(1 + num) ** 2\n        result += squared\n    return result",
         "result": "failed: This prints if this assert fails 1 (good for debugging!)",
         "average_distance": 9.5
     },
@@ -677,7 +677,7 @@
     "HumanEval/135": {
         "code": "def can_arrange(arr):\n    for i in range(1, len(arr)):\n        if arr[i] < arr[i - 1]:\n            return i\n    return -1",
         "result": "failed: ",
-        "average_distance": 3.7142857142857144
+        "average_distance": 4.428571428571429
     },
     "HumanEval/136": {
         "code": "def largest_smallest_integers(lst):\n    neg_max = pos_min = None\n    for num in lst:\n        if num < 0 and (neg_max is None or num > neg_max):\n            neg_max = num\n        elif num > 0 and (pos_min is None or num < pos_min):\n            pos_min = num\n    return (neg_max, pos_min)",
@@ -690,22 +690,22 @@
         "average_distance": 37.07142857142857
     },
     "HumanEval/138": {
-        "code": "def is_equal_to_sum_even(n):\n    for a in range(2, n // 2 + 1, 2):\n        for b in range(a + 2, n - a + 2, 2):\n            for c in range(b + 2, n - b + 2, 2):\n                d = n - a - b - c\n                if d >= b and d % 2 == 0:\n                    return True\n    return False",
+        "code": "def is_equal_to_sum_even(n):\n    for a in range(2, 1 + n // 2, 2):\n        for b in range(2 + a, 2 + (n - a), 2):\n            for c in range(2 + b, 2 + (n - b), 2):\n                d = n - a - b - c\n                if d >= b and d % 2 == 0:\n                    return True\n    return False",
         "result": "failed: ",
-        "average_distance": 40.0
+        "average_distance": 41.27272727272727
     },
     "HumanEval/139": {
-        "code": "def special_factorial(n):\n    result = 1\n    for current_num in range(1, n + 1):\n        for factorial_mult in range(current_num, 0, -1):\n            result *= factorial_mult\n    return result",
+        "code": "def special_factorial(n):\n    result = 1\n    for current_num in range(1, 1 + n):\n        for factorial_mult in range(current_num, 0, -1):\n            result *= factorial_mult\n    return result",
         "result": "passed",
-        "average_distance": 11.76923076923077
+        "average_distance": 11.846153846153847
     },
     "HumanEval/140": {
         "code": "def fix_spaces(text):\n    result = ''\n    prev_was_space = False\n    for char in text:\n        if char == ' ':\n            if prev_was_space:\n                result += '-'\n            else:\n                result += '_'\n            prev_was_space = True\n        else:\n            result += char\n            prev_was_space = False\n    return result",
         "result": "failed: This prints if this assert fails 3 (good for debugging!)",
-        "average_distance": 7.388888888888889
+        "average_distance": 7.277777777777778
     },
     "HumanEval/141": {
-        "code": "def file_name_check(file_name):\n    num_digits = 0\n    for char in file_name:\n        if char.isdigit():\n            num_digits += 1\n    dot_index = file_name.find('.')\n    if num_digits > 3 or dot_index == -1 or dot_index == 0 or (len(file_name[:dot_index]) == 0) or (not file_name[0].isalpha()) or (file_name[dot_index + 1:] not in ['txt', 'exe', 'dll']):\n        return 'No'\n    else:\n        return 'Yes'",
+        "code": "def file_name_check(file_name):\n    num_digits = 0\n    for char in file_name:\n        if char.isdigit():\n            num_digits += 1\n    dot_index = file_name.find('.')\n    if num_digits > 3 or dot_index == -1 or dot_index == 0 or (len(file_name[:dot_index]) == 0) or (not file_name[0].isalpha()) or (file_name[1 + dot_index:] not in ['txt', 'exe', 'dll']):\n        return 'No'\n    else:\n        return 'Yes'",
         "result": "passed",
         "average_distance": 55.416666666666664
     },
@@ -715,12 +715,12 @@
         "average_distance": 6.0
     },
     "HumanEval/143": {
-        "code": "def words_in_sentence(sentence):\n    if n < 2:\n        return False\n    for i in range(2, int(n ** 0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n    words = sentence.split()\n    result = ''\n    for word in words:\n        if is_prime(len(word)):\n            result += word + ' '\n    return result.strip()",
+        "code": "def words_in_sentence(sentence):\n    if n < 2:\n        return False\n    for i in range(2, 1 + int(n ** 0.5)):\n        if n % i == 0:\n            return False\n    return True\n    words = sentence.split()\n    result = ''\n    for word in words:\n        if is_prime(len(word)):\n            result += ' ' + word\n    return result.strip()",
         "result": "failed: name 'n' is not defined",
         "average_distance": 34.75
     },
     "HumanEval/144": {
-        "code": "def simplify(x, n):\n    (x_num, x_den) = map(int, x.split('/'))\n    (n_num, n_den) = map(int, n.split('/'))\n    prod_num = x_num * n_num\n    prod_den = x_den * n_den\n    return prod_num % prod_den == 0",
+        "code": "def simplify(x, n):\n    (x_num, x_den) = map(int, x.split('/'))\n    (n_num, n_den) = map(int, n.split('/'))\n    prod_num = n_num * x_num\n    prod_den = n_den * x_den\n    return prod_num % prod_den == 0",
         "result": "passed",
         "average_distance": 17.8
     },
@@ -735,12 +735,12 @@
         "average_distance": 11.666666666666666
     },
     "HumanEval/147": {
-        "code": "def get_max_triples(n):\n    a = []\n    for i in range(1, n + 1):\n        a.append(i * i - i + 1)\n    count = 0\n    for i in range(n - 2):\n        for j in range(i + 1, n - 1):\n            for k in range(j + 1, n):\n                if (a[i] + a[j] + a[k]) % 3 == 0:\n                    count += 1\n    return count",
+        "code": "def get_max_triples(n):\n    a = []\n    for i in range(1, 1 + n):\n        a.append(1 + (i * i - i))\n    count = 0\n    for i in range(n - 2):\n        for j in range(1 + i, n - 1):\n            for k in range(1 + j, n):\n                if (a[i] + a[j] + a[k]) % 3 == 0:\n                    count += 1\n    return count",
         "result": "passed",
-        "average_distance": 14.625
+        "average_distance": 16.125
     },
     "HumanEval/148": {
-        "code": "def bf(planet1, planet2):\n    planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']\n    (index1, index2) = (None, None)\n    for i in range(len(planets)):\n        if planets[i] == planet1:\n            index1 = i\n        elif planets[i] == planet2:\n            index2 = i\n    if index1 is not None and index2 is not None and (index1 < index2):\n        return tuple(planets[index1 + 1:index2])\n    else:\n        return ()",
+        "code": "def bf(planet1, planet2):\n    planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']\n    (index1, index2) = (None, None)\n    for i in range(len(planets)):\n        if planets[i] == planet1:\n            index1 = i\n        elif planets[i] == planet2:\n            index2 = i\n    if index1 is not None and index2 is not None and (index1 < index2):\n        return tuple(planets[1 + index1:index2])\n    else:\n        return ()",
         "result": "failed: Second test error: ()",
         "average_distance": 0.0
     },
@@ -750,7 +750,7 @@
         "average_distance": 7.555555555555555
     },
     "HumanEval/150": {
-        "code": "def x_or_y(n, x, y):\n    if n <= 1:\n        return False\n    for num in range(2, int(n ** 0.5) + 1):\n        if n % num == 0:\n            return False\n    return True\n    if is_prime(n):\n        return x\n    else:\n        return y",
+        "code": "def x_or_y(n, x, y):\n    if n <= 1:\n        return False\n    for num in range(2, 1 + int(n ** 0.5)):\n        if n % num == 0:\n            return False\n    return True\n    if is_prime(n):\n        return x\n    else:\n        return y",
         "result": "failed: ",
         "average_distance": 12.444444444444445
     },
@@ -770,7 +770,7 @@
         "average_distance": 10.411764705882353
     },
     "HumanEval/154": {
-        "code": "def cycpattern_check(a, b):\n    for i in range(len(b)):\n        if b[i:] + b[:i] in a:\n            return True\n    return False",
+        "code": "def cycpattern_check(a, b):\n    for i in range(len(b)):\n        if b[:i] + b[i:] in a:\n            return True\n    return False",
         "result": "passed",
         "average_distance": 28.714285714285715
     },
@@ -800,9 +800,9 @@
         "average_distance": 17.363636363636363
     },
     "HumanEval/160": {
-        "code": "def do_algebra(operator, operand):\n    result = operand[0]\n    for i in range(len(operator)):\n        if operator[i] == '+':\n            result += operand[i + 1]\n        elif operator[i] == '-':\n            result -= operand[i + 1]\n        elif operator[i] == '*':\n            result *= operand[i + 1]\n        elif operator[i] == '//':\n            result //= operand[i + 1]\n        elif operator[i] == '**':\n            result **= operand[i + 1]\n    return result",
+        "code": "def do_algebra(operator, operand):\n    result = operand[0]\n    for i in range(len(operator)):\n        if operator[i] == '+':\n            result += operand[1 + i]\n        elif operator[i] == '-':\n            result -= operand[1 + i]\n        elif operator[i] == '*':\n            result *= operand[1 + i]\n        elif operator[i] == '//':\n            result //= operand[1 + i]\n        elif operator[i] == '**':\n            result **= operand[1 + i]\n    return result",
         "result": "failed: ",
-        "average_distance": 24.916666666666668
+        "average_distance": 24.833333333333332
     },
     "HumanEval/161": {
         "code": "def solve(s):\n    result = ''\n    for i in range(len(s)):\n        if s[i].isalpha():\n            result += s[i].swapcase()\n        else:\n            result += s[i]\n    return result[::-1] if not any((c.isalpha() for c in s)) else result",
@@ -815,7 +815,7 @@
         "average_distance": null
     },
     "HumanEval/163": {
-        "code": "def generate_integers(a, b):\n    even_digits = []\n    for i in range(min(a, b), max(a, b) + 1):\n        if i % 2 == 0:\n            even_digits.append(i)\n    return even_digits",
+        "code": "def generate_integers(a, b):\n    even_digits = []\n    for i in range(min(a, b), 1 + max(a, b)):\n        if i % 2 == 0:\n            even_digits.append(i)\n    return even_digits",
         "result": "failed: Test 1",
         "average_distance": 0.75
     }
