@@ -55,7 +55,7 @@
         "average_distance": null
     },
     "4655": {
-        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nq = int(data[0])\nresults = []\nindex = 1\nfor _ in range(q):\n    a = int(data[index])\n    b = int(data[index + 1])\n    c = int(data[index + 2])\n    piles = sorted([a, b, c])\n    alice_candies = piles[2]\n    bob_candies = max(piles[0], piles[1])\n    if alice_candies > bob_candies:\n        alice_candies += (bob_candies - piles[0]) // 2\n        bob_candies -= (bob_candies - piles[0]) // 2\n    elif bob_candies > alice_candies:\n        bob_candies += (alice_candies - piles[1]) // 2\n        alice_candies -= (alice_candies - piles[1]) // 2\n    results.append(alice_candies)\nfor result in results:\n    print(result)",
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nq = int(data[0])\nresults = []\nindex = 1\nfor _ in range(q):\n    a = int(data[index])\n    b = int(data[1 + index])\n    c = int(data[2 + index])\n    piles = sorted([a, b, c])\n    alice_candies = piles[2]\n    bob_candies = max(piles[0], piles[1])\n    if alice_candies > bob_candies:\n        alice_candies += (bob_candies - piles[0]) // 2\n        bob_candies -= (bob_candies - piles[0]) // 2\n    elif bob_candies > alice_candies:\n        bob_candies += (alice_candies - piles[1]) // 2\n        alice_candies -= (alice_candies - piles[1]) // 2\n    results.append(alice_candies)\nfor result in results:\n    print(result)",
         "result": "failed: testcase 0",
         "average_distance": 0.0
     },
@@ -202,7 +202,7 @@
     "4724": {
         "code": "r = int(input())\ng = int(input())\nrequired_performance = (2 * g - r) // 1\nprint(required_performance)",
         "result": "passed",
-        "average_distance": 10.333333333333334
+        "average_distance": 9.333333333333334
     },
     "4276": {
         "code": null,
@@ -290,7 +290,7 @@
         "average_distance": 0.0
     },
     "4397": {
-        "code": "(N, i) = map(int, input().split())\nj = N - i + 1\nprint(j)",
+        "code": "(N, i) = map(int, input().split())\nj = 1 + (N - i)\nprint(j)",
         "result": "passed",
         "average_distance": 0.0
     },
@@ -315,7 +315,7 @@
         "average_distance": null
     },
     "4785": {
-        "code": "word = input()\nfor i in range(len(word) - 1):\n    if word[i] == 's' and word[i + 1] == 's':\n        print('hiss')\n        break\nelse:\n    print('no hiss')",
+        "code": "word = input()\nfor i in range(len(word) - 1):\n    if word[i] == 's' and word[1 + i] == 's':\n        print('hiss')\n        break\nelse:\n    print('no hiss')",
         "result": "passed",
         "average_distance": 0.0
     },
@@ -355,7 +355,7 @@
         "average_distance": null
     },
     "4781": {
-        "code": "import sys\nk = int(input())\nn = int(input())\ncurrent_player = k - 1\nquestions = []\nfor _ in range(n):\n    (t, z) = input().split()\n    questions.append((int(t), z))\nfor (time_taken, answer) in questions:\n    if answer == 'N' or answer == 'P':\n        continue\n    current_player += 1\n    current_player %= 8\nprint(current_player + 1)",
+        "code": "import sys\nk = int(input())\nn = int(input())\ncurrent_player = k - 1\nquestions = []\nfor _ in range(n):\n    (t, z) = input().split()\n    questions.append((int(t), z))\nfor (time_taken, answer) in questions:\n    if answer == 'N' or answer == 'P':\n        continue\n    current_player += 1\n    current_player %= 8\nprint(1 + current_player)",
         "result": "failed: testcase 0",
         "average_distance": 61.0
     },
@@ -445,7 +445,7 @@
         "average_distance": 71.5
     },
     "4841": {
-        "code": "n = int(input())\nbites = input().split()\ncurrent_count = 0\nfor bite in bites:\n    if bite == 'mumble':\n        if current_count < 1:\n            print('something is fishy')\n            break\n    else:\n        bite = int(bite)\n        if bite != current_count + 1:\n            print('something is fishy')\n            break\n        current_count += 1\nelse:\n    print('makes sense')",
+        "code": "n = int(input())\nbites = input().split()\ncurrent_count = 0\nfor bite in bites:\n    if bite == 'mumble':\n        if current_count < 1:\n            print('something is fishy')\n            break\n    else:\n        bite = int(bite)\n        if bite != 1 + current_count:\n            print('something is fishy')\n            break\n        current_count += 1\nelse:\n    print('makes sense')",
         "result": "failed: testcase 0",
         "average_distance": 23.5
     },
@@ -540,7 +540,7 @@
         "average_distance": null
     },
     "1715": {
-        "code": "import bisect\nimport sys\n(A, B, Q) = map(int, input().split())\nshrines = list(map(int, [input() for _ in range(A)]))\ntemples = list(map(int, [input() for _ in range(B)]))\nqueries = list(map(int, [input() for _ in range(Q)]))\nresults = []\nfor x in queries:\n    i_shrine = bisect.bisect_right(shrines, x)\n    i_temple = bisect.bisect_right(temples, x)\n    min_distance = float('inf')\n    if i_shrine > 0:\n        min_distance = min(min_distance, abs(shrines[i_shrine - 1] - x))\n    if i_temple > 0:\n        min_distance = min(min_distance, abs(temples[i_temple - 1] - x))\n    if i_shrine < A:\n        min_distance = min(min_distance, shrines[i_shrine] - x)\n    if i_temple < B:\n        min_distance = min(min_distance, temples[i_temple] - x)\n    if i_shrine > 0 and i_temple > 0:\n        for s in range(max(0, i_shrine - 2), min(A, i_shrine + 3)):\n            for t in range(max(0, i_temple - 2), min(B, i_temple + 3)):\n                dist = abs(shrines[s] - x) + abs(temples[t] - x)\n                min_distance = min(min_distance, dist)\n    results.append(min_distance)\nfor result in results:\n    print(result)",
+        "code": "import bisect\nimport sys\n(A, B, Q) = map(int, input().split())\nshrines = list(map(int, [input() for _ in range(A)]))\ntemples = list(map(int, [input() for _ in range(B)]))\nqueries = list(map(int, [input() for _ in range(Q)]))\nresults = []\nfor x in queries:\n    i_shrine = bisect.bisect_right(shrines, x)\n    i_temple = bisect.bisect_right(temples, x)\n    min_distance = float('inf')\n    if i_shrine > 0:\n        min_distance = min(min_distance, abs(shrines[i_shrine - 1] - x))\n    if i_temple > 0:\n        min_distance = min(min_distance, abs(temples[i_temple - 1] - x))\n    if i_shrine < A:\n        min_distance = min(min_distance, shrines[i_shrine] - x)\n    if i_temple < B:\n        min_distance = min(min_distance, temples[i_temple] - x)\n    if i_shrine > 0 and i_temple > 0:\n        for s in range(max(0, i_shrine - 2), min(A, 3 + i_shrine)):\n            for t in range(max(0, i_temple - 2), min(B, 3 + i_temple)):\n                dist = abs(shrines[s] - x) + abs(temples[t] - x)\n                min_distance = min(min_distance, dist)\n    results.append(min_distance)\nfor result in results:\n    print(result)",
         "result": "timed out",
         "average_distance": 0.0
     },
@@ -615,9 +615,9 @@
         "average_distance": null
     },
     "2912": {
-        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nN = int(data[0])\nstrings = data[1:N + 1]\noperations = [(int(data[N + i * 2]) - 1, int(data[N + i * 2 + 1]) - 1) for i in range(N - 1)]\nfor (a, b) in operations:\n    strings[a] += strings[b]\n    strings[b] = ''\nprint(strings[0])",
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nN = int(data[0])\nstrings = data[1:1 + N]\noperations = [(int(data[2 * i + N]) - 1, int(data[1 + (2 * i + N)]) - 1) for i in range(N - 1)]\nfor (a, b) in operations:\n    strings[a] += strings[b]\n    strings[b] = ''\nprint(strings[0])",
         "result": "failed: testcase 0",
-        "average_distance": 10.0
+        "average_distance": 10.363636363636363
     },
     "9": {
         "code": null,
@@ -730,7 +730,7 @@
         "average_distance": null
     },
     "1763": {
-        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nN = int(data[0])\nA = int(data[1])\nR = int(data[2])\nM = int(data[3])\nheights = list(map(int, data[4:]))\ntotal_cost = 0\nwhile len(set(heights)) > 1:\n    max_height = max(heights)\n    min_height = min(heights)\n    diff = max_height - min_height\n    if A <= R + M:\n        total_cost += A * diff\n        for i in range(N):\n            if heights[i] == max_height:\n                heights[i] -= 1\n                break\n    elif R <= M:\n        total_cost += R * diff\n        for i in range(N):\n            if heights[i] == min_height:\n                heights[i] += 1\n                break\n    else:\n        total_cost += M * diff\n        for i in range(N):\n            if heights[i] == max_height:\n                heights[i] -= 1\n                break\nprint(total_cost)",
+        "code": "import sys\ninput = sys.stdin.read\ndata = input().split()\nN = int(data[0])\nA = int(data[1])\nR = int(data[2])\nM = int(data[3])\nheights = list(map(int, data[4:]))\ntotal_cost = 0\nwhile len(set(heights)) > 1:\n    max_height = max(heights)\n    min_height = min(heights)\n    diff = max_height - min_height\n    if A <= M + R:\n        total_cost += A * diff\n        for i in range(N):\n            if heights[i] == max_height:\n                heights[i] -= 1\n                break\n    elif R <= M:\n        total_cost += R * diff\n        for i in range(N):\n            if heights[i] == min_height:\n                heights[i] += 1\n                break\n    else:\n        total_cost += M * diff\n        for i in range(N):\n            if heights[i] == max_height:\n                heights[i] -= 1\n                break\nprint(total_cost)",
         "result": "timed out",
         "average_distance": 0.0
     },
@@ -1025,7 +1025,7 @@
         "average_distance": null
     },
     "3900": {
-        "code": "from collections import Counter\n(n, p) = map(int, input().split())\nstatements = [tuple(map(int, input().split())) for _ in range(n)]\nsuspects = set()\nfor (x, y) in statements:\n    suspects.add(x)\n    suspects.add(y)\nsuspect_count = len(suspects)\nif suspect_count < 2 or n - suspect_count < p:\n    print(0)\nelse:\n    count = 0\n    for i in range(1, suspect_count + 1):\n        for j in range(i + 1, suspect_count + 1):\n            if any((x == i or x == j or y == i or (y == j) for (x, y) in statements)):\n                count += 1\n    print(count)",
+        "code": "from collections import Counter\n(n, p) = map(int, input().split())\nstatements = [tuple(map(int, input().split())) for _ in range(n)]\nsuspects = set()\nfor (x, y) in statements:\n    suspects.add(x)\n    suspects.add(y)\nsuspect_count = len(suspects)\nif suspect_count < 2 or n - suspect_count < p:\n    print(0)\nelse:\n    count = 0\n    for i in range(1, 1 + suspect_count):\n        for j in range(1 + i, 1 + suspect_count):\n            if any((x == i or x == j or y == i or (y == j) for (x, y) in statements)):\n                count += 1\n    print(count)",
         "result": "failed: testcase 0",
         "average_distance": 73.0
     },
