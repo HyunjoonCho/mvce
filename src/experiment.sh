@@ -35,6 +35,8 @@
 #python experiment.py -m llama3.3 -b HumanEval -p instruction -r 20
 #python experiment.py -m llama3.3 -b HumanEval -p rule -r 20
 
-python experiment.py -m qwen2.5-coder:32b -b HumanEval -p base -r 20
-python experiment.py -m qwen2.5-coder:32b -b HumanEval -p instruction -r 20
-python experiment.py -m qwen2.5-coder:32b -b HumanEval -p rule -r 20
+#python experiment.py -m qwen2.5-coder:32b -b HumanEval -p base -r 20
+#python experiment.py -m qwen2.5-coder:32b -b HumanEval -p instruction -r 20
+#python experiment.py -m qwen2.5-coder:32b -b HumanEval -p rule -r 20
+
+python experiment.py

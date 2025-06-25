@@ -36,5 +36,9 @@ class OllamaEngine(ABC):
             'model': self._model,
             'prompt': prompt,
             'stream': False,
+            'options': {
+                'temperature': 0.0,
+                'num_predict': 500,
+            },
         }
         return self._query_model(payload)

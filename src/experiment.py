@@ -37,16 +37,16 @@ def load_benchmark(benchmark, prompt_type):
     with open(prompt_path) as f:
         template = f.read()
     
-    return [(sample[id], template.format(problem=sample[key])) for sample in data]
+    return [(sample[id], sample[key]) for sample in data]
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-m', '--model', default='llama3')
+    parser.add_argument('-m', '--model', default='llama3:70b-text')
     parser.add_argument('-e', '--endpoint', default='http://localhost:11434/api/generate')
     parser.add_argument('-b', '--benchmark', default='HumanEval')
     parser.add_argument('-p', '--prompt', default='base')
     parser.add_argument('-o', '--output_dir', default='../results')
-    parser.add_argument('-r', '--runs', default="20")
+    parser.add_argument('-r', '--runs', default="3")
     args = parser.parse_args()
     assert args.benchmark in ["HumanEval", "APPS"] 
     assert args.prompt in ["base", "instruction", "rule"]
@@ -61,5 +61,5 @@ if __name__ == "__main__":
         result = generator.query_model(problem)
         result_dict[id] = result
     
-    with open(os.path.join('../results', f'{args.benchmark}_{args.model}_{args.prompt}.json'), 'w') as f:
+    with open(os.path.join('../results', f'{args.benchmark}_{args.model}_no_prompt.json'), 'w') as f:
         json.dump(result_dict, f, indent=4)
