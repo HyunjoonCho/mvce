@@ -42,7 +42,7 @@ def load_benchmark(benchmark, prompt_type):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', '--model', default='gpt-4o')
-    parser.add_argument('-b', '--benchmark', default='HumanEval')
+    parser.add_argument('-b', '--benchmark', default='APPS')
     parser.add_argument('-p', '--prompt', default='base')
     parser.add_argument('-o', '--output_dir', default='../results')
     parser.add_argument('-r', '--runs', default="10")
