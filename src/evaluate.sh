@@ -1,5 +1,5 @@
 #!/bin/bash
-python evaluator.py -b HumanEval -r ../results/HumanEval_llama3:70b-text_no_prompt.json
+#python evaluator.py -b HumanEval -r ../results/HumanEval_llama3:70b-text_no_prompt.json
 
 #python evaluator.py -b HumanEval -r ../results/HumanEval_qwen2.5-coder:32b_base.json
 #python evaluator.py -b HumanEval -r ../results/HumanEval_qwen2.5-coder:32b_instruction.json
@@ -19,3 +19,4 @@ python evaluator.py -b HumanEval -r ../results/HumanEval_llama3:70b-text_no_prom
 # python evaluator.py -b APPS -r ../results/APPS_mistral-nemo_rule.json
 # python evaluator.py -b APPS -r ../results/APPS_qwen2.5-coder_instruction.json
 # python evaluator.py -b APPS -r ../results/APPS_qwen2.5-coder_rule.json
+python evaluator.py -b APPS -r ../results/APPS_gpt-4o_base.json

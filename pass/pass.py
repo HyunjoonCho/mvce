@@ -7,8 +7,8 @@ def pass_at_k(responses, k=20):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-r', '--responses_path', default='../results/HumanEval_llama3.json')
-    parser.add_argument('-k', default="20")
+    parser.add_argument('-r', '--responses_path', default='../results/APPS_gpt-4o_base.json')
+    parser.add_argument('-k', default="10")
     args = parser.parse_args()
     
     with open(args.responses_path) as f:
