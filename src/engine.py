@@ -6,9 +6,9 @@ import openai
 import requests
 
 class OllamaEngine(ABC):
-    def __init__(self, endpoint, model):
-        self._base_url = endpoint
+    def __init__(self, model, endpoint):
         self._model = model
+        self._base_url = endpoint
 
     def _extract_costs(self, response):
         return {
