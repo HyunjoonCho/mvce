@@ -39,8 +39,7 @@ class OllamaEngine(ABC):
             'prompt': prompt,
             'stream': False,
             'options': {
-                'temperature': 0.0,
-                'num_predict': 500,
+                'temperature': 0.8,
             },
         }
         return self._query_model(payload)
@@ -66,8 +65,7 @@ class OpenAIEngine(ABC):
                     messages=[
                         {"role": "user", "content": prompt}
                     ],
-                    temperature=0.0,
-                    max_tokens=500
+                    temperature=0.8,
                 )
                 costs = self._extract_costs(response)
                 reply = response.choices[0].message.content
