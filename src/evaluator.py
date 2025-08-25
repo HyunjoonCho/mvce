@@ -126,6 +126,8 @@ class Capturing(list):
         sys.stdout = self._stdout
 
 def reliability_guard():
+    import resource
+    resource.setrlimit(resource.RLIMIT_AS, (1024 * 1024 * 1024, 1024 * 1024 * 1024)) # 1GB
     import builtins
     builtins.exit = None
     builtins.quit = None
@@ -148,7 +150,7 @@ def reliability_guard():
     import sys
     sys.modules["ipdb"] = None
     sys.modules["joblib"] = None
-    sys.modules["resource"] = None
+    #sys.modules["resource"] = None
     sys.modules["psutil"] = None
     sys.modules["tkinter"] = None
 
@@ -186,6 +188,8 @@ def call_method(method, inputs):
         try:
             return _method()
         except SystemExit as e:
+            pass
+        except MemoryError:
             pass
         finally:
             pass
@@ -337,6 +341,8 @@ def run_test(problem, test):
                         # reset the alarm
                         passed = True
                     except TimeoutException:
+                        raise
+                    except MemoryError:
                         raise
                     except Exception as e:
                         # runtime error or took too long
@@ -509,6 +515,8 @@ class APPSEvaluator(Evaluator):
                         return f'failed: testcase {idx}'
         except TimeoutException:
             return "timed out"
+        except MemoryError:
+            return "memory usage exceeded 1GB"
         
         return 'passed'
     
