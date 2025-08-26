@@ -1,5 +1,5 @@
 RESULTS_DIR="/workspace/results"
-SCRIPT_PATH="scripts/evaluate_humaneval_x.sh"
+SCRIPT_PATH="/workspace/CodeGeeX/scripts/evaluate_humaneval_x.sh"
 N_WORKERS=10
 
 MODELS=("gpt-4o" "llama3" "llama3.1" "mistral-nemo" "qwen2.5-coder")
