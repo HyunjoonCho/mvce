@@ -3,7 +3,7 @@ SCRIPT_PATH="scripts/evaluate_humaneval_x.sh"
 N_WORKERS=10
 
 MODELS=("gpt-4o" "llama3" "llama3.1" "mistral-nemo" "qwen2.5-coder")
-LANGUAGES=("Python" "JavaScript" "Java" "CPP" "Go")
+LANGUAGES=("python" "js" "java" "cpp" "go")
 
 echo "Starting HumanEval-X evaluation for all languages..."
 

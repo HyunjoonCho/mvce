@@ -24,7 +24,7 @@ def process_generated_codes(generated_codes):
             
             per_language_results[language].append({
                 "task_id": task_id,
-                "generation": code.strip()
+                "generation": code
             })
     
     return per_language_results
@@ -40,6 +40,7 @@ if __name__ == "__main__":
     per_language_results = process_generated_codes(data)
     
     for language in per_language_results:
-        output_path = args.responses_path.replace('.json', f'_{language.lower()}.jsonl')
+        output_path = args.responses_path.replace('.json', f'_{language.lower() if language != "JavaScript" else "js"}.jsonl')
         with open(output_path, 'w') as f:
-            json.dump(per_language_results[language], f, indent=2)
+            for result in per_language_results[language]:
+                f.write(json.dumps(result) + "\n")
