@@ -1,4 +1,4 @@
 #!/bin/bash
 
 sh experiment.sh
-sh evaluate.sh
+sh format.sh 
