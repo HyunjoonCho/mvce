@@ -5,4 +5,4 @@ User:
 {problem}
 
 Response format:
-Only the body of the function, indented exactly as it should appear in {language}.
+The implementation that completes the function, including any required closing syntax, indented as it should appear in {language}. Your response must only contain the code that comes after the user's prompt.
