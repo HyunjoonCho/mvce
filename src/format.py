@@ -17,9 +17,19 @@ def process_generated_codes(generated_codes):
             
             code = re.sub(r'^```\w*\n?', '', code)
             code = re.sub(r'\n?```$', '', code)
+
+            if language == 'Java':
+                open_braces = code.count('{')
+                close_braces = code.count('}')
+                
+                required_closing_braces = open_braces + 2
+                
+                if close_braces < required_closing_braces:
+                    missing_braces = required_closing_braces - close_braces
+                    code += "\n" + "}" * missing_braces
             
             lines = code.split('\n')
-            if lines and any(keyword in lines[0].lower() for keyword in ['function', 'def ', 'public ', 'func ', 'int ', 'void ']):
+            if lines and any(keyword in lines[0].lower() for keyword in ['function', 'def ', 'func ', 'int ', 'void ']):
                 code = '\n'.join(lines[1:])
             
             per_language_results[language].append({
