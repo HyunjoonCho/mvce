@@ -23,6 +23,6 @@ if __name__ == "__main__":
                 passed[task_id] += 1 if result["passed"] else 0
         for key in passed:
             passed[key] /= 10
-        output_path = f'pass_at_k/HumanEval-X_{language}_{args.model}@{args.r}.json'
+        output_path = f'pass_at_k/HumanEval-X_{language}_{args.model}_base@{args.r}.json'
         with open(output_path, 'w') as f:
             json.dump(passed, f, indent=4) 
