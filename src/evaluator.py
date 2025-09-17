@@ -1,4 +1,5 @@
 import argparse
+import ast
 import json
 
 from abc import ABC, abstractmethod
@@ -150,7 +151,6 @@ def reliability_guard():
     import sys
     sys.modules["ipdb"] = None
     sys.modules["joblib"] = None
-    #sys.modules["resource"] = None
     sys.modules["psutil"] = None
     sys.modules["tkinter"] = None
 
@@ -493,6 +493,26 @@ def run_test(problem, test):
 
     return results
 
+def has_suspicious_code(code):
+    try:
+        tree = ast.parse(code)
+    except Exception:
+        return True
+    
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            if any(alias.name == 'resource' for alias in node.names):
+                return True
+        elif isinstance(node, ast.ImportFrom):
+            if node.module == 'resource':
+                return True
+        elif isinstance(node, ast.Call):
+            if isinstance(node.func, ast.Name) and node.func.id in ('__import__', 'exec', 'eval'):
+                return True
+            elif isinstance(node.func, ast.Attribute) and node.func.attr in ('import_module',):
+                return True
+    return False
+
 class APPSEvaluator(Evaluator):
     def __init__(self, timeout):
         super().__init__(timeout, jsonl_path='../data/APPS.jsonl', id_keyword='id')
@@ -507,6 +527,8 @@ class APPSEvaluator(Evaluator):
                 line for line in response.split('\n') 
                 if not line.startswith('```') and not line.strip().startswith('def ')
             ])
+        if has_suspicious_code(response):
+            return "containing suspicious code"
         try:
             with time_limit(self.timeout):
                 results = run_test(problem, response)
@@ -536,7 +558,7 @@ if __name__ == "__main__":
         responses = benchmark_responses[id]
         for response in responses:
             body = response[0]
-            if 'result' not in response[1]:
-                response[1]['result'] = evaluator.evaluate(id, body)
+            # if 'result' not in response[1]:
+            response[1]['result'] = evaluator.evaluate(id, body)
         with open(args.responses_path, 'w') as f:
             json.dump(benchmark_responses, f, indent=4) # overwrite the existing response file
