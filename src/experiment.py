@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import tqdm
 
-from engine import OllamaEngine, OpenAIEngine
+from engine import OllamaEngine, OpenAIEngine, GeminiEngine
 
 DEFAULT_OLLAMA_ENDPOINT = 'http://localhost:11434/api/generate'
 
@@ -35,9 +35,16 @@ class OpenAICodeGenerator(OpenAIEngine, BaseCodeGenerator):
         OpenAIEngine.__init__(self, model, api_key)
         BaseCodeGenerator.__init__(self, R)
 
+class GeminiCodeGenerator(GeminiEngine, BaseCodeGenerator):
+    def __init__(self, model, api_key, R=3):
+        GeminiEngine.__init__(self, model, api_key)
+        BaseCodeGenerator.__init__(self, R)
+
 def get_code_generator(model, R=3):
     if model.startswith('gpt'):
         return OpenAICodeGenerator(model, os.environ['OPENAI_API_KEY'], R)
+    elif model.startswith('models/gemini'):
+        return GeminiCodeGenerator(model, os.environ['GOOGLE_API_KEY'], R)
     else:
         return OllamaCodeGenerator(model, DEFAULT_OLLAMA_ENDPOINT, R)
 
@@ -82,6 +89,7 @@ if __name__ == "__main__":
     for id, problem in tqdm.tqdm(benchmark):
         result = generator.query_model(problem)
         result_dict[id] = result
-    
-    with open(os.path.join('../results', f'{args.benchmark}_{args.model}_{args.prompt}.json'), 'w') as f:
+   
+    model = args.model.split('/')[-1] # handle Gemini-specific model naming convention
+    with open(os.path.join('../results', f'{args.benchmark}_{model}_{args.prompt}.json'), 'w') as f:
         json.dump(result_dict, f, indent=4)

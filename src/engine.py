@@ -4,6 +4,8 @@ import json
 
 import openai
 import requests
+import google.generativeai as genai
+from google.generativeai import GenerationConfig
 
 class OllamaEngine(ABC):
     def __init__(self, model, endpoint):
@@ -12,9 +14,8 @@ class OllamaEngine(ABC):
 
     def _extract_costs(self, response):
         return {
-            key: response[key]
-            for key in ['total_duration', 'load_duration', 'prompt_eval_count', 'prompt_eval_duration', 'eval_count', 'eval_duration']
-            if key in response
+            'prompt_tokens': response['prompt_eval_count'],
+            'completion_tokens': response['eval_count'],
         }
 
     def _query_model(self, payload):
@@ -54,7 +55,6 @@ class OpenAIEngine(ABC):
         return {
             'prompt_tokens': usage.prompt_tokens,
             'completion_tokens': usage.completion_tokens,
-            'total_tokens': usage.total_tokens,
         }
 
     def _query_model(self, prompt: str):
@@ -73,6 +73,49 @@ class OpenAIEngine(ABC):
             except Exception as e:
                 save_err = e
                 if "rate limit" in str(e).lower() or "server error" in str(e).lower():
+                    time.sleep(1)
+                else:
+                    break
+        raise save_err
+
+    def get_LLM_response(self, prompt):
+        return self._query_model(prompt)
+
+class GeminiEngine(ABC):
+    def __init__(self, model: str, api_key: str):
+        genai.configure(api_key=api_key)
+        self._model = genai.GenerativeModel(model)
+        self._generation_config = GenerationConfig(
+            candidate_count=1,
+            temperature=0.0,
+        )
+
+    def _extract_costs(self, response):
+        usage = response.usage_metadata
+        return {
+            'prompt_tokens': usage.prompt_token_count,
+            'completion_tokens': usage.candidates_token_count,
+        }
+        
+    def _query_model(self, prompt: str):
+        for _ in range(5):
+            try:
+                response = self._model.generate_content(
+                    prompt,
+                    generation_config=self._generation_config,
+                )
+                if response.candidates[0].finish_reason == 1:
+                    costs = self._extract_costs(response)
+                    reply = response.text
+                    return reply, costs
+                else:
+                    save_err = Exception(f"Finish reason was not 1: {response.candidates[0].finish_reason}")
+                    time.sleep(1)
+                    continue
+            except Exception as e:
+                save_err = e
+                error_str = str(e).lower()
+                if any(keyword in error_str for keyword in ["rate limit", "quota", "server error", "service unavailable", "timeout"]):
                     time.sleep(1)
                 else:
                     break
