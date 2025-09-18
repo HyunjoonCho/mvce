@@ -88,6 +88,7 @@ class GeminiEngine(ABC):
         self._generation_config = GenerationConfig(
             candidate_count=1,
             temperature=0.0,
+            max_output_tokens=2048,
         )
 
     def _extract_costs(self, response):
@@ -104,12 +105,12 @@ class GeminiEngine(ABC):
                     prompt,
                     generation_config=self._generation_config,
                 )
-                if response.candidates[0].finish_reason == 1:
+                if response.candidates[0].finish_reason == 1 or response.candidates[0].finish_reason == 2:
                     costs = self._extract_costs(response)
                     reply = response.text
                     return reply, costs
                 else:
-                    save_err = Exception(f"Finish reason was not 1: {response.candidates[0].finish_reason}")
+                    save_err = Exception(f"Finish reason was not 1 nor 2: {response.candidates[0].finish_reason}")
                     time.sleep(1)
                     continue
             except Exception as e:
