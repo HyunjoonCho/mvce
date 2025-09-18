@@ -1,15 +1,15 @@
-import argparse 
+import argparse
 import json
 
 LANGUAGES = ["java", "cpp", "go", "js", "python"]
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('-m', '--model', default='gpt-4o')
+    parser.add_argument('-m', '--model', default='gemini-2.5-flash-lite')
     parser.add_argument('-r', default=10)
     args = parser.parse_args()
-    
-    
+
+
     for language in LANGUAGES:
         passed = dict()
         path = f"../results/HumanEval-X_{args.model}_base_{language}_results.jsonl"
@@ -25,4 +25,4 @@ if __name__ == "__main__":
             passed[key] /= 10
         output_path = f'pass_at_k/HumanEval-X_{language}_{args.model}_base@{args.r}.json'
         with open(output_path, 'w') as f:
-            json.dump(passed, f, indent=4) 
+            json.dump(passed, f, indent=4)
