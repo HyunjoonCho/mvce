@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# python evaluator.py -b HumanEval -r ../results/HumanEval_llama3_base.json
-# python evaluator.py -b HumanEval -r ../results/HumanEval_llama3.1_base.json
-# python evaluator.py -b HumanEval -r ../results/HumanEval_mistral-nemo_base.json
-# python evaluator.py -b HumanEval -r ../results/HumanEval_qwen2.5-coder_base.json
-# python evaluator.py -b HumanEval -r ../results/HumanEval_phi4_base.json
+python evaluator.py -b HumanEval -r ../results/HumanEval_Meta-Llama-3-8B-Instruct_base.json
+python evaluator.py -b HumanEval -r ../results/HumanEval_Meta-Llama-3.1-8B-Instruct_base.json
+python evaluator.py -b HumanEval -r ../results/HumanEval_Mistral-Nemo-Instruct-2407_base.json
+python evaluator.py -b HumanEval -r ../results/HumanEval_Qwen2.5-Coder-7B-Instruct_base.json
+python evaluator.py -b HumanEval -r ../results/HumanEval_phi-4_base.json
 # python evaluator.py -b HumanEval -r ../results/HumanEval_gpt-4o_base.json
-python evaluator.py -b HumanEval -r ../results/HumanEval_gemini-2.5-flash-lite_base.json
+# python evaluator.py -b HumanEval -r ../results/HumanEval_gemini-2.5-flash-lite_base.json
 
-# python evaluator.py -b APPS -r ../results/APPS_llama3_base.json
-# python evaluator.py -b APPS -r ../results/APPS_llama3.1_base.json
-# python evaluator.py -b APPS -r ../results/APPS_mistral-nemo_base.json
-# python evaluator.py -b APPS -r ../results/APPS_qwen2.5-coder_base.json
-# python evaluator.py -b APPS -r ../results/APPS_phi4_base.json
+python evaluator.py -b APPS -r ../results/APPS_Meta-Llama-3-8B-Instruct_base.json
+python evaluator.py -b APPS -r ../results/APPS_Meta-Llama-3.1-8B-Instruct_base.json
+python evaluator.py -b APPS -r ../results/APPS_Mistral-Nemo-Instruct-2407_base.json
+python evaluator.py -b APPS -r ../results/APPS_Qwen2.5-Coder-7B-Instruct_base.json
+python evaluator.py -b APPS -r ../results/APPS_phi-4_base.json
 # python evaluator.py -b APPS -r ../results/APPS_gpt-4o_base.json
-python evaluator.py -b APPS -r ../results/APPS_gemini-2.5-flash-lite_base.json
+# python evaluator.py -b APPS -r ../results/APPS_gemini-2.5-flash-lite_base.json

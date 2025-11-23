@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import tqdm
 
-from engine import OllamaEngine, OpenAIEngine, GeminiEngine
+from engine import HFEngine, OpenAIEngine, GeminiEngine
 
 DEFAULT_OLLAMA_ENDPOINT = 'http://localhost:11434/api/generate'
 
@@ -25,9 +25,9 @@ class BaseCodeGenerator:
                     print(f"Error during query: {e}")
         return results
 
-class OllamaCodeGenerator(OllamaEngine, BaseCodeGenerator):
-    def __init__(self, model, endpoint, R=3):
-        OllamaEngine.__init__(self, model, endpoint)
+class HFCodeGenerator(HFEngine, BaseCodeGenerator):
+    def __init__(self, model, R=3):
+        HFEngine.__init__(self, model)
         BaseCodeGenerator.__init__(self, R)
 
 class OpenAICodeGenerator(OpenAIEngine, BaseCodeGenerator):
@@ -46,7 +46,7 @@ def get_code_generator(model, R=3):
     elif model.startswith('models/gemini'):
         return GeminiCodeGenerator(model, os.environ['GOOGLE_API_KEY'], R)
     else:
-        return OllamaCodeGenerator(model, DEFAULT_OLLAMA_ENDPOINT, R)
+        return HFCodeGenerator(model, R)
 
 def format_prompt(benchmark, template, samples, id, key):
     if benchmark == "HumanEval-X":

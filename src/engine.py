@@ -6,6 +6,40 @@ import openai
 import requests
 import google.generativeai as genai
 from google.generativeai import GenerationConfig
+import torch
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+
+class HFEngine(ABC):
+    def __init__(self, model):
+        self._model = AutoModelForCausalLM.from_pretrained(model, torch_dtype=torch.bfloat16, trust_remote_code=True, device_map='auto')
+        self._tokenizer = AutoTokenizer.from_pretrained(model, torch_dtype=torch.bfloat16, trust_remote_code=True, device_map='auto')
+        self._generator = pipeline("text-generation", model=self._model, tokenizer=self._tokenizer, torch_dtype=torch.bfloat16, device_map='auto')
+
+    def _extract_costs(self, prompt, generated_code):
+        return {
+            'prompt_tokens': len(self._tokenizer.encode(prompt)), 
+            'completion_tokens': len(self._tokenizer.encode(generated_code)), 
+        }
+
+    def _query_model(self, prompt):
+        for _ in range(5):
+            try:
+                messages = [{"role": "user", "content": prompt}]
+                prompt = self._tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+                response = self._generator(prompt, temperature=1e-5, return_full_text=False)
+                generated_code = response[0]['generated_text']
+                costs = self._extract_costs(prompt, generated_code)
+                return generated_code, costs
+            except Exception as e:
+                save_err = e
+                if "The server had an error processing your request." in str(e):
+                    time.sleep(1)
+                else:
+                    break
+        raise save_err
+
+    def get_LLM_response(self, prompt):
+        return self._query_model(prompt)
 
 class OllamaEngine(ABC):
     def __init__(self, model, endpoint):
